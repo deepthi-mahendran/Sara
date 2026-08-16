@@ -58,6 +58,21 @@ function loadHeader(activePage) {
   if (typeof window.updateCartCount === 'function') {
     window.updateCartCount();
   }
+
+  const userSessionStr = localStorage.getItem('sara_user_session');
+  if (userSessionStr) {
+    try {
+      const sess = JSON.parse(userSessionStr);
+      if (sess && sess.email) {
+        const userNav = document.querySelector('a[title="Sign In"]');
+        if (userNav) {
+          userNav.setAttribute('title', `Account (${sess.email})`);
+          userNav.setAttribute('aria-label', `Account (${sess.email})`);
+          userNav.style.color = 'var(--accent)';
+        }
+      }
+    } catch (e) {}
+  }
 }
 
 function loadFooter() {
