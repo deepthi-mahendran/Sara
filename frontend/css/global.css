@@ -391,25 +391,30 @@ button.white .ripple-effect {
     text-align: center;
 }
 
-#product1 .pro-container {
-    justify-content: flex-start;
-    gap: 20px 2.5%;
-    flex-wrap: wrap;
+#product1 .pro-container,
+#product2 .pro-container,
+.pro-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
     padding-top: 20px;
-    display: flex;
+    width: 100%;
 }
 
 /* ── Card container ── */
-#product1 .pro {
+#product1 .pro,
+#product2 .pro,
+.pro-container .pro {
     position: relative;
-    width: 23%;
-    min-width: 240px;
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
     padding: 12px 12px 14px;
     border: 1.5px solid var(--border-color);
     border-radius: 16px;
     cursor: pointer;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-    margin: 10px 0;
+    margin: 0;
     background-color: var(--card-bg);
     transition: box-shadow 0.3s ease, transform 0.25s ease;
     display: flex;
