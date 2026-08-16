@@ -394,6 +394,9 @@ function submitCheckoutForm() {
   const submitBtn = form.querySelector('.submit-btn');
 
   if (submitBtn) {
+    if (!submitBtn.hasAttribute('data-original-text')) {
+      submitBtn.setAttribute('data-original-text', submitBtn.textContent || 'Place Order');
+    }
     submitBtn.classList.add('btn-loading');
     submitBtn.disabled = true;
   }
@@ -480,8 +483,7 @@ function submitCheckoutForm() {
         submitBtn.disabled = false;
         submitBtn.style.opacity = '';
         submitBtn.style.cursor = '';
-        const origHtml = submitBtn.getAttribute('data-original-html');
-        submitBtn.innerHTML = (typeof window.sanitizeHTML === 'function' ? window.sanitizeHTML(origHtml) : (origHtml || '')).replace(/<script[^>]*>([\s\S]*?)<\/script>/gi, '') || 'Place Order';
+        submitBtn.textContent = submitBtn.getAttribute('data-original-text') || 'Place Order';
       }
 
       releaseWakeLock();

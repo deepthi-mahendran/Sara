@@ -153,9 +153,9 @@
               </div>
               <div class="review-meta">
                 <strong class="review-author">${_escape(r.author)}</strong>
-                <time class="review-date" datetime="${r.date}">${_formatDate(r.date)}</time>
+                <time class="review-date" datetime="${_escape(r.date)}">${_formatDate(r.date)}</time>
               </div>
-              <div class="review-stars" aria-label="${r.rating} out of 5 stars">
+              <div class="review-stars" aria-label="${Math.min(5, Math.max(1, parseInt(r.rating, 10) || 5))} out of 5 stars">
                 ${_starsHTML(r.rating)}
               </div>
             </header>
@@ -167,6 +167,9 @@
           .join('')
       : '<p class="reviews-empty">No reviews yet. Be the first to share your thoughts!</p>';
 
+    const safeAvg = _escape(String(stats.avg || '—'));
+    const safeTotal = Math.max(0, parseInt(stats.total, 10) || 0);
+
     container.innerHTML = `
       <section class="reviews-section" aria-labelledby="reviews-heading">
         <h2 id="reviews-heading" class="reviews-heading">Customer Reviews</h2>
@@ -174,9 +177,9 @@
         <!-- Aggregate score -->
         <div class="reviews-aggregate" aria-label="Overall rating">
           <div class="aggregate-score">
-            <span class="aggregate-number" aria-label="${stats.avg} out of 5">${stats.avg || '—'}</span>
+            <span class="aggregate-number" aria-label="${safeAvg} out of 5">${safeAvg}</span>
             <div class="aggregate-stars" aria-hidden="true">${_starsHTML(stats.avg)}</div>
-            <span class="aggregate-count">${stats.total} review${stats.total !== 1 ? 's' : ''}</span>
+            <span class="aggregate-count">${safeTotal} review${safeTotal !== 1 ? 's' : ''}</span>
           </div>
           <div class="review-distribution" aria-label="Rating distribution">
             ${distBars}

@@ -107,8 +107,15 @@
     const imgWrap = doc.createElement('div');
     imgWrap.className = 'pro-img-wrap';
     const img = doc.createElement('img');
-    const rawImg = item.image || 'images/products/f1.jpg';
-    img.src = (typeof rawImg === 'string' && (rawImg.startsWith('http://') || rawImg.startsWith('https://') || rawImg.startsWith('/') || rawImg.startsWith('images/') || rawImg.startsWith('assets/') || rawImg.startsWith('../'))) ? rawImg : 'images/products/f1.jpg';
+    const safeUrl = (url) => {
+      if (typeof url !== 'string' || !url) return 'images/products/f1.jpg';
+      try {
+        const u = new URL(url, window.location.href);
+        if (['http:', 'https:'].includes(u.protocol)) return u.href;
+      } catch (e) {}
+      return encodeURI(url);
+    };
+    img.src = safeUrl(item.image);
     img.alt = item.name;
     img.loading = 'lazy';
     imgWrap.appendChild(img);

@@ -240,15 +240,16 @@
             '" data-compare-view="' +
             idx +
             '" />';
-          html += '<div class="prod-name">' + p.name + '</div>';
-          html += '<div class="prod-brand">' + (p.brand || '—') + '</div>';
+          html += '<div class="prod-name">' + _esc(p.name) + '</div>';
+          html += '<div class="prod-brand">' + _esc(p.brand || '—') + '</div>';
+          const safeId = parseInt(p.id, 10) || 0;
           html +=
-            '<button class="remove-compare-btn" onclick="window.SaraCompare.remove(\'' +
-            p.id +
-            '\')">✕ Remove</button>';
+            '<button class="remove-compare-btn" data-remove-id="' +
+            safeId +
+            '">✕ Remove</button>';
           html += '</th>';
         } else if (key === 'price') {
-          html += '<td class="price-val">' + (p.price || '—') + '</td>';
+          html += '<td class="price-val">' + _esc(p.price || '—') + '</td>';
         } else if (key === 'rating') {
           html += '<td>' + (p.rating ? renderStars(p.rating) : '—') + '</td>';
         } else if (key === 'action') {
@@ -269,6 +270,14 @@
 
     html += '</tbody></table></div>';
     wrapper.innerHTML = html;
+    wrapper.querySelectorAll('[data-remove-id]').forEach((el) => {
+      const pid = parseInt(el.dataset.removeId, 10);
+      el.addEventListener('click', () => {
+        if (window.SaraCompare && typeof window.SaraCompare.remove === 'function') {
+          window.SaraCompare.remove(pid);
+        }
+      });
+    });
     wrapper.querySelectorAll('[data-compare-view]').forEach((el) => {
       const p = list[parseInt(el.dataset.compareView, 10)];
       if (p) el.addEventListener('click', () => viewProduct(p));

@@ -164,19 +164,25 @@
 
       const avatars = this.activeUsers
         .map(
-          (u) => `
-          <div class="user-avatar-badge" style="background: ${u.color || '#C483E6'}; color: white; width: 32px; height: 32px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; border: 2px solid white; margin-left: -8px;" title="${_wsEscape(u.name)}">
-            ${(_wsEscape(u.name) || 'S').charAt(0).toUpperCase()}
-          </div>
-        `
+          (u) => {
+            const safeColor = (u.color && /^#[0-9a-fA-F]{3,6}$/.test(u.color)) ? u.color : '#C483E6';
+            const safeName = _wsEscape(u.name || 'Shopper');
+            const initial = (safeName.replace(/&[^;]+;/g, '') || 'S').charAt(0).toUpperCase();
+            return `
+            <div class="user-avatar-badge" style="background: ${safeColor}; color: white; width: 32px; height: 32px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; border: 2px solid white; margin-left: -8px;" title="${safeName}">
+              ${initial}
+            </div>
+          `;
+          }
         )
         .join('');
 
+      const count = Math.max(0, parseInt(this.activeUsers.length, 10) || 0);
       el.innerHTML = `
         <div class="shared-cart-presence-box" style="display: flex; align-items: center; gap: 10px; padding: 10px; background: rgba(8,129,120,0.08); border-radius: 10px; margin-bottom: 15px;">
           <div style="display: flex; margin-left: 8px;">${avatars || '<span style="font-size:13px;">No other shoppers</span>'}</div>
           <span style="font-size: 13px; font-weight: 600; color: var(--text-primary);">
-            ${this.activeUsers.length} Active Collaborator${this.activeUsers.length === 1 ? '' : 's'}
+            ${count} Active Collaborator${count === 1 ? '' : 's'}
           </span>
           <button type="button" class="copy-session-link-btn" style="margin-left: auto; background: var(--accent); color: white; border: none; padding: 6px 12px; border-radius: 20px; font-size: 12px; cursor: pointer;">
             Invite Friends

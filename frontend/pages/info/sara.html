@@ -818,7 +818,7 @@ function changeQty(id, delta) {
     const line = p.price * q;
     const _esc = (s) => String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#x27;');
     const safeTitle = _esc(p.title);
-    const safeImg = (typeof p.img === 'string' && (p.img.startsWith('http://') || p.img.startsWith('https://') || p.img.startsWith('/') || p.img.startsWith('images/') || p.img.startsWith('assets/'))) ? p.img : 'images/products/placeholder.jpg';
+    const safeImg = (typeof p.img === 'string' && p.img) ? encodeURI(p.img) : 'images/products/placeholder.jpg';
     total += line;
 
     const el = document.createElement('div');

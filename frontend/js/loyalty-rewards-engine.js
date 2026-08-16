@@ -18,7 +18,13 @@ class LoyaltyRewardsEngine {
   loadData() {
     try {
       const stored = localStorage.getItem(this.storageKey);
-      return stored ? JSON.parse(stored) : { points: 0, history: [] };
+      if (!stored) return { points: 0, history: [] };
+      const parsed = JSON.parse(stored);
+      if (typeof parsed !== 'object' || parsed === null) return { points: 0, history: [] };
+      return {
+        points: Math.max(0, parseInt(parsed.points, 10) || 0),
+        history: Array.isArray(parsed.history) ? parsed.history : []
+      };
     } catch (e) {
       return { points: 0, history: [] };
     }
