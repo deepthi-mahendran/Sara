@@ -13,13 +13,14 @@
     flex-direction: column;
 }
 
+#about-head h1,
 #about-head h2,
 #about-head p {
     color: #fff;
     text-align: center;
 }
 
-#about-head h2 {
+#about-head h1 {
     font-size: 40px;
     font-weight: 700;
 }

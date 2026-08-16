@@ -63,6 +63,9 @@ document.addEventListener('DOMContentLoaded', () => {
       const starsHTML = Array(t.rating)
         .fill('<i class="ri-star-fill"></i>')
         .join('');
+      const isNested = window.location.pathname.includes('/pages/');
+      const avatarUrl = isNested ? '../../' + t.avatar : t.avatar;
+      const fallbackUrl = isNested ? '../../images/people/1.png' : 'images/people/1.png';
       return `
         <div class="testimonial-slide">
           <div class="testimonial-stars" aria-label="${t.rating} out of 5 stars">
@@ -70,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
           <p class="testimonial-quote">${t.review}</p>
           <div class="testimonial-user">
-            <img class="testimonial-avatar" src="${t.avatar}" alt="${t.name}" onerror="this.src='images/people/1.png'">
+            <img class="testimonial-avatar" src="${avatarUrl}" alt="${t.name}" onerror="this.src='${fallbackUrl}'">
             <div class="testimonial-details">
               <h4>${t.name}</h4>
               <span>${t.role}</span>

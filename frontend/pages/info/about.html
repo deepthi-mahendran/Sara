@@ -741,98 +741,53 @@
     <!-- Scripts -->
     <script type="module" src="../../js/navbar.js"></script>
     <script>
-      loadNavbar('about');
+      document.addEventListener('DOMContentLoaded', function() {
+        if (typeof loadNavbar === 'function') loadNavbar('about');
+      });
     </script>
-
-    <script type="module" src="../../js/app.js"></script>
 
     <script>
-      document.querySelector('.Current-Year').textContent =
-        new Date().getFullYear();
+      (function initTimelineAnimations() {
+        var items = document.querySelectorAll('.milestone-item');
+        if (!items.length || !('IntersectionObserver' in window)) return;
+
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('milestone-visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.25 });
+
+        items.forEach(function (item) {
+          observer.observe(item);
+        });
+      })();
     </script>
-    
+
+    <script type="module" src="../../js/loyalty-rewards-engine.js"></script>
+    <script type="module" src="../../js/app.js"></script>
+    <script type="module" src="../../js/testimonials-carousel.js" defer></script>
+
     <script>
       const scrollBtn = document.getElementById('scrollTopBtn');
+      if (scrollBtn) {
+        window.addEventListener('scroll', () => {
+          if (window.scrollY > 300) {
+            scrollBtn.style.display = 'block';
+          } else {
+            scrollBtn.style.display = 'none';
+          }
+        });
 
-      window.addEventListener('scroll', () => {
-        if (window.scrollY > 300) {
-          scrollBtn.style.display = 'block';
-        } else {
-          scrollBtn.style.display = 'none';
-      <a
-        href="https://stripe.com"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Stripe"
-      >
-        <i class="fab fa-cc-stripe"></i>
-      </a>
-    </div>
-  </div>
-
-  <!-- Copyright -->
-  <div class="copyright">
-    <p>
-      © Sara 2026. All rights reserved. |
-      <a href="license.html" style="color: #C483E6"> MIT License </a>
-    </p>
-  </div>
-</footer>
-
-<!-- Scripts -->
-<script type="module" src="../../js/navbar.js"></script>
-<script>
-  loadNavbar('about');
-</script>
-
-<script>
-  (function initTimelineAnimations() {
-    var items = document.querySelectorAll('.milestone-item');
-    if (!items.length || !('IntersectionObserver' in window)) return;
-
-    var observer = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('milestone-visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.25 });
-
-    items.forEach(function (item) {
-      observer.observe(item);
-    });
-  })();
-</script>
-
-<script type="module" src="../../js/loyalty-rewards-engine.js"></script>
-<script type="module" src="../../js/app.js"></script>
-<script type="module" src="../../js/testimonials-carousel.js" defer></script>
-
-<script>
-  const currentYearEl = document.querySelector('.Current-Year');
-  if (currentYearEl) {
-    currentYearEl.textContent = new Date().getFullYear();
-  }
-</script>
-
-<script>
-  const scrollBtn = document.getElementById('scrollTopBtn');
-
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 300) {
-      scrollBtn.style.display = 'block';
-    } else {
-      scrollBtn.style.display = 'none';
-    }
-  });
-
-  scrollBtn.addEventListener('click', () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
-  });
-</script>
+        scrollBtn.addEventListener('click', () => {
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth',
+          });
+        });
+      }
+    </script>
 </body>
 </html>
