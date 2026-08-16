@@ -89,7 +89,7 @@ export class CartRecoveryEngine {
       document.body.prepend(banner);
     }
 
-    const itemCount = session.items.reduce((acc, item) => acc + (item.quantity || 1), 0);
+    const itemCount = Math.max(0, parseInt(session.items.reduce((acc, item) => acc + (parseInt(item.quantity, 10) || 1), 0), 10) || 0);
     banner.innerHTML = `
       <div class="cart-recovery-content">
         <span class="cart-recovery-text">

@@ -722,7 +722,8 @@
                     media.className = "wishlist-media";
 
                     const image = document.createElement("img");
-                    image.src = product.image;
+                    const safeImage = (typeof product.image === 'string' && (product.image.startsWith('http://') || product.image.startsWith('https://') || product.image.startsWith('/') || product.image.startsWith('images/') || product.image.startsWith('assets/') || product.image.startsWith('../'))) ? product.image : 'images/products/f1.jpg';
+                    image.src = safeImage;
                     image.alt = product.name;
                     image.loading = "lazy";
 

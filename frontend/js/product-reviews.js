@@ -126,11 +126,17 @@ export class ProductReviewManager {
    */
   sanitizeReviewAuthorName(name) {
     if (typeof name !== 'string') return '';
-    return name
-      .replace(/<[^>]*>/g, '')   // Remove HTML tags
-      .replace(/[<>"'&]/g, '')     // Remove XSS characters
+    let clean = name;
+    let prev;
+    do {
+      prev = clean;
+      clean = clean.replace(/<[^>]*>/g, '');
+    } while (clean !== prev);
+
+    return clean
+      .replace(/[<>"'&]/g, '')
       .trim()
-      .slice(0, 80);               // Cap at 80 chars
+      .slice(0, 80);
   }
 
 }

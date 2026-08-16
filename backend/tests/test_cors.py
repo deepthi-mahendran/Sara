@@ -22,12 +22,17 @@ def reload_main(monkeypatch):
 
 
 def test_default_cors_includes_live_demo(reload_main, monkeypatch):
-    monkeypatch.delenv("CORS_ORIGINS", raising=False)
     main = reload_main(CORS_ORIGINS=None)
     origins = main._cors_allow_origins()
-    assert "https://sara-seven-ashen.vercel.app" in origins
-    assert "https://sara-deepthi-mahendrans-projects.vercel.app" in origins
-    assert "http://localhost:5500" in origins
+    expected_origins = [
+        "http://127.0.0.1:5500",
+        "http://localhost:5500",
+        "http://127.0.0.1:8080",
+        "http://localhost:8080",
+        "https://sara-deepthi-mahendrans-projects.vercel.app",
+        "https://sara-seven-ashen.vercel.app",
+    ]
+    assert sorted(origins) == sorted(expected_origins)
 
 
 def test_cors_origins_env_override(reload_main):

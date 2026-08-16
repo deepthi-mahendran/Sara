@@ -7,26 +7,20 @@ export function sanitizeHTML(input) {
     return input;
   }
 
-  // Escape HTML characters
+  // Strip inline event handlers and scripting protocols
   let clean = input
+    .replace(/on\w+\s*=/gi, '')
+    .replace(/javascript\s*:/gi, '')
+    .replace(/data\s*:/gi, '');
+
+  // Escape HTML special characters
+  return clean
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#x27;')
     .replace(/\//g, '&#x2F;');
-
-  // Prevent inline event handlers and scripting attributes
-  let prev;
-  do {
-    prev = clean;
-    clean = clean
-      .replace(/on\w+\s*=/gi, '')
-      .replace(/javascript\s*:/gi, '')
-      .replace(/data\s*:/gi, '');
-  } while (clean !== prev);
-
-  return clean;
 }
 
 export function sanitizeDOMNode(element) {

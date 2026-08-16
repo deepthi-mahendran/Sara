@@ -28,6 +28,5 @@ jobs:
       - name: Run Lighthouse Audit
         uses: treosh/lighthouse-ci-action@v11
         with:
-          staticDistDir: './dist'
-          budgetPath: ./budgets.json
+          configPath: './lighthouserc.json'
           uploadArtifacts: true

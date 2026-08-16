@@ -17,8 +17,9 @@ document.addEventListener('DOMContentLoaded', async () => {
   // Trigger backend inventory hold reservation
   try {
     const apiBaseUrl = window.SARA_API_BASE_URL || '';
-    const fetchFunc = typeof window.fetchWithTimeout === 'function' ? window.fetchWithTimeout : fetch;
-    const sessionId = 'session_' + Math.random().toString(36).substring(2, 9);
+    const randomBytes = new Uint8Array(6);
+    (window.crypto || window.msCrypto).getRandomValues(randomBytes);
+    const sessionId = 'session_' + Array.from(randomBytes, (b) => b.toString(36)).join('').slice(0, 9);
 
     await fetchFunc(`${apiBaseUrl}/api/inventory/reserve`, {
       method: 'POST',

@@ -26,7 +26,6 @@ jobs:
       - name: Audit HTML Pages using Lighthouse
         uses: treosh/lighthouse-ci-action@v12
         with:
-          staticDistDir: './dist'
-          budgetPath: ./budgets.json
+          configPath: './lighthouserc.json'
           uploadArtifacts: true
           temporaryPublicStorage: true

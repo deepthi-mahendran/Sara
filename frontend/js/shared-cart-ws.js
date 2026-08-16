@@ -22,11 +22,21 @@
       .replace(/&/g, '&amp;')
       .replace(/</g, '&lt;')
       .replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;');
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#x27;');
+  }
+
+  function _secureRandomString(len = 8) {
+    if (typeof window !== 'undefined' && (window.crypto || window.msCrypto)) {
+      const bytes = new Uint8Array(len);
+      (window.crypto || window.msCrypto).getRandomValues(bytes);
+      return Array.from(bytes, (b) => b.toString(36)).join('').slice(0, len);
+    }
+    return Math.random().toString(36).substring(2, 2 + len);
   }
 
   function generateSessionId() {
-    return 'room_' + Math.random().toString(36).substring(2, 9);
+    return 'room_' + _secureRandomString(7);
   }
 
   function getQuerySessionId() {
@@ -39,9 +49,14 @@
     constructor(options = {}) {
       this.sessionId = options.sessionId || getQuerySessionId() || null;
       this.wsUrl = options.wsUrl || this.buildWsUrl(this.sessionId);
-      this.userId = options.userId || 'user_' + Math.random().toString(36).substring(2, 7);
+      this.userId = options.userId || 'user_' + _secureRandomString(5);
       this.userName = options.userName || 'Shopper ' + this.userId.slice(-3);
-      this.userColor = options.userColor || '#' + Math.floor(Math.random() * 16777215).toString(16);
+      const colorBuf = new Uint8Array(3);
+      if (typeof window !== 'undefined' && (window.crypto || window.msCrypto)) {
+        (window.crypto || window.msCrypto).getRandomValues(colorBuf);
+      }
+      const hexColor = Array.from(colorBuf, (b) => b.toString(16).padStart(2, '0')).join('');
+      this.userColor = options.userColor || '#' + (hexColor || 'C483E6');
       this.ws = null;
       this.activeUsers = [];
       this.onMessageCallback = options.onMessage || null;

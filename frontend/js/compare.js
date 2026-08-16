@@ -14,6 +14,11 @@
      CORE: compare list via InteractiveProductComparator
      ============================================================ */
 
+  function _esc(str) {
+    if (str == null) return '';
+    return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#x27;');
+  }
+
   function getCompareList() {
     try {
       return JSON.parse(sessionStorage.getItem(STORAGE_KEY)) || [];
@@ -253,9 +258,9 @@
             '">View Product</button></td>';
         } else if (['category', 'color', 'style'].includes(key)) {
           html +=
-            '<td class="badge-cell"><span>' + (p[key] || '—') + '</span></td>';
+            '<td class="badge-cell"><span>' + _esc(p[key] || '—') + '</span></td>';
         } else {
-          html += '<td>' + (p[key] || '—') + '</td>';
+          html += '<td>' + _esc(p[key] || '—') + '</td>';
         }
       });
 

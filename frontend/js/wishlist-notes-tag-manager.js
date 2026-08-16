@@ -12,7 +12,9 @@ class WishlistNotesTagManager {
   loadData() {
     try {
       const stored = localStorage.getItem(this.storageKey);
-      return stored ? JSON.parse(stored) : {};
+      if (!stored) return {};
+      const parsed = JSON.parse(stored);
+      return typeof parsed === 'object' && parsed !== null ? parsed : {};
     } catch (e) {
       return {};
     }

@@ -30,7 +30,10 @@ function renderProductDetails(product) {
 
   if (nameEl) nameEl.textContent = product.name;
   if (priceEl) priceEl.textContent = product.price;
-  if (mainImgEl) mainImgEl.src = product.image;
+  if (mainImgEl && product.image) {
+    const safeUrl = (typeof product.image === 'string' && (product.image.startsWith('http://') || product.image.startsWith('https://') || product.image.startsWith('/') || product.image.startsWith('images/') || product.image.startsWith('assets/') || product.image.startsWith('../'))) ? product.image : 'images/products/placeholder.jpg';
+    mainImgEl.src = safeUrl;
+  }
 
   if (breadcrumbEl && product.brand) {
     let productType = 'T-Shirt';
@@ -216,16 +219,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (!name || !rating || !text) return;
 
-      const stars = '★'.repeat(rating) + '☆'.repeat(5 - rating);
+      const _esc = (s) => String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#x27;');
+      const stars = '★'.repeat(Math.min(5, Math.max(1, parseInt(rating, 10) || 5))) + '☆'.repeat(5 - Math.min(5, Math.max(1, parseInt(rating, 10) || 5)));
       const newReview = document.createElement('div');
       newReview.className = 'review-card fade-up';
       newReview.style.cssText = 'border: 1px solid var(--glass-2); padding: 15px; border-radius: 12px; margin-bottom: 15px; background: rgba(255,255,255,0.02);';
       newReview.innerHTML = `
         <div class="review-header" style="display: flex; justify-content: space-between; margin-bottom: 10px;">
-            <span class="reviewer-name" style="font-weight: 700;">${name}</span>
+            <span class="reviewer-name" style="font-weight: 700;">${_esc(name)}</span>
             <span class="review-stars" style="color: #f1c40f;">${stars}</span>
         </div>
-        <p class="review-text" style="color: var(--muted); margin: 0;">${text}</p>
+        <p class="review-text" style="color: var(--muted); margin: 0;">${_esc(text)}</p>
       `;
 
       document.getElementById('reviewsList').appendChild(newReview);

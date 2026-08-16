@@ -107,7 +107,8 @@
     const imgWrap = doc.createElement('div');
     imgWrap.className = 'pro-img-wrap';
     const img = doc.createElement('img');
-    img.src = item.image || 'images/products/f1.jpg';
+    const rawImg = item.image || 'images/products/f1.jpg';
+    img.src = (typeof rawImg === 'string' && (rawImg.startsWith('http://') || rawImg.startsWith('https://') || rawImg.startsWith('/') || rawImg.startsWith('images/') || rawImg.startsWith('assets/') || rawImg.startsWith('../'))) ? rawImg : 'images/products/f1.jpg';
     img.alt = item.name;
     img.loading = 'lazy';
     imgWrap.appendChild(img);
