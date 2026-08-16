@@ -58,10 +58,23 @@ class ConnectionManager:
 
 manager = ConnectionManager()
 
+from jose import jwt, JWTError
+from .auth import SECRET_KEY, ALGORITHM
+
 @router.websocket("/ws/cart/{session_id}")
 async def shared_cart_websocket(websocket: WebSocket, session_id: str):
-    user_id = websocket.query_params.get("user_id", "anon_" + session_id[:4])
-    user_name = websocket.query_params.get("user_name", "Shopper " + user_id[-3:])
+    token = websocket.query_params.get("token")
+    email = None
+    if token:
+        try:
+            payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+            if payload.get("type") == "access":
+                email = payload.get("sub")
+        except JWTError:
+            pass
+
+    user_id = email or websocket.query_params.get("user_id", "anon_" + session_id[:4])
+    user_name = email.split("@")[0] if email else websocket.query_params.get("user_name", "Shopper " + user_id[-3:])
     user_color = websocket.query_params.get("user_color", "#088178")
 
     user_info = {"user_id": user_id, "name": user_name, "color": user_color}

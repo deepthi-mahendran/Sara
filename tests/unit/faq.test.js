@@ -4,7 +4,7 @@
  */
 import { beforeEach, describe, expect, it } from 'vitest';
 
-import '../../faq.js';
+import '../../frontend/js/faq.js';
 
 beforeEach(() => {
   document.body.innerHTML = `

@@ -16,7 +16,7 @@ const {
   isStaticAsset,
   shouldBypassCache,
   CACHE_NAME,
-} = require('../../service-worker.js');
+} = require('../../frontend/service-worker.js');
 
 describe('service-worker cache strategy', () => {
   it('bumps cache version past v1', () => {

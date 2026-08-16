@@ -48,7 +48,7 @@ describe('order-history cancel button visibility', () => {
     ];
     stubOrdersFetch(orders);
 
-    await import('../../order-history.js');
+    await import('../../frontend/js/order-history.js');
     document.dispatchEvent(new Event('DOMContentLoaded'));
 
     // Let the async fetchOrders() settle.

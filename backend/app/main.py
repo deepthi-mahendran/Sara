@@ -95,6 +95,30 @@ app.include_router(receipts.router, prefix="/api/receipts", tags=["receipts"])
 app.include_router(telemetry.router, prefix="/api/telemetry", tags=["telemetry"])
 app.include_router(inventory_lock.router, prefix="/api/inventory", tags=["inventory"])
 
+import asyncio
+
+async def auto_release_expired_inventory_holds():
+    """Background task to periodically purge expired inventory reservations."""
+    from .database import SessionLocal
+    from .api.inventory_lock import release_expired_reservations
+    while True:
+        try:
+            await asyncio.sleep(60)
+            db = SessionLocal()
+            try:
+                release_expired_reservations(db)
+            finally:
+                db.close()
+        except asyncio.CancelledError:
+            break
+        except Exception:
+            pass
+
+@app.on_event("startup")
+async def startup_event():
+    asyncio.create_task(auto_release_expired_inventory_holds())
+
+
 
 
 

@@ -48,12 +48,14 @@
     }
 
     runWithMutex(action) {
-      const next = this.mutexPromise.then(() => action()).catch((err) => {
+      try {
+        const result = action();
+        this.mutexPromise = Promise.resolve(result);
+        return result;
+      } catch (err) {
         console.warn('Cart mutex operation error:', err);
         throw err;
-      });
-      this.mutexPromise = next.catch(() => {});
-      return next;
+      }
     }
 
     initBroadcastChannel() {

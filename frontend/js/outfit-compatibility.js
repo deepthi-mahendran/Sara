@@ -24,6 +24,7 @@ const COLOR_HARMONY = {
 const CLASHING_PAIRS = [
   ['red', 'orange'],
   ['red', 'pink'],
+  ['red', 'green'],
   ['orange', 'pink'],
   ['yellow', 'green'],
   ['purple', 'orange'],
@@ -314,3 +315,31 @@ function initCompatibilityChecker() {
 }
 
 document.addEventListener('DOMContentLoaded', initCompatibilityChecker);
+
+export class OutfitCompatibility {
+  isColorCompatible(color1, color2) {
+    if (color1 === null || color1 === undefined || color2 === null || color2 === undefined) return true;
+    const c1 = String(color1).trim().toLowerCase();
+    const c2 = String(color2).trim().toLowerCase();
+    if (!c1 || !c2) return true;
+    if (c1 === c2) return true;
+    return !getColorClash(c1, c2);
+  }
+
+  getRecommendedFallbacks(color) {
+    if (!color) return ['white', 'black'];
+    const c = String(color).trim().toLowerCase();
+    const list = COLOR_HARMONY[c];
+    if (list && list.length) {
+      return list.slice(0, 3);
+    }
+    return ['white', 'black'];
+  }
+
+  isOutfitWithinBudget(totalPrice, budget) {
+    if (typeof totalPrice !== 'number' || isNaN(totalPrice)) return false;
+    if (budget === undefined || budget === null || isNaN(budget) || budget < 0) return true;
+    return totalPrice <= budget;
+  }
+}
+

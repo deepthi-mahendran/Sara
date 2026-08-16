@@ -2,15 +2,23 @@ import { describe, it, expect, beforeEach } from 'vitest';
 import fs from 'fs';
 import path from 'path';
 
+const pagePaths = {
+  'index.html': 'frontend/index.html',
+  'contact.html': 'frontend/pages/info/contact.html',
+  'shop.html': 'frontend/pages/shop/shop.html',
+  'cart.html': 'frontend/pages/shop/cart.html',
+  'about.html': 'frontend/pages/info/about.html'
+};
+
 describe('WCAG 2.1 AA Accessibility Tests', () => {
-  const pages = ['index.html', 'contact.html', 'shop.html', 'cart.html', 'about.html'];
+  const pages = Object.keys(pagePaths);
 
   pages.forEach(page => {
     describe(`Accessibility checks for ${page}`, () => {
       let html;
 
       beforeEach(() => {
-        const filePath = path.resolve(process.cwd(), page);
+        const filePath = path.resolve(process.cwd(), pagePaths[page]);
         html = fs.readFileSync(filePath, 'utf8');
       });
 
@@ -33,7 +41,7 @@ describe('WCAG 2.1 AA Accessibility Tests', () => {
     let contactHtml;
 
     beforeEach(() => {
-      const filePath = path.resolve(process.cwd(), 'contact.html');
+      const filePath = path.resolve(process.cwd(), 'frontend/pages/info/contact.html');
       contactHtml = fs.readFileSync(filePath, 'utf8');
     });
 

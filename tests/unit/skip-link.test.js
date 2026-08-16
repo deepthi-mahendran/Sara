@@ -7,7 +7,7 @@ describe('skip-link', () => {
   });
 
   it('injects a skip link targeting #main-content', async () => {
-    await import('../../assets/js/skip-link.js');
+    await import('../../frontend/js/skip-link.js');
     document.dispatchEvent(new Event('DOMContentLoaded'));
 
     const link = document.querySelector('a.skip-to-content-btn');
@@ -17,7 +17,7 @@ describe('skip-link', () => {
   });
 
   it('moves focus to main content when activated', async () => {
-    await import('../../assets/js/skip-link.js');
+    await import('../../frontend/js/skip-link.js');
     document.dispatchEvent(new Event('DOMContentLoaded'));
 
     const link = document.querySelector('a.skip-to-content-btn');
@@ -28,7 +28,7 @@ describe('skip-link', () => {
   });
 
   it('reveals the link on focus and hides it on blur', async () => {
-    await import('../../assets/js/skip-link.js');
+    await import('../../frontend/js/skip-link.js');
     document.dispatchEvent(new Event('DOMContentLoaded'));
 
     const link = document.querySelector('a.skip-to-content-btn');
@@ -43,7 +43,7 @@ describe('skip-link', () => {
 
   it('adds a tabindex to main content if it lacks one on click', async () => {
     document.body.innerHTML = '<main id="main-content">Shop</main>';
-    await import('../../assets/js/skip-link.js');
+    await import('../../frontend/js/skip-link.js');
     document.dispatchEvent(new Event('DOMContentLoaded'));
 
     const link = document.querySelector('a.skip-to-content-btn');

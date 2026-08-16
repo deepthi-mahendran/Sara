@@ -44,7 +44,7 @@ describe('compare.js view-product navigation', () => {
       },
     ]);
 
-    await import('../../compare.js');
+    await import('../../frontend/js/compare.js');
     document.dispatchEvent(new Event('DOMContentLoaded'));
 
     const wrapper = document.getElementById('compareTableWrapper');
@@ -65,7 +65,7 @@ describe('compare.js view-product navigation', () => {
       },
     ]);
 
-    await import('../../compare.js');
+    await import('../../frontend/js/compare.js');
     document.dispatchEvent(new Event('DOMContentLoaded'));
 
     const button = document.querySelector('[data-compare-view]');
@@ -91,7 +91,7 @@ describe('compare.js view-product navigation', () => {
       { id: 9, name: 'Jeans', price: '₹1500', brand: 'Sara', img: 'j.jpg' },
     ]);
 
-    await import('../../compare.js');
+    await import('../../frontend/js/compare.js');
     document.dispatchEvent(new Event('DOMContentLoaded'));
 
     const images = document.querySelectorAll('img[data-compare-view]');
@@ -117,7 +117,7 @@ describe('compare.js CaraCompare list API', () => {
   });
 
   it('adds a product and removes it leaving an empty list', async () => {
-    await import('../../compare.js');
+    await import('../../frontend/js/compare.js');
     const added = window.CaraCompare.add({ id: 'p1', name: 'Tee' });
     expect(added).toBe(true);
     expect(window.CaraCompare.getList().length).toBe(1);
@@ -127,7 +127,7 @@ describe('compare.js CaraCompare list API', () => {
   });
 
   it('removing an unknown id is a safe no-op', async () => {
-    await import('../../compare.js');
+    await import('../../frontend/js/compare.js');
     window.CaraCompare.add({ id: 'p1', name: 'Tee' });
 
     expect(() => window.CaraCompare.remove('missing')).not.toThrow();
@@ -135,13 +135,13 @@ describe('compare.js CaraCompare list API', () => {
   });
 
   it('removing from an empty list does not throw', async () => {
-    await import('../../compare.js');
+    await import('../../frontend/js/compare.js');
     expect(() => window.CaraCompare.remove('p1')).not.toThrow();
     expect(window.CaraCompare.getList()).toEqual([]);
   });
 
   it('clear empties the stored list', async () => {
-    await import('../../compare.js');
+    await import('../../frontend/js/compare.js');
     window.CaraCompare.add({ id: 'p1', name: 'Tee' });
     window.CaraCompare.add({ id: 'p2', name: 'Shirt' });
 

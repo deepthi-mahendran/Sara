@@ -35,7 +35,7 @@ describe('login.js', () => {
     const location = { href: 'login.html' };
     vi.stubGlobal('location', location);
 
-    await import('../../login.js');
+    await import('../../frontend/js/login.js');
     document.dispatchEvent(new Event('DOMContentLoaded'));
 
     document.getElementById('loginEmail').value = 'user@example.com';
@@ -86,7 +86,7 @@ describe('login.js', () => {
       drawImage: vi.fn(),
     }));
 
-    await import('../../login.js');
+    await import('../../frontend/js/login.js');
     document.dispatchEvent(new Event('DOMContentLoaded'));
 
     document.getElementById('loginEmail').value = 'user@example.com';
@@ -115,7 +115,7 @@ describe('login.js', () => {
     const fetchMock = vi.fn();
     vi.stubGlobal('fetch', fetchMock);
 
-    await import('../../login.js');
+    await import('../../frontend/js/login.js');
     document.dispatchEvent(new Event('DOMContentLoaded'));
 
     document.getElementById('loginEmail').value = '';
@@ -134,7 +134,7 @@ describe('login.js', () => {
     const fetchMock = vi.fn();
     vi.stubGlobal('fetch', fetchMock);
 
-    await import('../../login.js');
+    await import('../../frontend/js/login.js');
     document.dispatchEvent(new Event('DOMContentLoaded'));
 
     document.getElementById('loginEmail').value = 'user@example.com';

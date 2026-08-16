@@ -1,8 +1,7 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { createRequire } from 'node:module';
 
-const require = createRequire(import.meta.url);
-const { safeParseJSON } = require('../../empty-cart.js');
+const { safeParseJSON } = require('../../frontend/js/empty-cart.js');
 
 describe('empty-cart safeParseJSON', () => {
   beforeEach(() => {
