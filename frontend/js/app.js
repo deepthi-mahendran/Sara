@@ -300,7 +300,68 @@
   });
 
   // Dynamic Product Details Logic
-  // Global capturing click listener for all product cards (static and dynamic)
+  // Global capturing Add-to-Cart listener for all static and dynamic product cards
+  document.addEventListener(
+    'click',
+    function (e) {
+      const cartBtn = e.target.closest(
+        '.cart, .pro-cart-btn, .add-to-cart-btn, [class*="shopping-cart"]',
+      );
+      if (!cartBtn) return;
+
+      const proCard = cartBtn.closest('.pro');
+      if (!proCard) return;
+
+      e.preventDefault();
+      e.stopPropagation();
+
+      const nameElement = proCard.querySelector('h3, h5, .product-name');
+      const priceElement = proCard.querySelector('h4, .current, .product-price');
+      const imageElement = proCard.querySelector('img');
+      const brandElement = proCard.querySelector('.des span, .product-brand');
+
+      const name = nameElement ? nameElement.textContent.trim() : 'Product';
+      const priceRaw = priceElement ? priceElement.textContent.trim() : '₹0';
+      const image = imageElement ? imageElement.src : '';
+      const brand = brandElement ? brandElement.textContent.trim() : 'Sara';
+      const productId = proCard.dataset.id || proCard.dataset.productId || undefined;
+
+      if (typeof window.addToCart === 'function') {
+        window.addToCart(name, priceRaw, image, 1, 'M', productId);
+      } else {
+        let cart = JSON.parse(localStorage.getItem('productsInCart') || '[]');
+        let parsedPrice = parsePriceString(priceRaw);
+        let existing = cart.find(
+          (p) =>
+            (productId != null && p.id != null
+              ? p.id === Number(productId)
+              : p.name === name) && p.size === 'M',
+        );
+        if (existing) {
+          existing.quantity += 1;
+        } else {
+          cart.push({
+            id: productId ? Number(productId) : undefined,
+            name: name,
+            price: parsedPrice,
+            image: image,
+            quantity: 1,
+            size: 'M',
+            brand: brand,
+          });
+        }
+        localStorage.setItem('productsInCart', JSON.stringify(cart));
+        window.cachedCartState = cart;
+        if (typeof updateCartCount === 'function') updateCartCount();
+        if (typeof showToast === 'function') {
+          showToast(`${name} (Size: M) added to cart!`, 'success');
+        }
+      }
+    },
+    true,
+  );
+
+  // Global capturing click listener for product card detail navigation
   document.addEventListener(
     'click',
     function (e) {
@@ -309,14 +370,14 @@
 
       if (
         e.target.closest(
-          '.cart, .buy-now-btn, .wishlist-btn, .pro-cart-btn, .pro-buy-btn, .pro-quick-view-btn, button',
+          '.cart, .buy-now-btn, .wishlist-btn, .pro-cart-btn, .pro-buy-btn, .pro-quick-view-btn, button, [class*="shopping-cart"]',
         )
       ) {
         return;
       }
 
-      // Identify product by name (acting as unique ID for now) instead of fragile DOM scraping
-      const nameElement = proCard.querySelector('h5');
+      // Identify product by name (acting as unique ID for now)
+      const nameElement = proCard.querySelector('h3, h5, .product-name');
       const productName = nameElement
         ? nameElement.textContent.trim()
         : 'Product';
@@ -329,7 +390,7 @@
       } else if (path.includes('/pages/user/') || path.includes('/pages/info/') || path.includes('/pages/blog/')) {
         targetUrl = '../../pages/shop/singleProduct.html';
       }
-      window.location.href = targetUrl;;
+      window.location.href = targetUrl;
     },
     true,
   );
