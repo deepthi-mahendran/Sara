@@ -8,19 +8,25 @@ jobs:
   lighthouse:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - name: Start local server
-        run: |
-          npx serve -p 3000 . &
-          sleep 5
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Build Project
+        run: npm run build
+
       - name: Audit HTML Pages using Lighthouse
         uses: treosh/lighthouse-ci-action@v12
         with:
-          urls: |
-            http://localhost:3000/index.html
-            http://localhost:3000/shop.html
+          staticDistDir: './dist'
           budgetPath: ./budgets.json
           uploadArtifacts: true
           temporaryPublicStorage: true
-
-# Runs Google Lighthouse audits to measure performance, SEO, and accessibility metrics.
