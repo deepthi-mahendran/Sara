@@ -69,13 +69,18 @@
     />
     <link rel="manifest" href="/manifest.json" />
 
-    <!-- Enhanced Shop Styles (inline, non-global) -->
     <style>
-      /* ── Shop Hero Enhancement ── */
+      /* ── Shop Hero Full-Screen Enhancement ── */
       #shop-hero {
         position: relative;
-        background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 40%, #16213e 70%, #0f3460 100%);
-        padding: 80px 40px 70px;
+        background: linear-gradient(135deg, rgba(10, 10, 10, 0.6) 0%, rgba(26, 26, 46, 0.7) 40%, rgba(22, 33, 62, 0.8) 70%, rgba(15, 52, 96, 0.85) 100%), url('https://images.unsplash.com/photo-1445205170230-053b83016050?w=1600');
+        background-size: cover;
+        background-position: center;
+        min-height: calc(100vh - 80px); /* Full viewport height minus header */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 40px 40px;
         border-radius: 0 0 48px 48px;
         overflow: hidden;
         isolation: isolate;
@@ -110,7 +115,7 @@
         letter-spacing: -0.03em;
         color: #fff;
         margin-bottom: 16px;
-        text-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+        text-shadow: 0 4px 24px rgba(0, 0, 0, 0.5);
       }
       #shop-hero .hero-copy h1 .highlight {
         background: linear-gradient(135deg, #c483e6, #a855f7);
@@ -118,12 +123,13 @@
         -webkit-text-fill-color: transparent;
         background-clip: text;
       }
-      #shop-hero .hero-copy p {
-        font-size: 1.1rem;
-        color: rgba(255, 255, 255, 0.7);
-        max-width: 480px;
+      #shop-hero .hero-copy .subtitle {
+        font-size: 1.15rem;
+        color: rgba(255, 255, 255, 0.85);
+        max-width: 520px;
         margin: 0 auto 28px;
         line-height: 1.7;
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
       }
       #shop-hero .hero-buttons {
         display: flex;
@@ -153,7 +159,7 @@
         display: inline-flex;
         align-items: center;
         gap: 10px;
-        background: rgba(255, 255, 255, 0.08);
+        background: rgba(255, 255, 255, 0.1);
         backdrop-filter: blur(8px);
         color: #fff;
         padding: 14px 36px;
@@ -161,16 +167,131 @@
         font-weight: 500;
         font-size: 1rem;
         text-decoration: none;
-        border: 1px solid rgba(255, 255, 255, 0.15);
+        border: 1px solid rgba(255, 255, 255, 0.2);
         transition: background 0.3s, transform 0.2s;
       }
       #shop-hero .hero-buttons .btn-secondary:hover {
-        background: rgba(255, 255, 255, 0.18);
+        background: rgba(255, 255, 255, 0.2);
         transform: translateY(-3px);
       }
 
-      /* ── Search & Filter Enhancement ── */
+      /* ── Featured Categories ── */
+      .featured-categories {
+        padding: 40px 40px 20px;
+        max-width: 1400px;
+        margin: 0 auto;
+        width: 100%;
+        box-sizing: border-box;
+      }
+      .featured-categories h2 {
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin-bottom: 8px;
+        color: var(--text-color, #1a1a2e);
+      }
+      .featured-categories .cat-sub {
+        color: #999;
+        margin-bottom: 24px;
+        font-size: 1rem;
+      }
+      .cat-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+      }
+      .cat-card {
+        background: var(--card-bg, #fff);
+        border-radius: 20px;
+        padding: 28px 16px;
+        text-align: center;
+        border: 1px solid rgba(0,0,0,0.04);
+        transition: transform 0.3s, box-shadow 0.3s;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.02);
+        text-decoration: none;
+        color: var(--text-color, #1a1a2e);
+        cursor: pointer;
+      }
+      .cat-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 12px 32px rgba(0,0,0,0.06);
+      }
+      .cat-card i {
+        font-size: 2.6rem;
+        color: #c483e6;
+        margin-bottom: 12px;
+        display: block;
+      }
+      .cat-card h3 {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-bottom: 4px;
+      }
+      .cat-card p {
+        font-size: 0.85rem;
+        color: #999;
+        margin: 0;
+      }
+
+      /* ── Why Sara ── */
+      .why-sara {
+        padding: 40px 40px 20px;
+        max-width: 1400px;
+        margin: 0 auto;
+        width: 100%;
+        box-sizing: border-box;
+      }
+      .why-sara h2 {
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin-bottom: 8px;
+        text-align: center;
+        color: var(--text-color, #1a1a2e);
+      }
+      .why-sara .why-sub {
+        text-align: center;
+        color: #999;
+        margin-bottom: 32px;
+        font-size: 1rem;
+      }
+      .why-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 24px;
+      }
+      .why-item {
+        text-align: center;
+        padding: 16px;
+      }
+      .why-item .icon-circle {
+        width: 64px;
+        height: 64px;
+        background: rgba(196, 131, 230, 0.08);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 14px;
+        font-size: 1.8rem;
+        color: #c483e6;
+      }
+      .why-item h4 {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-bottom: 4px;
+      }
+      .why-item p {
+        font-size: 0.9rem;
+        color: #888;
+        line-height: 1.5;
+        max-width: 260px;
+        margin: 0 auto;
+      }
+
+      /* ── Search & Filter ── */
       #search-filter {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
         padding: 28px 40px 10px;
         max-width: 1400px;
         margin: 0 auto;
@@ -185,8 +306,9 @@
         padding: 4px 4px 4px 20px;
         border: 2px solid transparent;
         transition: border-color 0.3s, box-shadow 0.3s;
-        max-width: 520px;
-        margin-bottom: 20px;
+        max-width: 600px;
+        width: 100%;
+        margin-bottom: 16px;
         box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
       }
       .search-box:focus-within {
@@ -230,39 +352,34 @@
 
       /* Recent searches box */
       #recent-searches-box {
-        background: var(--card-bg, #fff);
+        margin-bottom: 16px;
+        background: var(--card-bg, #f8f6fc);
+        padding: 12px 18px;
         border-radius: 16px;
-        padding: 14px 20px;
-        margin-top: 6px;
-        max-width: 520px;
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
         border: 1px solid rgba(0, 0, 0, 0.04);
+        max-width: 600px;
+        width: 100%;
         display: none;
       }
-      #recent-searches-box .recent-header {
+      .recent-header {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin-bottom: 10px;
-        font-size: 0.85rem;
+        font-size: 0.8rem;
         color: #888;
-        font-weight: 500;
-        text-transform: uppercase;
-        letter-spacing: 0.04em;
+        margin-bottom: 8px;
+        font-weight: 600;
       }
-      #recent-searches-box .recent-header button {
+      #clear-searches-btn {
         background: none;
         border: none;
         color: #c483e6;
         cursor: pointer;
-        font-size: 0.8rem;
+        font-size: 0.75rem;
         font-weight: 600;
-        padding: 4px 10px;
-        border-radius: 20px;
-        transition: background 0.2s;
       }
-      #recent-searches-box .recent-header button:hover {
-        background: rgba(196, 131, 230, 0.12);
+      #clear-searches-btn:hover {
+        text-decoration: underline;
       }
       #recent-searches-list {
         display: flex;
@@ -271,57 +388,84 @@
       }
       #recent-searches-list span {
         background: rgba(196, 131, 230, 0.1);
-        color: #c483e6;
-        padding: 5px 14px;
-        border-radius: 30px;
-        font-size: 0.85rem;
+        color: var(--text-color, #1a1a2e);
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 0.8rem;
         cursor: pointer;
-        transition: background 0.2s, transform 0.15s;
-        font-weight: 500;
-        border: 1px solid rgba(196, 131, 230, 0.12);
+        transition: background 0.2s, transform 0.2s;
       }
       #recent-searches-list span:hover {
         background: rgba(196, 131, 230, 0.2);
         transform: translateY(-1px);
       }
 
-      /* ── Filters Row Enhancement ── */
+      /* ── Category Filter Row (Under Search Bar) ── */
+      .category-filter-row {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 12px;
+        margin-top: 4px;
+        margin-bottom: 12px;
+        padding: 12px 16px;
+        background: var(--card-bg, #f8f6fc);
+        border-radius: 16px;
+        border: 1px solid rgba(0, 0, 0, 0.04);
+        box-sizing: border-box;
+      }
+
+      /* ── Filters Row (Under Category Filter) ── */
       .filters-row {
+        width: 100%;
         display: flex;
         flex-wrap: wrap;
         align-items: flex-end;
-        gap: 16px 24px;
-        margin-top: 6px;
-        padding: 16px 0 8px;
-        border-top: 1px solid rgba(0, 0, 0, 0.05);
+        gap: 12px 16px;
+        padding: 12px 16px;
+        background: var(--card-bg, #f8f6fc);
+        border-radius: 16px;
+        border: 1px solid rgba(0, 0, 0, 0.04);
+        box-sizing: border-box;
+      }
+      .filters-row::-webkit-scrollbar {
+        height: 4px;
+      }
+      .filters-row::-webkit-scrollbar-thumb {
+        background: #c483e6;
+        border-radius: 10px;
       }
       .filter-container {
         display: flex;
         flex-direction: column;
-        gap: 4px;
-        min-width: 120px;
+        gap: 3px;
+        flex: 0 0 auto;
+        min-width: 100px;
       }
       .filter-container label {
-        font-size: 0.7rem;
+        font-size: 0.6rem;
         font-weight: 600;
         text-transform: uppercase;
         letter-spacing: 0.06em;
         color: #888;
+        white-space: nowrap;
       }
       .filter-container select {
-        padding: 10px 34px 10px 14px;
-        border-radius: 12px;
+        padding: 6px 24px 6px 10px;
+        border-radius: 10px;
         border: 1.5px solid rgba(0, 0, 0, 0.08);
-        background: var(--card-bg, #f8f6fc);
-        font-size: 0.9rem;
+        background: #fff;
+        font-size: 0.8rem;
         color: var(--text-color, #1a1a2e);
         appearance: none;
         background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23999' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
         background-repeat: no-repeat;
-        background-position: right 14px center;
+        background-position: right 10px center;
         cursor: pointer;
         transition: border-color 0.3s, box-shadow 0.3s;
-        min-width: 130px;
+        min-width: 80px;
+        width: 100%;
       }
       .filter-container select:focus {
         border-color: #c483e6;
@@ -331,7 +475,9 @@
       .reset-wrapper {
         display: flex;
         flex-direction: column;
-        gap: 4px;
+        gap: 3px;
+        flex: 0 0 auto;
+        min-width: 70px;
       }
       .reset-wrapper label {
         visibility: hidden;
@@ -340,16 +486,21 @@
         padding: 0;
       }
       .reset-btn {
-        padding: 10px 24px;
-        border-radius: 12px;
+        padding: 6px 14px;
+        border-radius: 10px;
         border: 1.5px solid rgba(0, 0, 0, 0.08);
         background: transparent;
         color: #888;
         font-weight: 500;
-        font-size: 0.85rem;
+        font-size: 0.8rem;
         cursor: pointer;
         transition: all 0.25s;
-        min-width: 130px;
+        white-space: nowrap;
+        height: 100%;
+        min-height: 34px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
       .reset-btn:hover {
         border-color: #c483e6;
@@ -429,7 +580,7 @@
         font-size: 0.9rem;
       }
 
-      /* ── Product Grid Enhancement ── */
+      /* ── Product Grid ── */
       #product1 {
         padding: 0 40px 60px;
         max-width: 1400px;
@@ -443,7 +594,6 @@
         gap: 28px;
         transition: opacity 0.3s;
       }
-      /* product card styling – enhanced via existing CSS, plus extras */
       .pro {
         background: var(--card-bg, #fff);
         border-radius: 20px;
@@ -579,6 +729,7 @@
         align-items: center;
         gap: 10px;
         margin-top: 4px;
+        flex-wrap: wrap;
       }
       .pro .des .product-price .current {
         font-size: 1.15rem;
@@ -623,7 +774,7 @@
         transform: scale(0.97);
       }
 
-      /* ── Recently Viewed Enhancement ── */
+      /* ── Recently Viewed ── */
       #recently-viewed-section {
         padding: 20px 40px 50px;
         max-width: 1400px;
@@ -682,7 +833,6 @@
         color: #c483e6;
       }
 
-      /* ── Empty / Loading States ── */
       .pro-container .empty-state {
         grid-column: 1 / -1;
         text-align: center;
@@ -701,10 +851,81 @@
         margin-bottom: 6px;
       }
 
-      /* ── Responsive Tweaks ── */
+      /* ── Newsletter ── */
+      #newsletter {
+        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        border-radius: 32px;
+        margin: 20px 40px 40px;
+        padding: 50px 40px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        gap: 30px;
+        max-width: 1400px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      #newsletter .newstext h4 {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: #fff;
+        margin-bottom: 6px;
+      }
+      #newsletter .newstext p {
+        color: rgba(255,255,255,0.7);
+        font-size: 1rem;
+      }
+      #newsletter .newstext p span {
+        color: #c483e6;
+        font-weight: 600;
+      }
+      #newsletter .newsletter-form {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      #newsletter .newsletter-form input {
+        padding: 14px 24px;
+        border-radius: 60px;
+        border: none;
+        min-width: 240px;
+        font-size: 0.95rem;
+        background: rgba(255,255,255,0.1);
+        backdrop-filter: blur(4px);
+        color: #fff;
+        border: 1px solid rgba(255,255,255,0.15);
+        outline: none;
+        transition: border-color 0.3s;
+      }
+      #newsletter .newsletter-form input::placeholder {
+        color: rgba(255,255,255,0.5);
+      }
+      #newsletter .newsletter-form input:focus {
+        border-color: #c483e6;
+      }
+      #newsletter .newsletter-form button {
+        padding: 14px 36px;
+        border-radius: 60px;
+        border: none;
+        background: linear-gradient(135deg, #c483e6, #a855f7);
+        color: #fff;
+        font-weight: 600;
+        font-size: 0.95rem;
+        cursor: pointer;
+        transition: transform 0.2s, box-shadow 0.3s;
+        box-shadow: 0 8px 24px rgba(168, 85, 247, 0.3);
+      }
+      #newsletter .newsletter-form button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 12px 32px rgba(168, 85, 247, 0.4);
+      }
+
+      /* ── Responsive ── */
       @media (max-width: 768px) {
         #shop-hero {
-          padding: 50px 20px 44px;
+          min-height: calc(100vh - 70px);
+          padding: 30px 20px;
           border-radius: 0 0 28px 28px;
         }
         #search-filter {
@@ -714,21 +935,22 @@
           padding: 0 16px 40px;
         }
         .filters-row {
-          gap: 12px;
+          gap: 8px 12px;
+          padding: 10px 12px;
         }
         .filter-container {
-          min-width: 90px;
-          flex: 1 1 auto;
+          min-width: 70px;
         }
         .filter-container select {
-          min-width: 80px;
-          padding: 8px 28px 8px 12px;
-          font-size: 0.8rem;
+          padding: 5px 18px 5px 8px;
+          font-size: 0.7rem;
+          min-width: 60px;
         }
         .reset-btn {
-          min-width: 80px;
-          padding: 8px 16px;
-          font-size: 0.8rem;
+          padding: 5px 10px;
+          font-size: 0.7rem;
+          min-width: 50px;
+          min-height: 30px;
         }
         .pro-container {
           grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
@@ -770,8 +992,27 @@
           height: 34px;
           font-size: 0.8rem;
         }
+        .featured-categories, .why-sara {
+          padding: 20px 16px;
+        }
+        #newsletter {
+          margin: 20px 16px 40px;
+          padding: 30px 20px;
+          flex-direction: column;
+          text-align: center;
+        }
+        #newsletter .newsletter-form {
+          justify-content: center;
+        }
+        #newsletter .newsletter-form input {
+          min-width: 180px;
+        }
       }
       @media (max-width: 480px) {
+        #shop-hero {
+          min-height: calc(100vh - 60px);
+          padding: 20px 16px;
+        }
         .pro-container {
           grid-template-columns: repeat(2, 1fr);
           gap: 12px;
@@ -789,31 +1030,39 @@
           font-size: 0.75rem;
           padding: 8px 0;
         }
-        .filters-row {
-          gap: 8px;
-        }
-        .filter-container {
-          min-width: 60px;
-        }
-        .filter-container select {
-          font-size: 0.7rem;
-          padding: 6px 22px 6px 10px;
-          min-width: 60px;
-        }
-        .reset-btn {
-          font-size: 0.7rem;
-          padding: 6px 12px;
-          min-width: 60px;
-        }
         #shop-hero .hero-copy h1 {
           font-size: 1.8rem;
         }
-        #shop-hero .hero-copy p {
-          font-size: 0.95rem;
+        #shop-hero .hero-copy .subtitle {
+          font-size: 1rem;
         }
         #shop-hero .hero-buttons .btn-primary {
           padding: 12px 24px;
           font-size: 0.9rem;
+        }
+        .cat-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .why-grid {
+          grid-template-columns: 1fr;
+        }
+        .filters-row {
+          gap: 6px 8px;
+          padding: 8px 10px;
+        }
+        .filter-container {
+          min-width: 55px;
+        }
+        .filter-container select {
+          font-size: 0.6rem;
+          padding: 4px 14px 4px 6px;
+          min-width: 50px;
+        }
+        .reset-btn {
+          font-size: 0.6rem;
+          padding: 4px 8px;
+          min-width: 40px;
+          min-height: 26px;
         }
       }
     </style>
@@ -870,37 +1119,86 @@
 
     <main id="main-content" tabindex="-1">
 
-      <!-- ─── SHOP HERO ─── -->
+      <!-- ─── SHOP HERO (Full Screen) ─── -->
       <section id="shop-hero">
         <div class="hero-copy">
-          <h1>Shop the <span class="highlight">Latest Trends</span></h1>
-          <p>
-            Browse curated fashion collections, discover your next favorite piece,
-            and elevate your style with Sara.
+          <h1>Elevate Your <span class="highlight">Everyday Style</span></h1>
+          <p class="subtitle">
+            Discover premium fashion that blends timeless elegance with modern edge.
+            From streetwear to formal – we've got your look.
           </p>
           <div class="hero-buttons">
             <a href="#product1" class="btn-primary">
-              <i class="ri-shopping-bag-4-line"></i> Browse Products
+              <i class="ri-shopping-bag-4-line"></i> Explore Collection
             </a>
-            <a href="#recently-viewed-section" class="btn-secondary">
-              <i class="ri-time-line"></i> Recently Viewed
+            <a href="#featured-categories" class="btn-secondary">
+              <i class="ri-grid-line"></i> Shop by Category
             </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ─── FEATURED CATEGORIES ─── -->
+      <section class="featured-categories" id="featured-categories">
+        <h2>Shop by Category</h2>
+        <p class="cat-sub">Find exactly what you're looking for</p>
+        <div class="cat-grid">
+          <div class="cat-card" data-category="street">
+            <i class="ri-hoodie-line"></i>
+            <h3>Streetwear</h3>
+            <p>Urban &amp; bold</p>
+          </div>
+          <div class="cat-card" data-category="minimal">
+            <i class="ri-shirt-line"></i>
+            <h3>Minimal</h3>
+            <p>Clean &amp; timeless</p>
+          </div>
+          <div class="cat-card" data-category="formal">
+            <i class="ri-tie-line"></i>
+            <h3>Formal</h3>
+            <p>Sharp &amp; sophisticated</p>
+          </div>
+          <div class="cat-card" data-category="all">
+            <i class="ri-store-3-line"></i>
+            <h3>All</h3>
+            <p>View everything</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ─── WHY SARA ─── -->
+      <section class="why-sara">
+        <h2>Why Sara?</h2>
+        <p class="why-sub">Designed for those who value quality, ethics, and style.</p>
+        <div class="why-grid">
+          <div class="why-item">
+            <div class="icon-circle"><i class="ri-leaf-line"></i></div>
+            <h4>Sustainable Materials</h4>
+            <p>Every piece is crafted with eco-friendly fabrics and responsible sourcing.</p>
+          </div>
+          <div class="why-item">
+            <div class="icon-circle"><i class="ri-truck-line"></i></div>
+            <h4>Fast &amp; Free Shipping</h4>
+            <p>Enjoy complimentary delivery on orders over $50, with tracking every step.</p>
+          </div>
+          <div class="why-item">
+            <div class="icon-circle"><i class="ri-shield-check-line"></i></div>
+            <h4>Quality Guarantee</h4>
+            <p>We stand behind our products – if you're not happy, we'll make it right.</p>
           </div>
         </div>
       </section>
 
       <!-- ─── SEARCH & FILTER ─── -->
       <section id="search-filter" class="section-p1">
-        <!-- SEARCH -->
         <div class="search-box">
           <label for="searchInput" class="sr-only" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0;">Search Products</label>
-          <input type="text" id="searchInput" placeholder="Search products..." />
+          <input type="text" id="searchInput" placeholder="Search for products, brands, or styles..." />
           <button id="searchBtn" aria-label="Search">
             <i class="ri-search-line"></i>
           </button>
         </div>
 
-        <!-- Recent Searches -->
         <div id="recent-searches-box">
           <div class="recent-header">
             <span><i class="ri-time-line" style="margin-right:4px;"></i> Recent Searches</span>
@@ -909,42 +1207,48 @@
           <div id="recent-searches-list"></div>
         </div>
 
-        <!-- FILTER ROW -->
-        <div class="filters-row">
-          <div class="filter-container">
-            <label for="categoryFilter">Category</label>
-            <select id="categoryFilter" aria-label="Select category">
-              <option value="all">All</option>
-              <option value="street">Street</option>
-              <option value="minimal">Minimal</option>
-              <option value="formal">Formal</option>
-            </select>
+        <!-- LINE 1: CATEGORY FILTER ROW -->
+        <div class="category-filter-row" style="display:flex;align-items:center;gap:12px;margin-top:16px;margin-bottom:12px;padding:12px 16px;background:var(--card-bg, #f8f6fc);border-radius:16px;border:1px solid rgba(0,0,0,0.04);overflow-x:auto;-webkit-overflow-scrolling:touch;">
+          <span class="category-row-label" style="font-size:0.85rem;font-weight:700;color:var(--text-color, #1a1a2e);white-space:nowrap;display:flex;align-items:center;gap:6px;">
+            <i class="ri-apps-line" style="color:#c483e6;"></i> Category:
+          </span>
+          <div class="category-pills" style="display:flex;gap:8px;flex-wrap:nowrap;">
+            <button type="button" class="cat-pill active" data-cat="all" style="padding:8px 18px;border-radius:30px;border:1.5px solid rgba(196,131,230,0.3);background:linear-gradient(135deg, #c483e6, #a855f7);color:#fff;font-size:0.85rem;font-weight:600;cursor:pointer;white-space:nowrap;transition:all 0.2s;">All Products</button>
+            <button type="button" class="cat-pill" data-cat="street" style="padding:8px 18px;border-radius:30px;border:1.5px solid rgba(196,131,230,0.2);background:rgba(196,131,230,0.06);color:var(--text-color, #1a1a2e);font-size:0.85rem;font-weight:600;cursor:pointer;white-space:nowrap;transition:all 0.2s;">Streetwear</button>
+            <button type="button" class="cat-pill" data-cat="minimal" style="padding:8px 18px;border-radius:30px;border:1.5px solid rgba(196,131,230,0.2);background:rgba(196,131,230,0.06);color:var(--text-color, #1a1a2e);font-size:0.85rem;font-weight:600;cursor:pointer;white-space:nowrap;transition:all 0.2s;">Minimalist</button>
+            <button type="button" class="cat-pill" data-cat="formal" style="padding:8px 18px;border-radius:30px;border:1.5px solid rgba(196,131,230,0.2);background:rgba(196,131,230,0.06);color:var(--text-color, #1a1a2e);font-size:0.85rem;font-weight:600;cursor:pointer;white-space:nowrap;transition:all 0.2s;">Formal Wear</button>
           </div>
+          <select id="categoryFilter" aria-label="Select category" style="display:none;">
+            <option value="all">All</option>
+            <option value="street">Street</option>
+            <option value="minimal">Minimal</option>
+            <option value="formal">Formal</option>
+          </select>
+        </div>
 
+        <!-- LINE 2: SECONDARY FILTERS ROW -->
+        <div class="filters-row">
           <div class="filter-container">
             <label for="style-filter">Style</label>
             <select id="style-filter" aria-label="Select style">
-              <option value="all">All</option>
+              <option value="all">All Styles</option>
             </select>
           </div>
-
           <div class="filter-container">
             <label for="brand-filter">Brand</label>
             <select id="brand-filter" aria-label="Select brand">
-              <option value="all">All</option>
+              <option value="all">All Brands</option>
             </select>
           </div>
-
           <div class="filter-container">
             <label for="color-filter">Color</label>
             <select id="color-filter" aria-label="Select color">
-              <option value="all">All</option>
+              <option value="all">All Colors</option>
             </select>
           </div>
-
-          <div class="filter-container reset-wrapper">
+          <div class="reset-wrapper">
             <label for="resetFiltersBtn" style="visibility:hidden;height:0;margin:0;padding:0;">Reset</label>
-            <button id="resetFiltersBtn" class="reset-btn">Reset Filters</button>
+            <button id="resetFiltersBtn" class="reset-btn"><i class="ri-refresh-line"></i> Reset Filters</button>
           </div>
         </div>
       </section>
@@ -965,7 +1269,7 @@
                 <option value="low-high">Price: Low to High</option>
                 <option value="high-low">Price: High to Low</option>
                 <option value="rating-high">Rating: High to Low</option>
-                <option value="rating-low">Rating: Low to High</option>
+                <option value="rating-low">Rating: High to Low</option>
                 <option value="newest">Newest</option>
               </select>
               <i class="ri-arrow-down-s-line sort-chevron" aria-hidden="true"></i>
@@ -974,7 +1278,7 @@
         </div>
 
         <div class="pro-container" id="shop-container">
-          <!-- Products injected by JS -->
+          <!-- Products rendered by JavaScript below -->
         </div>
       </section>
 
@@ -988,37 +1292,31 @@
       <!-- ─── NEWSLETTER ─── -->
       <section id="newsletter" class="section-p1">
         <div class="newstext">
-          <h4>Sign Up For Newsletters</h4>
+          <h4>Join the Sara Community</h4>
           <p>
-            Get E-mail updates about our latest shop and
-            <span>special offers.</span>
+            Subscribe for exclusive drops, insider offers, and <span>10% off</span> your first order.
           </p>
         </div>
-        <form class="form newsletter-form">
+        <form class="newsletter-form">
           <input
             type="email"
-            placeholder="Your email address"
+            placeholder="Enter your email"
             aria-label="Email address for newsletter"
             required
           />
           <button
             type="submit"
-            class="normal"
             aria-label="Sign up for newsletter"
           >
-            Sign Up
+            Subscribe
           </button>
         </form>
       </section>
     </main>
 
     <!-- ─── BACK TO TOP ─── -->
-    <button id="backToTop" title="Back to Top" aria-label="Back to top">
-      ⬆
-    </button>
-    <button id="Toptoback" title="Top To Back" aria-label="Scroll to bottom">
-      ⬇
-    </button>
+    <button id="backToTop" title="Back to Top" aria-label="Back to top">⬆</button>
+    <button id="Toptoback" title="Top To Back" aria-label="Scroll to bottom">⬇</button>
 
     <!-- ─── FOOTER ─── -->
     <footer class="section-p1" role="contentinfo">
@@ -1038,7 +1336,6 @@
           </div>
         </div>
       </div>
-
       <div class="col">
         <h4>About</h4>
         <a href="../../pages/info/about.html">About Us</a>
@@ -1047,7 +1344,6 @@
         <a href="../../pages/info/terms.html">Terms and Conditions</a>
         <a href="../../pages/info/contact.html">Contact Us</a>
       </div>
-
       <div class="col">
         <h4>My Account</h4>
         <a href="../../pages/user/login.html">Sign In</a>
@@ -1056,7 +1352,6 @@
         <a href="../../pages/user/track-order.html">Track My Order</a>
         <a href="../../pages/info/contact.html">Help</a>
       </div>
-
       <div class="col newsletter-footer">
         <h4>Newsletter</h4>
         <p>Get email updates about our latest shop and <span>special offers.</span></p>
@@ -1065,7 +1360,6 @@
           <button type="submit" class="normal" aria-label="Sign up for newsletter">Sign Up</button>
         </form>
       </div>
-
       <div class="col install">
         <h4>Install App</h4>
         <p>From App Store or Google Play</p>
@@ -1082,75 +1376,238 @@
           <a href="https://stripe.com" target="_blank" rel="noopener noreferrer" aria-label="Stripe"><i class="fab fa-cc-stripe"></i></a>
         </div>
       </div>
-
       <div class="copyright">
         <p>© Sara 2026. All rights reserved. | <a href="../../pages/info/license.html" style="color: #C483E6">MIT License</a></p>
       </div>
     </footer>
 
-    <!-- ─── SCRIPTS ─── -->
     <div id="toast-container"></div>
-    <script type="module" src="../../js/products.js"></script>
-    <script type="module" src="../../js/app.js"></script>
-    <script type="module" src="../../js/navbar.js"></script>
-    <script type="module" src="../../js/smart-search-engine.js"></script>
-    <script type="module" src="../../js/newsletter-subscribe.js" defer></script>
-    <script>
-      loadNavbar('shop');
-    </script>
-    <script id="Current-Year">
-      const year = new Date().getFullYear();
-      for (let el of document.querySelectorAll('.Current-Year')) {
-        el.textContent = year;
-      }
-    </script>
 
-    <!-- ─── BACK TO TOP LOGIC ─── -->
+    <!-- ─── ALL 32 PROJECT PRODUCTS & DYNAMIC FILTER ENGINE ─── -->
     <script>
-      const btn = document.getElementById('backToTop');
-      if (btn) {
-        window.addEventListener('scroll', () => {
-          btn.style.display = window.scrollY > 200 ? 'block' : 'none';
+      const products = [
+        { id: 1, brand: 'Nike', name: 'Tropical Hibiscus Summer Shirt', price: 2499, originalPrice: 3499, rating: 4.5, reviews: 142, category: 'street', color: 'pink', style: 'floral', badge: 'Sale', image: '../../images/products/f1.jpg' },
+        { id: 2, brand: 'H&M', name: 'White Palm Leaf Casual Shirt', price: 1299, originalPrice: 1799, rating: 3.5, reviews: 89, category: 'minimal', color: 'white', style: 'casual', badge: 'New', image: '../../images/products/f2.jpg' },
+        { id: 3, brand: 'Zara', name: 'Vintage Rose Garden Shirt', price: 3490, originalPrice: 4490, rating: 4.0, reviews: 56, category: 'minimal', color: 'red', style: 'floral', badge: null, image: '../../images/products/f3.jpg' },
+        { id: 4, brand: "Levi's", name: 'Sakura Blossom Floral Shirt', price: 2799, originalPrice: null, rating: 5.0, reviews: 203, category: 'minimal', color: 'pink', style: 'floral', badge: 'Best Seller', image: '../../images/products/f4.jpg' },
+        { id: 5, brand: 'Puma', name: 'Pink Peony Patterned Shirt', price: 1999, originalPrice: 2499, rating: 3.0, reviews: 112, category: 'street', color: 'pink', style: 'floral', badge: 'Sale', image: '../../images/products/f5.jpg' },
+        { id: 6, brand: 'Gap', name: 'Dual-Tone Corduroy Shirt', price: 2299, originalPrice: null, rating: 4.0, reviews: 78, category: 'street', color: 'yellow', style: 'casual', badge: null, image: '../../images/products/f6.jpg' },
+        { id: 7, brand: 'Uniqlo', name: 'Embroidered Linen Trousers', price: 3990, originalPrice: 4990, rating: 4.5, reviews: 64, category: 'street', color: 'blue', style: 'minimal', badge: null, image: '../../images/products/f7.jpg' },
+        { id: 8, brand: 'Mango', name: 'Cat Print Long Sleeve Blouse', price: 2699, originalPrice: null, rating: 3.5, reviews: 45, category: 'minimal', color: 'white', style: 'cartoon', badge: null, image: '../../images/products/f8.jpg' },
+        { id: 9, brand: 'Tommy Hilfiger', name: 'Sky Blue Mandarin Collar Shirt', price: 4499, originalPrice: 5999, rating: 5.0, reviews: 156, category: 'formal', color: 'blue', style: 'formal', badge: 'Premium', image: '../../images/products/n1.jpg' },
+        { id: 10, brand: 'Ralph Lauren', name: 'Navy Textured Formal Shirt', price: 6999, originalPrice: 8499, rating: 4.5, reviews: 88, category: 'formal', color: 'blue', style: 'formal', badge: null, image: '../../images/products/n2.jpg' },
+        { id: 11, brand: 'Calvin Klein', name: 'Classic White Cotton Shirt', price: 5499, originalPrice: null, rating: 4.0, reviews: 210, category: 'formal', color: 'white', style: 'formal', badge: null, image: '../../images/products/n3.jpg' },
+        { id: 12, brand: 'Zara', name: 'Sandstone Tactical Utility Shirt', price: 3990, originalPrice: 4990, rating: 3.5, reviews: 67, category: 'formal', color: 'brown', style: 'utility', badge: null, image: '../../images/products/n4.jpg' },
+        { id: 13, brand: 'Nike', name: 'Denim Blue Everyday Shirt', price: 2799, originalPrice: null, rating: 4.0, reviews: 132, category: 'minimal', color: 'blue', style: 'casual', badge: null, image: '../../images/products/n5.jpg' },
+        { id: 14, brand: "Levi's", name: 'Vertical Stripe Chino Shorts', price: 2499, originalPrice: 2999, rating: 3.0, reviews: 54, category: 'minimal', color: 'beige', style: 'casual', badge: null, image: '../../images/products/n6.jpg' },
+        { id: 15, brand: 'Uniqlo', name: 'Khaki Safari Work Shirt', price: 3499, originalPrice: null, rating: 4.5, reviews: 95, category: 'minimal', color: 'khaki', style: 'utility', badge: null, image: '../../images/products/n7.jpg' },
+        { id: 16, brand: 'Puma', name: 'Deep Charcoal Casual Shirt', price: 1799, originalPrice: 2299, rating: 3.5, reviews: 41, category: 'minimal', color: 'black', style: 'casual', badge: null, image: '../../images/products/n8.jpg' },
+        { id: 17, brand: 'Adidas', name: 'Black Tech Training Tee', price: 1899, originalPrice: 2499, rating: 4.0, reviews: 118, category: 'street', color: 'black', style: 'minimal', badge: null, image: '../../images/products/f1.jpg' },
+        { id: 18, brand: 'Zara', name: 'Olive Cargo Utility Pants', price: 3299, originalPrice: 3999, rating: 4.2, reviews: 76, category: 'street', color: 'green', style: 'utility', badge: null, image: '../../images/products/f2.jpg' },
+        { id: 19, brand: 'H&M', name: 'Peach Knit Sweater', price: 2199, originalPrice: null, rating: 4.3, reviews: 92, category: 'minimal', color: 'pink', style: 'casual', badge: null, image: '../../images/products/f3.jpg' },
+        { id: 20, brand: "Levi's", name: 'Indigo Denim Jacket', price: 4999, originalPrice: 5999, rating: 4.7, reviews: 164, category: 'street', color: 'blue', style: 'casual', badge: 'Best Seller', image: '../../images/products/f4.jpg' },
+        { id: 21, brand: 'Puma', name: 'Red Logo Hoodie', price: 2999, originalPrice: 3499, rating: 4.1, reviews: 83, category: 'street', color: 'red', style: 'casual', badge: 'Sale', image: '../../images/products/f5.jpg' },
+        { id: 22, brand: 'Gap', name: 'Navy Sweatpants', price: 1999, originalPrice: null, rating: 4.0, reviews: 67, category: 'minimal', color: 'blue', style: 'casual', badge: null, image: '../../images/products/f6.jpg' },
+        { id: 23, brand: 'Uniqlo', name: 'White Crewneck Tee', price: 1499, originalPrice: 1999, rating: 4.4, reviews: 245, category: 'minimal', color: 'white', style: 'casual', badge: null, image: '../../images/products/f7.jpg' },
+        { id: 24, brand: 'Mango', name: 'Vintage Floral Mini Dress', price: 2799, originalPrice: 3499, rating: 4.5, reviews: 112, category: 'minimal', color: 'yellow', style: 'floral', badge: null, image: '../../images/products/f8.jpg' },
+        { id: 25, brand: 'Tommy Hilfiger', name: 'Grey Polo Shirt', price: 3599, originalPrice: 4299, rating: 4.3, reviews: 98, category: 'formal', color: 'grey', style: 'formal', badge: null, image: '../../images/products/n1.jpg' },
+        { id: 26, brand: 'Ralph Lauren', name: 'Cream Chino Pants', price: 4799, originalPrice: 5499, rating: 4.6, reviews: 73, category: 'formal', color: 'beige', style: 'formal', badge: null, image: '../../images/products/n2.jpg' },
+        { id: 27, brand: 'Calvin Klein', name: 'Black Leather Belt', price: 1199, originalPrice: null, rating: 4.0, reviews: 180, category: 'minimal', color: 'black', style: 'minimal', badge: null, image: '../../images/products/n3.jpg' },
+        { id: 28, brand: 'Zara', name: 'Sandstone Knit Blazer', price: 5299, originalPrice: 6499, rating: 4.5, reviews: 52, category: 'formal', color: 'brown', style: 'formal', badge: 'Premium', image: '../../images/products/n4.jpg' },
+        { id: 29, brand: 'Nike', name: 'White Running Shorts', price: 1899, originalPrice: null, rating: 4.2, reviews: 135, category: 'street', color: 'white', style: 'casual', badge: null, image: '../../images/products/n5.jpg' },
+        { id: 30, brand: "Levi's", name: 'Classic Denim Jeans', price: 3999, originalPrice: 4999, rating: 4.1, reviews: 219, category: 'street', color: 'blue', style: 'casual', badge: null, image: '../../images/products/n6.jpg' },
+        { id: 31, brand: 'Uniqlo', name: 'Camel Overshirt', price: 3299, originalPrice: null, rating: 4.4, reviews: 86, category: 'minimal', color: 'brown', style: 'casual', badge: null, image: '../../images/products/n7.jpg' },
+        { id: 32, brand: 'Puma', name: 'Blue Windbreaker Jacket', price: 2699, originalPrice: 3299, rating: 4.3, reviews: 104, category: 'street', color: 'blue', style: 'utility', badge: 'Sale', image: '../../images/products/n8.jpg' }
+      ];
+
+      function renderStars(rating) {
+        const full = Math.floor(rating);
+        const half = rating - full >= 0.5 ? 1 : 0;
+        let html = '';
+        for (let i = 0; i < full; i++) html += '<i class="ri-star-fill"></i>';
+        if (half) html += '<i class="ri-star-half-fill"></i>';
+        const empty = 5 - full - half;
+        for (let i = 0; i < empty; i++) html += '<i class="ri-star-line"></i>';
+        return html;
+      }
+
+      function renderProductCard(product) {
+        const starsHtml = renderStars(product.rating);
+        const discount = product.originalPrice
+          ? Math.round((1 - product.price / product.originalPrice) * 100)
+          : null;
+
+        return `
+          <div class="pro" data-id="${product.id}" data-category="${product.category}" data-price="${product.price}" data-rating="${product.rating}" data-name="${product.name.toLowerCase()}" data-brand="${product.brand.toLowerCase()}" data-color="${product.color}">
+            <div class="img-wrapper">
+              <img src="${product.image}" alt="${product.name} by ${product.brand}" loading="lazy" />
+              ${product.badge ? `<span class="badge ${product.badge === 'Sale' ? 'sale' : ''}">${product.badge}</span>` : ''}
+              <div class="quick-actions">
+                <button class="wishlist-btn" aria-label="Add to wishlist" title="Add to wishlist"><i class="ri-heart-line"></i></button>
+                <button class="view-btn" aria-label="Quick view" title="Quick view"><i class="ri-eye-line"></i></button>
+              </div>
+            </div>
+            <div class="des">
+              <span class="product-brand">${product.brand}</span>
+              <span class="product-name">${product.name}</span>
+              <div class="product-rating">
+                <span class="stars">${starsHtml}</span>
+                <span class="count">(${product.reviews})</span>
+              </div>
+              <div class="product-price">
+                <span class="current">₹${product.price.toLocaleString('en-IN')}</span>
+                ${product.originalPrice ? `<span class="original">₹${product.originalPrice.toLocaleString('en-IN')}</span>` : ''}
+                ${discount ? `<span class="discount">-${discount}%</span>` : ''}
+              </div>
+              <button class="add-to-cart-btn" data-id="${product.id}">
+                <i class="ri-shopping-bag-4-line"></i> Add to Cart
+              </button>
+            </div>
+          </div>
+        `;
+      }
+
+      const container = document.getElementById('shop-container');
+      const countEl = document.getElementById('productCount');
+
+      function renderProducts(productList) {
+        if (!productList || productList.length === 0) {
+          container.innerHTML = `
+            <div class="empty-state">
+              <i class="ri-search-line"></i>
+              <h3>No products found</h3>
+              <p>Try adjusting your filters or search terms.</p>
+            </div>
+          `;
+          if (countEl) countEl.innerHTML = 'Showing <strong>0</strong> products';
+          return;
+        }
+        container.innerHTML = productList.map(p => renderProductCard(p)).join('');
+        if (countEl) {
+          countEl.innerHTML = `Showing <strong>${productList.length}</strong> product${productList.length > 1 ? 's' : ''}`;
+        }
+      }
+
+      renderProducts(products);
+
+      // Category Pill Sync
+      const catPills = document.querySelectorAll('.cat-pill');
+      const categoryFilter = document.getElementById('categoryFilter');
+
+      catPills.forEach(pill => {
+        pill.addEventListener('click', () => {
+          catPills.forEach(p => {
+            p.classList.remove('active');
+            p.style.background = 'rgba(196,131,230,0.06)';
+            p.style.color = 'var(--text-color, #1a1a2e)';
+            p.style.borderColor = 'rgba(196,131,230,0.2)';
+          });
+          pill.classList.add('active');
+          pill.style.background = 'linear-gradient(135deg, #c483e6, #a855f7)';
+          pill.style.color = '#fff';
+          pill.style.borderColor = 'transparent';
+
+          const cat = pill.dataset.cat;
+          if (categoryFilter) {
+            categoryFilter.value = cat;
+            applyFilters();
+          }
         });
-        btn.addEventListener('click', () => {
+      });
+
+      document.querySelectorAll('.cat-card').forEach(card => {
+        card.addEventListener('click', () => {
+          const cat = card.dataset.category;
+          const targetPill = document.querySelector(`.cat-pill[data-cat="${cat}"]`);
+          if (targetPill) targetPill.click();
+        });
+      });
+
+      const styleFilter = document.getElementById('style-filter');
+      const brandFilter = document.getElementById('brand-filter');
+      const colorFilter = document.getElementById('color-filter');
+      const resetBtn = document.getElementById('resetFiltersBtn');
+      const sortSelect = document.getElementById('sort-price');
+
+      function populateFilters() {
+        const styles = [...new Set(products.map(p => p.style))];
+        const brands = [...new Set(products.map(p => p.brand))];
+        const colors = [...new Set(products.map(p => p.color))];
+
+        if (styleFilter) {
+          styleFilter.innerHTML = '<option value="all">All Styles</option>' + styles.map(s => `<option value="${s}">${s.charAt(0).toUpperCase() + s.slice(1)}</option>`).join('');
+        }
+        if (brandFilter) {
+          brandFilter.innerHTML = '<option value="all">All Brands</option>' + brands.map(b => `<option value="${b}">${b}</option>`).join('');
+        }
+        if (colorFilter) {
+          colorFilter.innerHTML = '<option value="all">All Colors</option>' + colors.map(c => `<option value="${c}">${c.charAt(0).toUpperCase() + c.slice(1)}</option>`).join('');
+        }
+      }
+      populateFilters();
+
+      function getFilteredAndSorted() {
+        const cat = categoryFilter.value;
+        const style = styleFilter.value;
+        const brand = brandFilter.value;
+        const color = colorFilter.value;
+        const searchQuery = document.getElementById('searchInput').value.trim().toLowerCase();
+
+        let filtered = products.filter(p => {
+          if (cat !== 'all' && p.category !== cat) return false;
+          if (style !== 'all' && p.style !== style) return false;
+          if (brand !== 'all' && p.brand !== brand) return false;
+          if (color !== 'all' && p.color !== color) return false;
+          if (searchQuery && !p.name.toLowerCase().includes(searchQuery) && !p.brand.toLowerCase().includes(searchQuery)) return false;
+          return true;
+        });
+
+        const sort = sortSelect.value;
+        if (sort === 'low-high') filtered.sort((a, b) => a.price - b.price);
+        else if (sort === 'high-low') filtered.sort((a, b) => b.price - a.price);
+        else if (sort === 'rating-high') filtered.sort((a, b) => b.rating - a.rating);
+        else if (sort === 'rating-low') filtered.sort((a, b) => a.rating - b.rating);
+        else if (sort === 'newest') filtered.sort((a, b) => b.id - a.id);
+
+        return filtered;
+      }
+
+      function applyFilters() {
+        const filtered = getFilteredAndSorted();
+        renderProducts(filtered);
+      }
+
+      styleFilter.addEventListener('change', applyFilters);
+      brandFilter.addEventListener('change', applyFilters);
+      colorFilter.addEventListener('change', applyFilters);
+      sortSelect.addEventListener('change', applyFilters);
+
+      resetBtn.addEventListener('click', () => {
+        const allPill = document.querySelector('.cat-pill[data-cat="all"]');
+        if (allPill) allPill.click();
+        styleFilter.value = 'all';
+        brandFilter.value = 'all';
+        colorFilter.value = 'all';
+        document.getElementById('searchInput').value = '';
+        applyFilters();
+      });
+
+      document.getElementById('searchBtn').addEventListener('click', applyFilters);
+      document.getElementById('searchInput').addEventListener('keyup', (e) => {
+        if (e.key === 'Enter') applyFilters();
+      });
+
+      const backBtn = document.getElementById('backToTop');
+      if (backBtn) {
+        window.addEventListener('scroll', () => {
+          backBtn.style.display = window.scrollY > 200 ? 'block' : 'none';
+        });
+        backBtn.addEventListener('click', () => {
           window.scrollTo({ top: 0, behavior: 'smooth' });
         });
       }
 
-      // ─── Product count updater (listens to DOM changes) ───
-      document.addEventListener('DOMContentLoaded', () => {
-        const container = document.getElementById('shop-container');
-        const countEl = document.getElementById('productCount');
-
-        const updateCount = () => {
-          const items = container.querySelectorAll('.pro:not(.empty-state)');
-          const visible = container.querySelectorAll('.pro:not(.empty-state):not([style*="display: none"])');
-          const total = items.length;
-          const shown = visible.length;
-          if (countEl) {
-            if (total === 0) {
-              countEl.innerHTML = 'Showing <strong>0</strong> products';
-            } else if (shown === total) {
-              countEl.innerHTML = `Showing <strong>${total}</strong> product${total > 1 ? 's' : ''}`;
-            } else {
-              countEl.innerHTML = `Showing <strong>${shown}</strong> of <strong>${total}</strong> products`;
-            }
-          }
-        };
-
-        // Observe changes
-        if (container) {
-          const observer = new MutationObserver(updateCount);
-          observer.observe(container, { childList: true, subtree: true, attributes: true, attributeFilter: ['style'] });
-          // Initial update
-          setTimeout(updateCount, 100);
-        }
-      });
-    </script>
-
-    <!-- ─── RECENT SEARCHES SCRIPT (enhanced) ─── -->
-    <script>
-      document.addEventListener('DOMContentLoaded', () => {
+      (function initRecentSearches() {
         const searchInput = document.getElementById('searchInput');
         const searchBtn = document.getElementById('searchBtn');
         const listContainer = document.getElementById('recent-searches-list');
@@ -1192,8 +1649,46 @@
         });
 
         updateList();
+      })();
+
+      document.addEventListener('click', (e) => {
+        const btn = e.target.closest('.add-to-cart-btn');
+        if (btn) {
+          const id = btn.dataset.id;
+          const product = products.find(p => p.id == id);
+          if (product) {
+            if (typeof window.addToCart === 'function') {
+              window.addToCart(product.name, '₹' + product.price, product.image, 1, 'M', product.id);
+            } else if (typeof window.showToast === 'function') {
+              window.showToast(`🛒 Added "${product.name}" to your cart!`, 'success');
+            } else {
+              alert(`🛒 Added "${product.name}" to your cart!`);
+            }
+          }
+        }
+      });
+
+      document.addEventListener('click', (e) => {
+        const btn = e.target.closest('.wishlist-btn');
+        if (btn) {
+          btn.classList.toggle('active');
+          const icon = btn.querySelector('i');
+          if (icon) {
+            icon.className = btn.classList.contains('active') ? 'ri-heart-fill' : 'ri-heart-line';
+          }
+        }
       });
     </script>
 
+    <script type="module" src="../../js/navbar.js"></script>
+    <script>
+      if (typeof loadNavbar === 'function') loadNavbar('shop');
+    </script>
+    <script id="Current-Year">
+      const year = new Date().getFullYear();
+      for (let el of document.querySelectorAll('.Current-Year')) {
+        el.textContent = year;
+      }
+    </script>
   </body>
 </html>
