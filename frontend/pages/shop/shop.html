@@ -1654,15 +1654,39 @@
       document.addEventListener('click', (e) => {
         const btn = e.target.closest('.add-to-cart-btn');
         if (btn) {
+          e.preventDefault();
+          e.stopPropagation();
           const id = btn.dataset.id;
           const product = products.find(p => p.id == id);
           if (product) {
+            const size = 'M';
             if (typeof window.addToCart === 'function') {
-              window.addToCart(product.name, '₹' + product.price, product.image, 1, 'M', product.id);
-            } else if (typeof window.showToast === 'function') {
-              window.showToast(`🛒 Added "${product.name}" to your cart!`, 'success');
+              window.addToCart(product.name, '₹' + product.price, product.image, 1, size, product.id);
             } else {
-              alert(`🛒 Added "${product.name}" to your cart!`);
+              // Direct localStorage cart update fallback
+              let cart = JSON.parse(localStorage.getItem('productsInCart') || '[]');
+              let existing = cart.find(p => (p.id != null && product.id != null ? p.id === Number(product.id) : p.name === product.name) && p.size === size);
+              if (existing) {
+                existing.quantity += 1;
+              } else {
+                cart.push({
+                  id: Number(product.id),
+                  name: product.name,
+                  price: product.price,
+                  image: product.image,
+                  quantity: 1,
+                  size: size,
+                  brand: product.brand || 'Sara'
+                });
+              }
+              localStorage.setItem('productsInCart', JSON.stringify(cart));
+              window.cachedCartState = cart;
+              if (typeof window.updateCartCount === 'function') window.updateCartCount();
+              if (typeof window.showToast === 'function') {
+                window.showToast(`${product.name} (Size: ${size}) added to cart!`, 'success');
+              } else {
+                alert(`🛒 Added "${product.name}" to your cart!`);
+              }
             }
           }
         }
@@ -1680,6 +1704,7 @@
       });
     </script>
 
+    <script type="module" src="../../js/app.js"></script>
     <script type="module" src="../../js/navbar.js"></script>
     <script>
       if (typeof loadNavbar === 'function') loadNavbar('shop');
