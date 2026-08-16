@@ -10,11 +10,11 @@
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1.svg?&logo=postgresql&logoColor=white)](https://www.postgresql.org/)
 [![Docker](https://img.shields.io/badge/Docker-2496ED.svg?&logo=docker&logoColor=white)](https://www.docker.com/)
 [![Vite](https://img.shields.io/badge/Vite-646CFF.svg?&logo=vite&logoColor=white)](https://vitejs.dev/)
-[![GitHub Last Commit](https://img.shields.io/github/last-commit/deepthi-mahendran/sara)](https://github.com/deepthi-mahendran/sara/commits/main)
+[![GitHub Last Commit](https://img.shields.io/github/last-commit/deepthi-mahendran/Sara)](https://github.com/deepthi-mahendran/Sara/commits/main)
 
-**A full-stack e-commerce platform built by [Deepthi Mahendran](https://github.com/deepthi-mahendran) — vanilla HTML/CSS/JS frontend, FastAPI + PostgreSQL backend, and Docker-based deployment.**
+**A full-stack e-commerce platform built by [Deepthi Mahendran](https://github.com/deepthi-mahendran) — vanilla HTML/CSS/JS frontend with 32 real products, 4-column responsive product grid, FastAPI + PostgreSQL backend, and Docker-based deployment.**
 
-[🚀 Live Demo](https://sara-seven-ashen.vercel.app/) · [Report Bug](https://github.com/deepthi-mahendran/sara/issues) · [Request Feature](https://github.com/deepthi-mahendran/sara/issues)
+[🚀 Live Demo](https://sara-seven-ashen.vercel.app/) · [Report Bug](https://github.com/deepthi-mahendran/Sara/issues) · [Request Feature](https://github.com/deepthi-mahendran/Sara/issues)
 
 </div>
 
@@ -45,12 +45,12 @@ Sara is a full-stack e-commerce platform that provides users with a complete onl
 
 ### Why Sara?
 
-- ✨ **Modern UI** — Clean interface with dark mode support, smooth animations, and responsive layouts
+- ✨ **Modern UI** — Clean interface with dark mode support, smooth animations, and responsive 4-column product grids
 - 📱 **Fully Responsive** — Optimized for mobile, tablet, and desktop
 - ⚡ **Fast & Lightweight** — No heavy frontend framework; vanilla JS bundled with Vite
 - 🔒 **Secure** — JWT auth, CSRF protection, rate limiting, Content Security Policy headers
 - 🐳 **Containerized** — Full Docker Compose stack (Nginx + FastAPI + PostgreSQL) ready to deploy
-- 🧪 **Tested** — 117 unit tests covering frontend modules via Vitest
+- 🧪 **Comprehensive Test Coverage** — 117 test files (988 unit tests) covering frontend modules via Vitest
 - 🆓 **Open Source** — MIT licensed, free to use and learn from
 
 <img src="https://www.animatedimages.org/data/media/562/animated-line-image-0184.gif" width="1920" />
@@ -368,7 +368,9 @@ The FastAPI backend exposes the following API route groups:
 
 ## 🧪 Testing
 
-The project uses **Vitest** with **jsdom** for frontend unit testing. There are **117 unit test files** covering modules like authentication, cart logic, accessibility utilities, coupon validation, product search, and more.
+## 🧪 Testing
+
+The project uses **Vitest** with **jsdom** for frontend unit testing. There are **117 test files (988 unit tests)** covering modules like authentication, cart state management, accessibility utilities, coupon validation, product search, and more.
 
 ```bash
 # Run all tests
@@ -405,21 +407,23 @@ npm run test:coverage
 ## 🗺️ Roadmap
 
 ### ✅ Implemented
-- [x] Responsive homepage with hero banners and promotions
-- [x] Product catalog with multiple collection pages
-- [x] Shopping cart with cross-tab sync
+- [x] Responsive homepage with hero banners, 4-column product grid, and promotions
+- [x] Full catalog page integrating 32 real products with category and secondary filters
+- [x] Universal capture event delegation for Add-to-Cart state management
+- [x] Shopping cart with cross-tab sync and local storage persistence
 - [x] Product detail pages with AR viewer
 - [x] User authentication (login, register, forgot password)
 - [x] JWT-based sessions with passkey support
 - [x] Wishlist with notes, tags, and sharing
-- [x] Product search (inline and visual)
-- [x] Dark mode / theme toggle
-- [x] Order history and order tracking
-- [x] Checkout flow with address autocomplete
+- [x] Product search (inline, category filters, and visual search)
+- [x] Dark mode / light mode / theme toggle engine
+- [x] Order history and real-time order tracking timeline
+- [x] Multi-step checkout flow with address autocomplete
 - [x] Blog section with 5 articles
-- [x] About, Contact, FAQ, Privacy, Terms pages
-- [x] Docker Compose deployment
-- [x] 117 unit tests with Vitest
+- [x] About, Contact, FAQ, Privacy, Terms, Delivery info pages
+- [x] Multi-language support (i18n: EN/ES language switcher)
+- [x] Docker Compose deployment (Nginx + FastAPI + PostgreSQL)
+- [x] 117 test files (988 unit tests) with Vitest
 - [x] ESLint + Prettier + Husky pre-commit hooks
 - [x] FastAPI backend with 15 API routers
 - [x] PostgreSQL database with Alembic migrations
@@ -429,12 +433,11 @@ npm run test:coverage
 ### 🔜 Planned
 - [ ] Payment gateway integration
 - [ ] Email notifications (order confirmation, shipping updates)
-- [ ] Multi-language support (i18n)
-- [ ] Product reviews and ratings (frontend integration)
+- [ ] Product reviews and ratings (frontend backend integration)
 - [ ] Admin dashboard UI
 - [ ] CI/CD pipeline with automated testing
 
-See the [open issues](https://github.com/deepthi-mahendran/sara/issues) for a full list of proposed features and known issues.
+See the [open issues](https://github.com/deepthi-mahendran/Sara/issues) for a full list of proposed features and known issues.
 
 <img src="https://www.animatedimages.org/data/media/562/animated-line-image-0184.gif" width="1920" />
 
