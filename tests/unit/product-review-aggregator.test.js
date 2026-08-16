@@ -67,7 +67,7 @@ describe('ProductReviewAggregator Unit Tests', () => {
   it('should exclude corrupt string ratings from stored stats', () => {
     // Simulate legacy/corrupt storage with a string rating.
     localStorage.setItem(
-      'cara_reviews_v2',
+      'sara_reviews_v2',
       JSON.stringify({
         'prod-89': [{ id: 'r1', rating: '4' }, { id: 'r2', rating: 3 }],
       }),

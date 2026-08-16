@@ -64,4 +64,4 @@ window.appStore = new Store({
   wishlistItems: [],
   user: null,
   theme: 'light'
-}, 'cara_global_state');
+}, 'sara_global_state');

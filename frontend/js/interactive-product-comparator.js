@@ -4,7 +4,7 @@
  */
 
 class InteractiveProductComparator {
-  constructor(storageKey = 'cara_compare_items_v2') {
+  constructor(storageKey = 'sara_compare_items_v2') {
     this.storageKey = storageKey;
     this.maxItems = 4;
     this.items = this.loadItems();

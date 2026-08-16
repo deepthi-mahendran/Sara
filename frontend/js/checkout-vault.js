@@ -4,7 +4,7 @@
 class AddressVault {
     getAddresses() {
         try {
-            const raw = localStorage.getItem('cara_saved_addresses');
+            const raw = localStorage.getItem('sara_saved_addresses');
             const parsed = JSON.parse(raw || '[]');
             return Array.isArray(parsed) ? parsed : [];
         } catch (err) {
@@ -17,7 +17,7 @@ class AddressVault {
         try {
             const list = this.getAddresses();
             list.push(addr);
-            localStorage.setItem('cara_saved_addresses', JSON.stringify(list));
+            localStorage.setItem('sara_saved_addresses', JSON.stringify(list));
             return true;
         } catch (err) {
             // Silently fail if localStorage is unavailable or full

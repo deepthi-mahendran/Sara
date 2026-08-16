@@ -694,7 +694,7 @@
 
     // state
     let products = [...sampleProducts];
-    let cart = JSON.parse(localStorage.getItem('cara_cart') || '{}');
+    let cart = JSON.parse(localStorage.getItem('sara_cart') || '{}');
 
     // DOM refs
     const grid = document.getElementById('grid');
@@ -721,7 +721,7 @@
 
     // helpers
     function formatPrice(v) { return '$' + v.toFixed(2) }
-    function saveCart() { localStorage.setItem('cara_cart', JSON.stringify(cart)); }
+    function saveCart() { localStorage.setItem('sara_cart', JSON.stringify(cart)); }
 
     function renderGrid(items) {
       grid.innerHTML = '';
@@ -970,7 +970,7 @@ function changeQty(id, delta) {
     });
 
     // expose functions for debugging in console
-    window.__cara = { products, cart, addToCart, removeFromCart };
+    window.__sara = { products, cart, addToCart, removeFromCart };
   </script>
   <script>
   const scrollBtn = document.getElementById("scrollTopBtn");

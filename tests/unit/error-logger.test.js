@@ -5,7 +5,7 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { getMaxLoggerQueueSize } from '../../frontend/js/error-logger.js';
 
-const STORAGE_KEY = 'cara_runtime_errors';
+const STORAGE_KEY = 'sara_runtime_errors';
 
 describe('Error Logger Unit Tests', () => {
   beforeEach(() => {

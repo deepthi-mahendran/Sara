@@ -16,8 +16,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 function abortProductDetailsRequest() {
-  if (window.CaraAPI && typeof window.CaraAPI.abortRequest === 'function') {
-    window.CaraAPI.abortRequest(PRODUCT_DETAILS_REQUEST_KEY);
+  if (window.SaraAPI && typeof window.SaraAPI.abortRequest === 'function') {
+    window.SaraAPI.abortRequest(PRODUCT_DETAILS_REQUEST_KEY);
   }
 }
 
@@ -68,10 +68,10 @@ function loadProductDetails() {
 
     if (
       product.id &&
-      window.CaraAPI &&
-      typeof window.CaraAPI.fetchData === 'function'
+      window.SaraAPI &&
+      typeof window.SaraAPI.fetchData === 'function'
     ) {
-      window.CaraAPI.fetchData(`/api/products/${product.id}`, {
+      window.SaraAPI.fetchData(`/api/products/${product.id}`, {
         requestKey: PRODUCT_DETAILS_REQUEST_KEY,
         headers: {
           Accept: 'application/json',

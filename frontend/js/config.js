@@ -4,11 +4,11 @@
  * load app.js still get API base URL, tax/shipping, and coupon codes.
  */
 (() => {
-  if (typeof window.CARA_API_BASE_URL === 'undefined') {
-    window.CARA_API_BASE_URL = '';
+  if (typeof window.SARA_API_BASE_URL === 'undefined') {
+    window.SARA_API_BASE_URL = '';
   }
 
-  window.CARA_CONFIG = window.CARA_CONFIG || {
+  window.SARA_CONFIG = window.SARA_CONFIG || {
     TAX_RATE: 0.18,
     SHIPPING: {
       FEE: 150,
@@ -22,8 +22,8 @@
     },
   };
 
-  window.CARA_COUPONS = window.CARA_COUPONS || {
-    CARA20: 20,
+  window.SARA_COUPONS = window.SARA_COUPONS || {
+    SARA20: 20,
     WELCOME10: 10,
   };
 })();

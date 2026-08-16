@@ -29,7 +29,7 @@ function bindNewsletterForms() {
 
       // Check for duplicate subscription
       let subscribed = [];
-      try { subscribed = JSON.parse(localStorage.getItem('cara_subscribed_emails') || '[]'); } catch (e) { subscribed = []; }
+      try { subscribed = JSON.parse(localStorage.getItem('sara_subscribed_emails') || '[]'); } catch (e) { subscribed = []; }
       if (subscribed.includes(email)) {
         if (typeof showToast === 'function') showToast('This email is already subscribed!', 'info');
         else alert('This email is already subscribed!');

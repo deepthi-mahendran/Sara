@@ -34,7 +34,7 @@ Services:
 | `api` | `backend/Dockerfile` (uvicorn) | `8000` |
 | `web` | root `Dockerfile` (nginx) | `8080` |
 
-The API runs Alembic migrations on startup. Nginx proxies `/api/*` and `/health` to the API so the static site can use same-origin requests (`CARA_API_BASE_URL` defaults to empty).
+The API runs Alembic migrations on startup. Nginx proxies `/api/*` and `/health` to the API so the static site can use same-origin requests (`SARA_API_BASE_URL` defaults to empty).
 
 Stop everything:
 ```bash

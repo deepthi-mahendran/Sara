@@ -15,7 +15,7 @@ describe('PromoDiscountCalculator Unit Tests', () => {
   });
 
   it('should reject coupons below min spend threshold', () => {
-    const res = calc.validateCoupon('CARA20', 25);
+    const res = calc.validateCoupon('SARA20', 25);
     expect(res.valid).toBe(false);
     expect(res.message).toContain('minimum spend');
   });
@@ -121,7 +121,7 @@ describe('PromoDiscountCalculator additional coverage', () => {
   });
 
   it('validates all 4 coupon codes with sufficient spend', () => {
-    const codes = ['WELCOME10', 'CARA20', 'FLAT15', 'FREESHIP'];
+    const codes = ['WELCOME10', 'SARA20', 'FLAT15', 'FREESHIP'];
     codes.forEach(code => {
       const res = calc.validateCoupon(code, 100);
       expect(res.valid).toBe(true);
@@ -167,7 +167,7 @@ describe("PromoDiscountCalculator additional coverage", () => {
   });
 
   it("validates all 4 coupon codes with sufficient spend", () => {
-    const codes = ["WELCOME10", "CARA20", "FLAT15", "FREESHIP"];
+    const codes = ["WELCOME10", "SARA20", "FLAT15", "FREESHIP"];
     codes.forEach(code => {
       const res = calc.validateCoupon(code, 100);
       expect(res.valid).toBe(true);

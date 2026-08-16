@@ -17,6 +17,6 @@ jobs:
         uses: treosh/lighthouse-ci-action@v11
         with:
           urls: |
-            https://cara-ecomm.netlify.app/
+            https://sara-ecomm.netlify.app/
           budgetPath: ./budgets.json
           uploadArtifacts: true

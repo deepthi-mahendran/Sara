@@ -9,7 +9,7 @@ describe('session-lock', () => {
     vi.useFakeTimers();
     vi.unstubAllGlobals();
     document.body.innerHTML = '<div id="app"></div>';
-    window.CARA_API_BASE_URL = '';
+    window.SARA_API_BASE_URL = '';
     delete window.location;
     window.location = { href: 'shop.html' };
   });
@@ -74,8 +74,8 @@ describe('session-lock', () => {
     });
     vi.stubGlobal('fetch', fetchMock);
 
-    localStorage.setItem('cara_user_session', 'legacy');
-    localStorage.setItem('cara_user_token', 'legacy-token');
+    localStorage.setItem('sara_user_session', 'legacy');
+    localStorage.setItem('sara_user_token', 'legacy-token');
     localStorage.setItem('access_token', 'legacy-access');
 
     await import('../../frontend/js/session-lock.js');
@@ -92,8 +92,8 @@ describe('session-lock', () => {
     vi.advanceTimersByTime(15 * 60 * 1000);
     await vi.waitFor(() => expect(window.location.href).toBe('login.html'));
 
-    expect(localStorage.getItem('cara_user_session')).toBeNull();
-    expect(localStorage.getItem('cara_user_token')).toBeNull();
+    expect(localStorage.getItem('sara_user_session')).toBeNull();
+    expect(localStorage.getItem('sara_user_token')).toBeNull();
     expect(localStorage.getItem('access_token')).toBeNull();
   });
 

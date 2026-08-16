@@ -1,11 +1,11 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { CaraToast } from '../../frontend/js/toast.js';
+import { SaraToast } from '../../frontend/js/toast.js';
 
 /**
- * Unit tests for js/toast.js CaraToast class.
+ * Unit tests for js/toast.js SaraToast class.
  */
 
-describe('CaraToast', () => {
+describe('SaraToast', () => {
   beforeEach(() => {
     document.body.innerHTML = '';
     // Remove any existing toast container
@@ -21,13 +21,13 @@ describe('CaraToast', () => {
   });
 
   it('should be a class with show and _dismiss static methods', () => {
-    expect(typeof CaraToast).toBe('function');
-    expect(typeof CaraToast.show).toBe('function');
-    expect(typeof CaraToast._dismiss).toBe('function');
+    expect(typeof SaraToast).toBe('function');
+    expect(typeof SaraToast.show).toBe('function');
+    expect(typeof SaraToast._dismiss).toBe('function');
   });
 
   it('creates a toast container if none exists', () => {
-    CaraToast.show('Test message', 'info', 5000);
+    SaraToast.show('Test message', 'info', 5000);
     vi.advanceTimersByTime(0);
     const container = document.getElementById('toast-container');
     expect(container).not.toBeNull();
@@ -39,9 +39,9 @@ describe('CaraToast', () => {
     existing.id = 'toast-container';
     document.body.appendChild(existing);
 
-    CaraToast.show('First', 'info', 5000);
+    SaraToast.show('First', 'info', 5000);
     vi.advanceTimersByTime(0);
-    CaraToast.show('Second', 'success', 5000);
+    SaraToast.show('Second', 'success', 5000);
     vi.advanceTimersByTime(0);
 
     const container = document.getElementById('toast-container');
@@ -49,10 +49,10 @@ describe('CaraToast', () => {
   });
 
   it('sets toast type as CSS class', () => {
-    CaraToast.show('Info toast', 'info', 5000);
-    CaraToast.show('Success toast', 'success', 5000);
-    CaraToast.show('Error toast', 'error', 5000);
-    CaraToast.show('Warning toast', 'warning', 5000);
+    SaraToast.show('Info toast', 'info', 5000);
+    SaraToast.show('Success toast', 'success', 5000);
+    SaraToast.show('Error toast', 'error', 5000);
+    SaraToast.show('Warning toast', 'warning', 5000);
     vi.advanceTimersByTime(0);
 
     const toasts = document.querySelectorAll('.toast');
@@ -63,14 +63,14 @@ describe('CaraToast', () => {
   });
 
   it('displays the message in the toast', () => {
-    CaraToast.show('Hello world', 'info', 5000);
+    SaraToast.show('Hello world', 'info', 5000);
     vi.advanceTimersByTime(0);
     const msg = document.querySelector('.toast-msg');
     expect(msg.textContent).toBe('Hello world');
   });
 
   it('auto-dismisses after the given duration', () => {
-    CaraToast.show('Auto dismiss', 'info', 3000);
+    SaraToast.show('Auto dismiss', 'info', 3000);
     const toast = document.querySelector('.toast');
     expect(toast).not.toBeNull();
 
@@ -82,7 +82,7 @@ describe('CaraToast', () => {
   });
 
   it('pauses auto-dismiss on mouseenter and resumes on mouseleave', () => {
-    CaraToast.show('Paused toast', 'info', 2000);
+    SaraToast.show('Paused toast', 'info', 2000);
     vi.advanceTimersByTime(0);
     const toast = document.querySelector('.toast');
     toast.dispatchEvent(new MouseEvent('mouseenter'));
@@ -100,7 +100,7 @@ describe('CaraToast', () => {
   });
 
   it('dismisses immediately on close button click', () => {
-    CaraToast.show('Click to close', 'info', 5000);
+    SaraToast.show('Click to close', 'info', 5000);
     vi.advanceTimersByTime(0);
     const toast = document.querySelector('.toast');
     const closeBtn = toast.querySelector('.toast-close');
@@ -111,7 +111,7 @@ describe('CaraToast', () => {
   });
 
   it('uses info icon when type is unknown', () => {
-    CaraToast.show('Unknown type', 'unknowntype', 5000);
+    SaraToast.show('Unknown type', 'unknowntype', 5000);
     vi.advanceTimersByTime(0);
     const toast = document.querySelector('.toast');
     expect(toast.className).toContain('toast-unknowntype');

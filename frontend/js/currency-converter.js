@@ -20,7 +20,7 @@ export const CURRENCY_SYMBOLS = {
   CAD: 'CA$',
 };
 
-const CACHE_KEY = 'cara_exchange_rates_cache';
+const CACHE_KEY = 'sara_exchange_rates_cache';
 const CACHE_TTL_MS = 12 * 60 * 60 * 1000; // 12 hours
 
 export async function fetchExchangeRates(fetchImpl = globalThis.fetch) {
@@ -75,7 +75,7 @@ export async function fetchExchangeRates(fetchImpl = globalThis.fetch) {
 
 export function getActiveCurrency() {
   if (typeof localStorage !== 'undefined') {
-    return localStorage.getItem('cara_selected_currency') || 'USD';
+    return localStorage.getItem('sara_selected_currency') || 'USD';
   }
   return 'USD';
 }
@@ -84,7 +84,7 @@ export function setActiveCurrency(currencyCode) {
   // Validate ISO 4217 currency code against known supported currencies
   if (!DEFAULT_EXCHANGE_RATES.hasOwnProperty(currencyCode)) return false;
   if (typeof localStorage !== 'undefined') {
-    localStorage.setItem('cara_selected_currency', currencyCode);
+    localStorage.setItem('sara_selected_currency', currencyCode);
   }
   if (typeof window !== 'undefined' && typeof window.dispatchEvent === 'function') {
     window.dispatchEvent(new CustomEvent('currencyChange', { detail: { currency: currencyCode } }));

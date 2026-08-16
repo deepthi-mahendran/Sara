@@ -4,7 +4,7 @@
  */
 
 class WishlistNotesTagManager {
-  constructor(storageKey = 'cara_wishlist_notes_v2') {
+  constructor(storageKey = 'sara_wishlist_notes_v2') {
     this.storageKey = storageKey;
     this.data = this.loadData();
   }

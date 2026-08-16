@@ -8,7 +8,7 @@ import { maskCreditCardNumber } from '../../frontend/js/checkout-vault.js';
 // Re-implement AddressVault for isolated testing without localStorage side effects.
 class TestAddressVault {
   constructor() {
-    this.storageKey = 'cara_saved_addresses';
+    this.storageKey = 'sara_saved_addresses';
   }
 
   getAddresses() {

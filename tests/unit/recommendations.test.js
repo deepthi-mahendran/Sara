@@ -28,8 +28,8 @@ describe('recommendations.js unit tests', function () {
   });
 
   it('getRecommendations returns defaults when history is empty', function () {
-    storage['cara_view_history'] = '[]';
-    var history = JSON.parse(storage['cara_view_history'] || '[]');
+    storage['sara_view_history'] = '[]';
+    var history = JSON.parse(storage['sara_view_history'] || '[]');
     var result = history.length === 0
       ? [
           { id: 1, name: 'Cartoon Astronaut T-Shirt', price: 78, image: 'images/products/f1.jpg' },
@@ -41,12 +41,12 @@ describe('recommendations.js unit tests', function () {
   });
 
   it('getRecommendations returns recent history items', function () {
-    storage['cara_view_history'] = JSON.stringify([
+    storage['sara_view_history'] = JSON.stringify([
       { id: 10, name: 'Recent Item A', price: 50 },
       { id: 11, name: 'Recent Item B', price: 60 },
       { id: 12, name: 'Recent Item C', price: 70 }
     ]);
-    var history = JSON.parse(storage['cara_view_history'] || '[]');
+    var history = JSON.parse(storage['sara_view_history'] || '[]');
     var result = history.length === 0
       ? [
           { id: 1, name: 'Cartoon Astronaut T-Shirt', price: 78, image: 'images/products/f1.jpg' }
@@ -58,10 +58,10 @@ describe('recommendations.js unit tests', function () {
   });
 
   it('handles corrupted localStorage data gracefully', function () {
-    storage['cara_view_history'] = 'not valid json';
+    storage['sara_view_history'] = 'not valid json';
     var result;
     try {
-      result = JSON.parse(storage['cara_view_history']);
+      result = JSON.parse(storage['sara_view_history']);
     } catch (e) {
       result = [];
     }
@@ -79,8 +79,8 @@ describe('recommendations.js unit tests', function () {
   });
 
   it('falls back to defaults when history is a non-array', function () {
-    storage['cara_view_history'] = JSON.stringify({ not: 'an array' });
-    var history = JSON.parse(storage['cara_view_history']);
+    storage['sara_view_history'] = JSON.stringify({ not: 'an array' });
+    var history = JSON.parse(storage['sara_view_history']);
     var result = Array.isArray(history)
       ? history.slice(0, 4)
       : [
@@ -113,7 +113,7 @@ describe('recommendations.js unit tests', function () {
 describe('recommendations.js module', function () {
   it('returns defaults when localStorage contains corrupt JSON', function () {
     // The real module must not throw on corrupt storage.
-    localStorage.setItem('cara_view_history', '{not-json');
+    localStorage.setItem('sara_view_history', '{not-json');
     var engine = new RecommendationEngine();
     var result = engine.getRecommendations();
     expect(result.length).toBe(3);
@@ -121,7 +121,7 @@ describe('recommendations.js module', function () {
   });
 
   it('returns defaults when history is a non-array value', function () {
-    localStorage.setItem('cara_view_history', JSON.stringify({ bad: true }));
+    localStorage.setItem('sara_view_history', JSON.stringify({ bad: true }));
     var engine = new RecommendationEngine();
     expect(engine.getRecommendations().length).toBe(3);
   });
@@ -131,7 +131,7 @@ describe('recommendations.js module', function () {
     for (var i = 0; i < 6; i++) {
       items.push({ id: i, name: 'Item ' + i, price: i });
     }
-    localStorage.setItem('cara_view_history', JSON.stringify(items));
+    localStorage.setItem('sara_view_history', JSON.stringify(items));
     var engine = new RecommendationEngine();
     var result = engine.getRecommendations();
     expect(result.length).toBe(4);
@@ -140,7 +140,7 @@ describe('recommendations.js module', function () {
 
   it('returns a single history item without duplicating it', function () {
     localStorage.setItem(
-      'cara_view_history',
+      'sara_view_history',
       JSON.stringify([{ id: 42, name: 'Only Item', price: 99 }]),
     );
     var engine = new RecommendationEngine();

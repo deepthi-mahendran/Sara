@@ -6,7 +6,7 @@
 class SmartSearchEngine {
   constructor(products = []) {
     this.products = products;
-    this.historyKey = 'cara_smart_search_history_v2';
+    this.historyKey = 'sara_smart_search_history_v2';
     this.maxHistory = 10;
     this.synonyms = {
       shirt: ['tshirt', 't-shirt', 'top', 'tee', 'blouse'],

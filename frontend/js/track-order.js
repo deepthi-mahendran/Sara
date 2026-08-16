@@ -136,7 +136,7 @@ if (form) {
       // Check localStorage for custom mock orders first
       let customOrders = {};
       try {
-        const stored = localStorage.getItem('cara_custom_mock_orders');
+        const stored = localStorage.getItem('sara_custom_mock_orders');
         customOrders = stored ? JSON.parse(stored) : {};
       } catch (e) {
         customOrders = {};
@@ -168,10 +168,10 @@ function setLoading(isLoading) {
 function renderResult(order) {
   if (!order) return;
   // Save order tracking parameters to localStorage for history retention
-  localStorage.setItem('cara_last_tracked_id', order.id);
+  localStorage.setItem('sara_last_tracked_id', order.id);
   const emailInput = document.getElementById('orderEmail');
   if (emailInput) {
-    localStorage.setItem('cara_last_tracked_email', emailInput.value.trim());
+    localStorage.setItem('sara_last_tracked_email', emailInput.value.trim());
   }
 
   // Populate header
@@ -328,8 +328,8 @@ function calculateEstimatedDelivery(orderDateStr, carrier) {
 
 // Auto-fill tracked order from localStorage if available
 document.addEventListener('DOMContentLoaded', () => {
-  const cachedId = localStorage.getItem('cara_last_tracked_id');
-  const cachedEmail = localStorage.getItem('cara_last_tracked_email');
+  const cachedId = localStorage.getItem('sara_last_tracked_id');
+  const cachedEmail = localStorage.getItem('sara_last_tracked_email');
   if (cachedId && document.getElementById('orderId')) {
     document.getElementById('orderId').value = cachedId;
   }
@@ -450,14 +450,14 @@ document.addEventListener('DOMContentLoaded', () => {
       // Retrieve existing custom mock orders
       let customOrders = {};
       try {
-        const stored = localStorage.getItem('cara_custom_mock_orders');
+        const stored = localStorage.getItem('sara_custom_mock_orders');
         customOrders = stored ? JSON.parse(stored) : {};
       } catch (e) {
         customOrders = {};
       }
       customOrders[orderId] = customMockOrder;
       localStorage.setItem(
-        'cara_custom_mock_orders',
+        'sara_custom_mock_orders',
         JSON.stringify(customOrders),
       );
 

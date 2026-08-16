@@ -125,9 +125,9 @@
 
     saveFallbackOrder(record) {
       try {
-        const stored = JSON.parse(localStorage.getItem('cara_offline_orders') || '[]');
+        const stored = JSON.parse(localStorage.getItem('sara_offline_orders') || '[]');
         stored.push(record);
-        localStorage.setItem('cara_offline_orders', JSON.stringify(stored));
+        localStorage.setItem('sara_offline_orders', JSON.stringify(stored));
       } catch (e) {
         // ignore
       }
@@ -135,7 +135,7 @@
 
     getFallbackOrders() {
       try {
-        return JSON.parse(localStorage.getItem('cara_offline_orders') || '[]');
+        return JSON.parse(localStorage.getItem('sara_offline_orders') || '[]');
       } catch (e) {
         return [];
       }
@@ -145,7 +145,7 @@
       try {
         let stored = this.getFallbackOrders();
         stored = stored.filter((o) => o.offlineId !== offlineId);
-        localStorage.setItem('cara_offline_orders', JSON.stringify(stored));
+        localStorage.setItem('sara_offline_orders', JSON.stringify(stored));
       } catch (e) {
         // ignore
       }
@@ -187,7 +187,7 @@
           if (typeof customSubmitFn === 'function') {
             res = await customSubmitFn(payload);
           } else {
-            const apiBaseUrl = window.CARA_API_BASE_URL || '';
+            const apiBaseUrl = window.SARA_API_BASE_URL || '';
             res = await fetchFunc(`${apiBaseUrl}${this.apiEndpoint}`, {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },

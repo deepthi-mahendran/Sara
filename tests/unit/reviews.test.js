@@ -142,7 +142,7 @@ describe('reviews.js unit tests', function () {
     var result = (function () {
       try {
         return JSON.parse(
-          localStorage.getItem('cara_reviews_nonexistent') || '[]'
+          localStorage.getItem('sara_reviews_nonexistent') || '[]'
         );
       } catch (err) {
         return [];
@@ -152,13 +152,13 @@ describe('reviews.js unit tests', function () {
   });
 
   it('_readReviews parses stored reviews from localStorage', function () {
-    storage['cara_reviews_testpid'] = JSON.stringify([
+    storage['sara_reviews_testpid'] = JSON.stringify([
       { id: 1, rating: 5, author: 'Alice' }
     ]);
     var result = (function () {
       try {
         return JSON.parse(
-          localStorage.getItem('cara_reviews_testpid') || '[]'
+          localStorage.getItem('sara_reviews_testpid') || '[]'
         );
       } catch (err) {
         return [];
@@ -170,7 +170,7 @@ describe('reviews.js unit tests', function () {
 
   it('renders a correct aggregate average when ratings arrive as strings', function () {
     // Seed reviews with a numeric rating and a numeric-string rating.
-    storage['cara_reviews_strpid'] = JSON.stringify([
+    storage['sara_reviews_strpid'] = JSON.stringify([
       { id: 1, rating: 5, author: 'Alice' },
       { id: 2, rating: '5', author: 'Bob' },
       { id: 3, rating: 1, author: 'Carol' }

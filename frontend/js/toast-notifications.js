@@ -113,7 +113,7 @@
     processQueue();
   }
 
-  window.CaraNotifications = {
+  window.SaraNotifications = {
     info: function (msg, dur) {
       notify(msg, 'info', dur);
     },

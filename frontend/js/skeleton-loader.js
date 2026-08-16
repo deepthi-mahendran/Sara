@@ -66,7 +66,7 @@
     container.innerHTML = '';
   }
 
-  window.CaraSkeleton = {
+  window.SaraSkeleton = {
     show: showSkeleton,
     hide: hideSkeleton
   };

@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // Load saved draft
       let savedVal = null;
       try {
-        savedVal = localStorage.getItem(`cara_contact_draft_${field}`);
+        savedVal = localStorage.getItem(`sara_contact_draft_${field}`);
       } catch (err) {
         // Silently ignore localStorage failures in restricted environments
       }
@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     val = sec.sanitizeField(val);
                 }
                 try {
-                    localStorage.setItem(`cara_contact_draft_${field}`, val);
+                    localStorage.setItem(`sara_contact_draft_${field}`, val);
                 } catch (err) {
                     // Silently ignore localStorage failures in restricted environments
                 }
@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     fields.forEach((field) => {
       try {
-        localStorage.removeItem(`cara_contact_draft_${field}`);
+        localStorage.removeItem(`sara_contact_draft_${field}`);
       } catch (err) {
         // Silently ignore localStorage failures in restricted environments
       }

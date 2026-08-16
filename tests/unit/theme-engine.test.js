@@ -27,7 +27,7 @@ describe('Centralized Theme Engine Unit Tests', () => {
     const effective = applyTheme(THEMES.DARK);
     expect(effective).toBe(THEMES.DARK);
     expect(document.documentElement.getAttribute('data-theme')).toBe('dark');
-    expect(localStorage.getItem('cara_theme')).toBe('dark');
+    expect(localStorage.getItem('sara_theme')).toBe('dark');
   });
 
   it('should dispatch themeChanged event when applying new theme', () => {
@@ -60,7 +60,7 @@ describe('Centralized Theme Engine Unit Tests', () => {
 
   it('should store the raw choice and apply the effective theme', () => {
     applyTheme(THEMES.SYSTEM);
-    expect(localStorage.getItem('cara_theme')).toBe(THEMES.SYSTEM);
+    expect(localStorage.getItem('sara_theme')).toBe(THEMES.SYSTEM);
     const stored = document.documentElement.getAttribute('data-theme');
     expect([THEMES.LIGHT, THEMES.DARK]).toContain(stored);
   });

@@ -1,10 +1,10 @@
 openapi: 3.0.3
 info:
-  title: Cara E-Commerce REST API
-  description: API specifications for the frontend clients of the Cara E-Commerce storefront, including shopping cart persistence, checkout, user authentication, and order tracking services.
+  title: Sara E-Commerce REST API
+  description: API specifications for the frontend clients of the Sara E-Commerce storefront, including shopping cart persistence, checkout, user authentication, and order tracking services.
   version: 1.0.0
 servers:
-  - url: https://api.cara-store.local/v1
+  - url: https://api.sara-store.local/v1
     description: Mock development server
 paths:
   /auth/login:

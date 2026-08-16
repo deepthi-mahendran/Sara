@@ -2,7 +2,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   let timeout;
   const maxInactivity = 15 * 60 * 1000; // 15 Minutes
-  const apiBase = window.CARA_API_BASE_URL || '';
+  const apiBase = window.SARA_API_BASE_URL || '';
 
   const resetTimer = () => {
     clearTimeout(timeout);
@@ -12,12 +12,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const lockSession = () => {
     // Clear any legacy identity values left over from before tokens moved
     // to httpOnly cookies.
-    localStorage.removeItem('cara_user_session');
-    localStorage.removeItem('cara_user_token');
+    localStorage.removeItem('sara_user_session');
+    localStorage.removeItem('sara_user_token');
     localStorage.removeItem('access_token');
-    localStorage.removeItem('cara_user_email');
-    localStorage.removeItem('cara_user_name');
-    localStorage.removeItem('cara_user_role');
+    localStorage.removeItem('sara_user_email');
+    localStorage.removeItem('sara_user_name');
+    localStorage.removeItem('sara_user_role');
 
     // The real session lives in httpOnly cookies, which JS can't clear
     // directly, so ask the server to invalidate them.

@@ -11,7 +11,7 @@ The application implements persistent data states using synchronous key-value ma
 | Key | Format | Description |
 |---|---|---|
 | `productsInCart` | `Array<Object>` | Complete shopping cart records (name, price, quantity, size, image). |
-| `appliedCoupon` | `String` | Active promo coupon code applied to cart calculations (`CARA20` or `WELCOME10`). |
+| `appliedCoupon` | `String` | Active promo coupon code applied to cart calculations (`SARA20` or `WELCOME10`). |
 | `theme` | `String` | Visual dark or light preference setting (`dark` or `light`). |
 
 ## Event & Rendering Flow Diagram

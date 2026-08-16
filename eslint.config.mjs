@@ -30,8 +30,8 @@ const sharedAppGlobals = {
   hasPriceDropped: 'readonly',
   getPriceDropAmount: 'readonly',
   closeQuiz: 'readonly',
-  CaraToast: 'readonly',
-  CaraErrorBoundary: 'readonly',
+  SaraToast: 'readonly',
+  SaraErrorBoundary: 'readonly',
   Pose: 'readonly',
 };
 
@@ -41,7 +41,7 @@ export default [
       'node_modules/**',
       'dist/**',
       'build/**',
-      'Cara-main/**',
+      'Sara-main/**',
       '**/*.min.js',
     ],
   },

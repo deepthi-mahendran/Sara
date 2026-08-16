@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeEach, vi, afterEach } from 'vitest';
 
-describe('toast-notifications.js — CaraNotifications', () => {
+describe('toast-notifications.js — SaraNotifications', () => {
   beforeEach(async () => {
     vi.useFakeTimers();
     document.body.innerHTML = '';
@@ -26,7 +26,7 @@ describe('toast-notifications.js — CaraNotifications', () => {
   }
 
   it('info() creates a notification with correct message', () => {
-    window.CaraNotifications.info('Test info message', 5000);
+    window.SaraNotifications.info('Test info message', 5000);
     advanceFadeIn();
     const container = document.getElementById('sara-notif-container');
     expect(container).not.toBeNull();
@@ -36,7 +36,7 @@ describe('toast-notifications.js — CaraNotifications', () => {
   });
 
   it('success() creates a notification', () => {
-    window.CaraNotifications.success('Success!', 5000);
+    window.SaraNotifications.success('Success!', 5000);
     advanceFadeIn();
     const el = document.querySelector('[role="alert"]');
     expect(el).not.toBeNull();
@@ -44,7 +44,7 @@ describe('toast-notifications.js — CaraNotifications', () => {
   });
 
   it('warning() creates a notification', () => {
-    window.CaraNotifications.warning('Warning text', 5000);
+    window.SaraNotifications.warning('Warning text', 5000);
     advanceFadeIn();
     const el = document.querySelector('[role="alert"]');
     expect(el).not.toBeNull();
@@ -52,7 +52,7 @@ describe('toast-notifications.js — CaraNotifications', () => {
   });
 
   it('error() creates a notification', () => {
-    window.CaraNotifications.error('Error text', 5000);
+    window.SaraNotifications.error('Error text', 5000);
     advanceFadeIn();
     const el = document.querySelector('[role="alert"]');
     expect(el).not.toBeNull();
@@ -60,7 +60,7 @@ describe('toast-notifications.js — CaraNotifications', () => {
   });
 
   it('notifications have role="alert" for accessibility', () => {
-    window.CaraNotifications.info('Alert test', 5000);
+    window.SaraNotifications.info('Alert test', 5000);
     advanceFadeIn();
     const el = document.querySelector('[role="alert"]');
     expect(el).not.toBeNull();
@@ -68,7 +68,7 @@ describe('toast-notifications.js — CaraNotifications', () => {
   });
 
   it('click on notification triggers dismiss', () => {
-    window.CaraNotifications.info('Click to dismiss', 100000);
+    window.SaraNotifications.info('Click to dismiss', 100000);
     advanceFadeIn();
     const el = document.querySelector('[role="alert"]');
     expect(el).not.toBeNull();
@@ -79,7 +79,7 @@ describe('toast-notifications.js — CaraNotifications', () => {
   });
 
   it('auto-dismiss removes notification after duration', () => {
-    window.CaraNotifications.info('Auto-dismiss me', 2000);
+    window.SaraNotifications.info('Auto-dismiss me', 2000);
     advanceFadeIn();
     // Advance past the 2000ms auto-dismiss timer
     vi.advanceTimersByTime(2000);
@@ -89,10 +89,10 @@ describe('toast-notifications.js — CaraNotifications', () => {
   });
 
   it('dismiss() API manually removes the notification', () => {
-    window.CaraNotifications.info('Manual dismiss', 100000);
+    window.SaraNotifications.info('Manual dismiss', 100000);
     advanceFadeIn();
     expect(document.querySelector('[role="alert"]')).not.toBeNull();
-    window.CaraNotifications.dismiss(document.querySelector('[role="alert"]'));
+    window.SaraNotifications.dismiss(document.querySelector('[role="alert"]'));
     advanceDismiss();
     expect(document.querySelector('[role="alert"]')).toBeNull();
   });
@@ -104,9 +104,9 @@ describe('toast-notifications.js — CaraNotifications', () => {
       return 1;
     };
 
-    window.CaraNotifications.info('First', 500);
-    window.CaraNotifications.info('Second', 500);
-    window.CaraNotifications.info('Third', 500);
+    window.SaraNotifications.info('First', 500);
+    window.SaraNotifications.info('Second', 500);
+    window.SaraNotifications.info('Third', 500);
     vi.advanceTimersByTime(0);
 
     const messages = Array.from(

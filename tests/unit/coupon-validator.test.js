@@ -12,7 +12,7 @@ beforeEach(() => {
   vi.resetModules();
   setupDom();
   localStorage.clear();
-  window.CARA_COUPONS = { CARA20: 20, WELCOME10: 10 };
+  window.SARA_COUPONS = { SARA20: 20, WELCOME10: 10 };
   delete window.appliedCoupon;
   delete window.removeCoupon;
 });
@@ -33,12 +33,12 @@ describe('coupon-validator', () => {
   });
 
   it('applies a known coupon, trims/uppercases it, and persists it', async () => {
-    document.getElementById('couponCodeInput').value = 'cara20';
+    document.getElementById('couponCodeInput').value = 'sara20';
     await load();
     apply();
-    expect(feedback()).toContain('Coupon "CARA20" applied');
-    expect(window.appliedCoupon).toBe('CARA20');
-    expect(localStorage.getItem('appliedCoupon')).toBe('CARA20');
+    expect(feedback()).toContain('Coupon "SARA20" applied');
+    expect(window.appliedCoupon).toBe('SARA20');
+    expect(localStorage.getItem('appliedCoupon')).toBe('SARA20');
   });
 
   it('rejects an unknown coupon code', async () => {
@@ -58,30 +58,30 @@ describe('coupon-validator', () => {
   });
 
   it('couponApplied event carries the code and discount payload', async () => {
-    document.getElementById('couponCodeInput').value = 'CARA20';
+    document.getElementById('couponCodeInput').value = 'SARA20';
     const listener = vi.fn();
     window.addEventListener('couponApplied', listener);
     await load();
     apply();
 
     const detail = listener.mock.calls[0][0].detail;
-    expect(detail.code).toBe('CARA20');
+    expect(detail.code).toBe('SARA20');
     expect(detail.discountPct).toBe(20);
   });
 
   it('dispatches couponRemoved event when the coupon is removed', async () => {
-    window.appliedCoupon = 'CARA20';
+    window.appliedCoupon = 'SARA20';
     const listener = vi.fn();
     window.addEventListener('couponRemoved', listener);
     await load();
     window.removeCoupon();
 
     expect(listener).toHaveBeenCalledTimes(1);
-    expect(listener.mock.calls[0][0].detail).toEqual({ code: 'CARA20' });
+    expect(listener.mock.calls[0][0].detail).toEqual({ code: 'SARA20' });
   });
 
   it('removes the coupon via the exposed helper', async () => {
-    window.appliedCoupon = 'CARA20';
+    window.appliedCoupon = 'SARA20';
     await load();
     window.removeCoupon();
     expect(window.appliedCoupon).toBe('');

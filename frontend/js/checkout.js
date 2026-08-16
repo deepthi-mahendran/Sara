@@ -50,7 +50,7 @@ function safeParseJSON(key, fallback = '[]') {
   }
 }
 
-const API_BASE_URL = window.CARA_API_BASE_URL || '';
+const API_BASE_URL = window.SARA_API_BASE_URL || '';
 
 
 function buildAuthHeaders(extraHeaders = {}) {
@@ -325,7 +325,7 @@ form.addEventListener('submit', function (e) {
   try {
     submitCheckoutForm();
   } catch (error) {
-    CaraErrorBoundary.logError(error, '#checkoutForm submit');
+    SaraErrorBoundary.logError(error, '#checkoutForm submit');
     if (typeof window.showToast === 'function') {
       window.showToast('Something went wrong. Please try again.', 'error');
     }
@@ -449,21 +449,21 @@ function submitCheckoutForm() {
 
       // DEDUCT & ADD LOYALTY POINTS ON SUCCESSFUL ORDER
       const appliedPoints =
-        parseInt(localStorage.getItem('cara_applied_loyalty_points'), 10) || 0;
+        parseInt(localStorage.getItem('sara_applied_loyalty_points'), 10) || 0;
       const currentBalance =
-        parseInt(localStorage.getItem('cara_loyalty_balance'), 10) || (window.CARA_CONFIG ? window.CARA_CONFIG.LOYALTY.DEFAULT_BALANCE : 150);
+        parseInt(localStorage.getItem('sara_loyalty_balance'), 10) || (window.SARA_CONFIG ? window.SARA_CONFIG.LOYALTY.DEFAULT_BALANCE : 150);
       const subtotal = cart.reduce(
         (sum, item) =>
           sum + parsePriceString(item.price) * (parseInt(item.quantity, 10) || 1),
         0,
       );
-      const earnedPoints = Math.floor(subtotal * (window.CARA_CONFIG ? window.CARA_CONFIG.LOYALTY.POINTS_PER_RUPEE : 10));
+      const earnedPoints = Math.floor(subtotal * (window.SARA_CONFIG ? window.SARA_CONFIG.LOYALTY.POINTS_PER_RUPEE : 10));
       const newBalance = Math.max(
         0,
         currentBalance - appliedPoints + earnedPoints,
       );
-      localStorage.setItem('cara_loyalty_balance', newBalance);
-      localStorage.removeItem('cara_applied_loyalty_points');
+      localStorage.setItem('sara_loyalty_balance', newBalance);
+      localStorage.removeItem('sara_applied_loyalty_points');
 
       // CLEAR CART AFTER SUCCESSFUL ORDER
       localStorage.removeItem('productsInCart');
@@ -600,7 +600,7 @@ window.updateCheckoutSummary = function () {
 
   // Check coupon discount
   const couponCode = localStorage.getItem('appliedCoupon') || '';
-  const COUPONS = window.CARA_COUPONS || {};
+  const COUPONS = window.SARA_COUPONS || {};
   const couponPct = COUPONS[couponCode] || 0;
   const couponDiscountCents = Math.round(subtotalCents * couponPct / 100);
 
@@ -608,21 +608,21 @@ window.updateCheckoutSummary = function () {
   const hasUrgency =
     !window.urgencyTimerExpired &&
     document.getElementById('checkout-promo-alert-bar');
-  const urgencyDiscount = hasUrgency ? subtotal * (window.CARA_CONFIG ? window.CARA_CONFIG.URGENCY_DISCOUNT_PCT : 0.05) : 0;
+  const urgencyDiscount = hasUrgency ? subtotal * (window.SARA_CONFIG ? window.SARA_CONFIG.URGENCY_DISCOUNT_PCT : 0.05) : 0;
 
   // Check gift wrap
   const hasGiftWrap = document.getElementById('gift-wrap-opt')?.checked;
-  const giftCharge = hasGiftWrap ? (window.CARA_CONFIG ? window.CARA_CONFIG.GIFT_WRAP_CHARGE : 99) : 0;
+  const giftCharge = hasGiftWrap ? (window.SARA_CONFIG ? window.SARA_CONFIG.GIFT_WRAP_CHARGE : 99) : 0;
 
   // Calculate tax
-  const tax = subtotal * (window.CARA_CONFIG ? window.CARA_CONFIG.TAX_RATE : 0.18);
+  const tax = subtotal * (window.SARA_CONFIG ? window.SARA_CONFIG.TAX_RATE : 0.18);
 
   // Check loyalty points discount
   const loyaltyPoints =
-    parseInt(localStorage.getItem('cara_applied_loyalty_points'), 10) || 0;
-  const loyaltyDiscount = loyaltyPoints / (window.CARA_CONFIG ? window.CARA_CONFIG.LOYALTY.POINTS_PER_RUPEE : 10);
+    parseInt(localStorage.getItem('sara_applied_loyalty_points'), 10) || 0;
+  const loyaltyDiscount = loyaltyPoints / (window.SARA_CONFIG ? window.SARA_CONFIG.LOYALTY.POINTS_PER_RUPEE : 10);
 
-  const taxCents = Math.round(subtotalCents * (window.CARA_CONFIG ? window.CARA_CONFIG.TAX_RATE : 0.18));
+  const taxCents = Math.round(subtotalCents * (window.SARA_CONFIG ? window.SARA_CONFIG.TAX_RATE : 0.18));
   const giftChargeCents = Math.round(giftCharge * 100);
   const urgencyDiscountCents = Math.round(urgencyDiscount * 100);
   const loyaltyDiscountCents = Math.round(loyaltyDiscount * 100);
@@ -698,7 +698,7 @@ window.updateCheckoutSummary = function () {
       const divider = document.querySelector('.summary-divider');
       if (divider) divider.parentNode.insertBefore(urgencyRow, divider);
     }
-    urgencyRow.innerHTML = `<span>Urgency Promo (${window.CARA_CONFIG ? window.CARA_CONFIG.URGENCY_DISCOUNT_PCT * 100 : 5}%)</span><span id='urgency-discount-val'>-${formatCurrency(urgencyDiscountCents)}</span>`;
+    urgencyRow.innerHTML = `<span>Urgency Promo (${window.SARA_CONFIG ? window.SARA_CONFIG.URGENCY_DISCOUNT_PCT * 100 : 5}%)</span><span id='urgency-discount-val'>-${formatCurrency(urgencyDiscountCents)}</span>`;
   } else {
     if (urgencyRow) urgencyRow.remove();
   }
@@ -743,7 +743,7 @@ window.updateCheckoutSummary = function () {
     const removeLoyaltyBtn = document.getElementById('btnRemoveLoyalty');
     if (removeLoyaltyBtn) {
       removeLoyaltyBtn.onclick = function () {
-        localStorage.removeItem('cara_applied_loyalty_points');
+        localStorage.removeItem('sara_applied_loyalty_points');
         const pointsInput = document.getElementById('points-to-apply');
         if (pointsInput) pointsInput.value = '';
         const msgEl = document.getElementById('loyalty-msg');
@@ -776,7 +776,7 @@ function initCheckoutPage() {
   initCheckoutValidation();
   prefillAccountEmail();
 
-  CaraErrorBoundary.wrap('#checkoutForm', function () {
+  SaraErrorBoundary.wrap('#checkoutForm', function () {
     renderCheckoutItems();
     window.updateCheckoutSummary();
   });

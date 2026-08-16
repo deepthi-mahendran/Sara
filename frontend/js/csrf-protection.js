@@ -16,7 +16,7 @@ export function getOrCreateCSRFToken() {
   if (typeof sessionStorage === 'undefined') return 'fallback-csrf-token';
   let token;
   try {
-    token = sessionStorage.getItem('cara_csrf_token');
+    token = sessionStorage.getItem('sara_csrf_token');
   } catch (e) {
     // Storage unavailable; return a fresh token without persisting.
     return generateCSRFToken();
@@ -24,7 +24,7 @@ export function getOrCreateCSRFToken() {
   if (!token) {
     token = generateCSRFToken();
     try {
-      sessionStorage.setItem('cara_csrf_token', token);
+      sessionStorage.setItem('sara_csrf_token', token);
     } catch (e) {
       // Ignore storage failures, the token is still valid for this session.
     }

@@ -92,7 +92,7 @@ The `OfflineOrderQueue` module (`js/offline-order-queue.js`) provides an offline
 
 - **OfflineOrderQueue class** (`js/offline-order-queue.js`): Main coordinator that manages order enqueuing, network listeners, and sync.
 - **offline-order-worker.js** (`js/workers/`): Web Worker that handles IndexedDB storage for pending orders.
-- **localStorage fallback**: If Web Workers are unavailable, orders are stored in `cara_offline_orders` in localStorage.
+- **localStorage fallback**: If Web Workers are unavailable, orders are stored in `sara_offline_orders` in localStorage.
 
 ### Constructor Options
 

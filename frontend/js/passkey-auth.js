@@ -63,7 +63,7 @@ function isValidEmail(email) {
       throw new Error('WebAuthn biometrics is not supported in this browser.');
     }
 
-    const apiBaseUrl = options.apiBaseUrl || window.CARA_API_BASE_URL || '';
+    const apiBaseUrl = options.apiBaseUrl || window.SARA_API_BASE_URL || '';
     const fetchFunc = typeof window.fetchWithTimeout === 'function' ? window.fetchWithTimeout : fetch;
 
     // Step 1: Fetch registration challenge from backend
@@ -135,7 +135,7 @@ function isValidEmail(email) {
       throw new Error('WebAuthn biometrics is not supported in this browser.');
     }
 
-    const apiBaseUrl = options.apiBaseUrl || window.CARA_API_BASE_URL || '';
+    const apiBaseUrl = options.apiBaseUrl || window.SARA_API_BASE_URL || '';
     const fetchFunc = typeof window.fetchWithTimeout === 'function' ? window.fetchWithTimeout : fetch;
 
     // Step 1: Request authentication challenge options

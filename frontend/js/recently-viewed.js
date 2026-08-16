@@ -189,12 +189,12 @@
     if (productId) {
       try {
         const history = safeParseList(
-          root.localStorage.getItem('cara_view_history'),
+          root.localStorage.getItem('sara_view_history'),
         );
         if (!history.includes(productId)) {
           history.unshift(productId);
           root.localStorage.setItem(
-            'cara_view_history',
+            'sara_view_history',
             JSON.stringify(history.slice(0, MAX_ITEMS)),
           );
         }

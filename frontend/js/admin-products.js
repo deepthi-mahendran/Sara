@@ -1,4 +1,4 @@
-var API_BASE = window.CARA_API_BASE_URL || '';
+var API_BASE = window.SARA_API_BASE_URL || '';
 
 
 

@@ -5,7 +5,7 @@
  * operations for storing offline orders without blocking the main UI thread.
  */
 
-const DB_NAME = 'CaraOfflineDB';
+const DB_NAME = 'SaraOfflineDB';
 const DB_VERSION = 1;
 const STORE_NAME = 'pending_orders';
 

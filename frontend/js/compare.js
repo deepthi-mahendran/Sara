@@ -6,7 +6,7 @@
 (function () {
   'use strict';
 
-  const STORAGE_KEY = 'cara_compare_list';
+  const STORAGE_KEY = 'sara_compare_list';
   const MAX_ITEMS = 4;
   const engine = typeof InteractiveProductComparator !== 'undefined' ? new InteractiveProductComparator(STORAGE_KEY) : null;
 
@@ -238,7 +238,7 @@
           html += '<div class="prod-name">' + p.name + '</div>';
           html += '<div class="prod-brand">' + (p.brand || '—') + '</div>';
           html +=
-            '<button class="remove-compare-btn" onclick="window.CaraCompare.remove(\'' +
+            '<button class="remove-compare-btn" onclick="window.SaraCompare.remove(\'' +
             p.id +
             '\')">✕ Remove</button>';
           html += '</th>';
@@ -287,7 +287,7 @@
      PUBLIC API
      ============================================================ */
 
-  window.CaraCompare = {
+  window.SaraCompare = {
     add: addToCompare,
     remove: function (id) {
       removeFromCompare(id);

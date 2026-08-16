@@ -1,5 +1,5 @@
 (() => {
-  window.CARA_CONFIG = {
+  window.SARA_CONFIG = {
     TAX_RATE: 0.18,
     SHIPPING: {
       FEE: 150,
@@ -12,8 +12,8 @@
       DEFAULT_BALANCE: 150,
     },
   };
-  window.CARA_COUPONS = {
-    CARA20: 20,
+  window.SARA_COUPONS = {
+    SARA20: 20,
     WELCOME10: 10,
   };
   // Safe JSON reader for localStorage values (corrupt data never throws).
@@ -1134,9 +1134,9 @@
     let shipping = 0;
     if (subtotal > 0)
       shipping =
-        subtotal >= window.CARA_CONFIG.SHIPPING.FREE_THRESHOLD
+        subtotal >= window.SARA_CONFIG.SHIPPING.FREE_THRESHOLD
           ? 0
-          : window.CARA_CONFIG.SHIPPING.FEE;
+          : window.SARA_CONFIG.SHIPPING.FEE;
 
     if (shippingEl) {
       shippingEl.innerText = shipping === 0 ? 'FREE' : formatCurrency(shipping);
@@ -1146,12 +1146,12 @@
       );
     }
 
-    const tax = Math.round(subtotal * window.CARA_CONFIG.TAX_RATE);
+    const tax = Math.round(subtotal * window.SARA_CONFIG.TAX_RATE);
     if (taxEl) taxEl.innerText = formatCurrency(tax);
 
     let discount = 0;
     const couponPct =
-      window.CARA_COUPONS && window.CARA_COUPONS[window.appliedCoupon];
+      window.SARA_COUPONS && window.SARA_COUPONS[window.appliedCoupon];
     if (couponPct && subtotal > 0) {
       discount = Math.round(subtotal * (couponPct / 100));
     }
@@ -1230,7 +1230,7 @@
     const promoInput = document.getElementById('coupon-code');
     if (!promoInput) return;
     const code = promoInput.value.trim().toUpperCase();
-    const coupons = window.CARA_COUPONS || {};
+    const coupons = window.SARA_COUPONS || {};
 
     if (code === '') {
       showToast('Please enter a coupon code.', 'warning');
@@ -1247,7 +1247,7 @@
       loadCart();
     } else {
       showToast(
-        `Invalid promo code. Try ${Object.keys(coupons)[0] || 'CARA20'}!`,
+        `Invalid promo code. Try ${Object.keys(coupons)[0] || 'SARA20'}!`,
         'error',
       );
     }
@@ -1320,29 +1320,29 @@
     if (!productSection) return;
 
     if (
-      !window.CaraErrorBoundary ||
-      typeof window.CaraErrorBoundary.wrap !== 'function'
+      !window.SaraErrorBoundary ||
+      typeof window.SaraErrorBoundary.wrap !== 'function'
     ) {
-      window.CaraErrorBoundary = window.CaraErrorBoundary || {};
-      window.CaraErrorBoundary.wrap = function (selector, fn) {
+      window.SaraErrorBoundary = window.SaraErrorBoundary || {};
+      window.SaraErrorBoundary.wrap = function (selector, fn) {
         try {
           return fn();
         } catch (e) {
           if (typeof window.logError === 'function') {
             window.logError(
-              'CaraErrorBoundary fallback caught error for ' + selector,
+              'SaraErrorBoundary fallback caught error for ' + selector,
               e,
             );
           } else {
             console.error(
-              'CaraErrorBoundary fallback caught error for ' + selector,
+              'SaraErrorBoundary fallback caught error for ' + selector,
               e,
             );
           }
         }
       };
     }
-    CaraErrorBoundary.wrap('#product1', function () {
+    SaraErrorBoundary.wrap('#product1', function () {
       const productsPerPage = 16;
 
       const productContainers = Array.from(

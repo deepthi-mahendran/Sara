@@ -1,11 +1,11 @@
-// CaraErrorBoundary — isolates runtime errors in dynamic sections
+// SaraErrorBoundary — isolates runtime errors in dynamic sections
 // so one broken component doesn't blank out the whole page.
 
-window.CaraErrorBoundary = (function () {
+window.SaraErrorBoundary = (function () {
   // Internal silent logging hook — replace with error-logger.js wiring in future
   var _logHook = function (msg, error) {
     // Silent by default — no console output in production builds.
-    // Wire in window.CaraErrorLogger and call _logHook('error', {msg, error})
+    // Wire in window.SaraErrorLogger and call _logHook('error', {msg, error})
     // to integrate with a centralized logging service.
   };
 
@@ -33,7 +33,7 @@ window.CaraErrorBoundary = (function () {
   }
 
   function logError(error, context) {
-    _logHook('[CaraErrorBoundary] Error in "' + context + '":', error);
+    _logHook('[SaraErrorBoundary] Error in "' + context + '":', error);
   }
 
   function wrap(selector, renderFn) {

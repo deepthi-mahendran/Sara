@@ -3,7 +3,7 @@
  */
 export class RecommendationEngine {
     constructor() {
-        this.historyKey = 'cara_view_history';
+        this.historyKey = 'sara_view_history';
     }
 
     getRecommendations() {

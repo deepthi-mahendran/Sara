@@ -5,9 +5,9 @@
 
 export class CartRecoveryEngine {
   constructor(options = {}) {
-    this.storageKey = options.storageKey || 'cara_abandoned_cart';
+    this.storageKey = options.storageKey || 'sara_abandoned_cart';
     this.sessionTimeoutMs = options.sessionTimeoutMs || 15 * 60 * 1000; // 15 minutes
-    this.channel = typeof BroadcastChannel !== 'undefined' ? new BroadcastChannel('cara_cart_sync') : null;
+    this.channel = typeof BroadcastChannel !== 'undefined' ? new BroadcastChannel('sara_cart_sync') : null;
     this.initListeners();
   }
 

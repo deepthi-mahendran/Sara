@@ -1,8 +1,8 @@
 window.exportWishlistToCSV = function () {
   const wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
   if (wishlist.length === 0) {
-    if (typeof CaraToast !== 'undefined')
-      CaraToast.show('Wishlist is empty!', 'warning');
+    if (typeof SaraToast !== 'undefined')
+      SaraToast.show('Wishlist is empty!', 'warning');
     return;
   }
 
@@ -14,7 +14,7 @@ window.exportWishlistToCSV = function () {
   const encodedUri = encodeURI(csvContent);
   const link = document.createElement('a');
   link.setAttribute('href', encodedUri);
-  link.setAttribute('download', 'cara_wishlist.csv');
+  link.setAttribute('download', 'sara_wishlist.csv');
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);

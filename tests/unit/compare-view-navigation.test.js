@@ -7,7 +7,7 @@
  */
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
-const COMPARE_LIST_KEY = 'cara_compare_list';
+const COMPARE_LIST_KEY = 'sara_compare_list';
 
 function seedCompareList(list) {
   sessionStorage.setItem(COMPARE_LIST_KEY, JSON.stringify(list));
@@ -104,7 +104,7 @@ describe('compare.js view-product navigation', () => {
   });
 });
 
-describe('compare.js CaraCompare list API', () => {
+describe('compare.js SaraCompare list API', () => {
   beforeEach(() => {
     vi.resetModules();
     vi.unstubAllGlobals();
@@ -118,34 +118,34 @@ describe('compare.js CaraCompare list API', () => {
 
   it('adds a product and removes it leaving an empty list', async () => {
     await import('../../frontend/js/compare.js');
-    const added = window.CaraCompare.add({ id: 'p1', name: 'Tee' });
+    const added = window.SaraCompare.add({ id: 'p1', name: 'Tee' });
     expect(added).toBe(true);
-    expect(window.CaraCompare.getList().length).toBe(1);
+    expect(window.SaraCompare.getList().length).toBe(1);
 
-    window.CaraCompare.remove('p1');
-    expect(window.CaraCompare.getList().length).toBe(0);
+    window.SaraCompare.remove('p1');
+    expect(window.SaraCompare.getList().length).toBe(0);
   });
 
   it('removing an unknown id is a safe no-op', async () => {
     await import('../../frontend/js/compare.js');
-    window.CaraCompare.add({ id: 'p1', name: 'Tee' });
+    window.SaraCompare.add({ id: 'p1', name: 'Tee' });
 
-    expect(() => window.CaraCompare.remove('missing')).not.toThrow();
-    expect(window.CaraCompare.getList().length).toBe(1);
+    expect(() => window.SaraCompare.remove('missing')).not.toThrow();
+    expect(window.SaraCompare.getList().length).toBe(1);
   });
 
   it('removing from an empty list does not throw', async () => {
     await import('../../frontend/js/compare.js');
-    expect(() => window.CaraCompare.remove('p1')).not.toThrow();
-    expect(window.CaraCompare.getList()).toEqual([]);
+    expect(() => window.SaraCompare.remove('p1')).not.toThrow();
+    expect(window.SaraCompare.getList()).toEqual([]);
   });
 
   it('clear empties the stored list', async () => {
     await import('../../frontend/js/compare.js');
-    window.CaraCompare.add({ id: 'p1', name: 'Tee' });
-    window.CaraCompare.add({ id: 'p2', name: 'Shirt' });
+    window.SaraCompare.add({ id: 'p1', name: 'Tee' });
+    window.SaraCompare.add({ id: 'p2', name: 'Shirt' });
 
-    window.CaraCompare.clear();
-    expect(window.CaraCompare.getList()).toEqual([]);
+    window.SaraCompare.clear();
+    expect(window.SaraCompare.getList()).toEqual([]);
   });
 });

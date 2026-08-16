@@ -3,7 +3,7 @@
  * Handles client-side coupon application and validation on the checkout page.
  *
  * Supported Coupon Codes:
- *  - CARA20: 20% discount on cart subtotal
+ *  - SARA20: 20% discount on cart subtotal
  *  - WELCOME10: 10% discount on cart subtotal
  *
  * Features:
@@ -16,7 +16,7 @@
 (function () {
   'use strict';
 
-  const COUPONS = window.CARA_COUPONS || {};
+  const COUPONS = window.SARA_COUPONS || {};
 
   // ── DOM references ──────────────────────────────────────────────────────────
   const couponInput = document.getElementById('couponCodeInput');
@@ -79,7 +79,7 @@
         window.updateCheckoutSummary();
       }
     } else {
-      showFeedback('Invalid coupon code. Try CARA20 or WELCOME10.', 'error');
+      showFeedback('Invalid coupon code. Try SARA20 or WELCOME10.', 'error');
       couponInput.classList.remove('is-valid');
       couponInput.classList.add('is-invalid');
     }

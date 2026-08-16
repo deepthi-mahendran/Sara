@@ -6,7 +6,7 @@ describe('ProductReviewManager Unit Tests', () => {
 
   beforeEach(() => {
     localStorage.clear();
-    manager = new ProductReviewManager('cara_test_reviews');
+    manager = new ProductReviewManager('sara_test_reviews');
   });
 
   it('should validate review inputs correctly', () => {
@@ -74,7 +74,7 @@ describe('ProductReviewManager Unit Tests', () => {
   it('should skip corrupt ratings when computing the summary', () => {
     // Seed the store directly with a legacy corrupt rating.
     localStorage.setItem(
-      'cara_test_reviews',
+      'sara_test_reviews',
       JSON.stringify({
         'prod-x': [
           { id: 'r1', rating: 5, authorName: 'Alice' },
@@ -83,7 +83,7 @@ describe('ProductReviewManager Unit Tests', () => {
         ],
       }),
     );
-    const manager2 = new ProductReviewManager('cara_test_reviews');
+    const manager2 = new ProductReviewManager('sara_test_reviews');
     const summary = manager2.getProductRatingSummary('prod-x');
     expect(summary.totalReviews).toBe(3);
     expect(summary.averageRating).toBe(4.0);

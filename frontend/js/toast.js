@@ -1,4 +1,4 @@
-export class CaraToast {
+export class SaraToast {
   static show(message, type = 'info', duration = 4000) {
     const container =
       document.getElementById('toast-container') ||
@@ -71,5 +71,5 @@ export class CaraToast {
 }
 
 if (typeof window !== 'undefined') {
-  window.CaraToast = CaraToast;
+  window.SaraToast = SaraToast;
 }

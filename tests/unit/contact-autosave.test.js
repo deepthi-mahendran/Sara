@@ -31,21 +31,21 @@ describe('contact-autosave', () => {
     const input = document.querySelector('[name="name"]');
     input.value = 'Alice';
     input.dispatchEvent(new Event('input', { bubbles: true }));
-    expect(localStorage.getItem('cara_contact_draft_name')).toBe('Alice');
+    expect(localStorage.getItem('sara_contact_draft_name')).toBe('Alice');
   });
 
   it('restores a previously saved draft on load', async () => {
-    localStorage.setItem('cara_contact_draft_email', 'a@b.com');
+    localStorage.setItem('sara_contact_draft_email', 'a@b.com');
     await load();
     expect(document.querySelector('[name="email"]').value).toBe('a@b.com');
   });
 
   it('clears drafts on submit', async () => {
-    localStorage.setItem('cara_contact_draft_name', 'Alice');
+    localStorage.setItem('sara_contact_draft_name', 'Alice');
     await load();
     const form = document.querySelector('.contact-form form');
     form.dispatchEvent(new Event('submit', { cancelable: true }));
-    expect(localStorage.getItem('cara_contact_draft_name')).toBeNull();
+    expect(localStorage.getItem('sara_contact_draft_name')).toBeNull();
   });
 
   it('should return false when contact data is null', () => {

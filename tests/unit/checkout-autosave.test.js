@@ -10,11 +10,11 @@ describe('Checkout Autosave Unit Tests', () => {
 
   it('should save field draft into sessionStorage', () => {
     saveDraftField('checkout-firstname', 'Jane');
-    expect(sessionStorage.getItem('cara_checkout_draft_checkout-firstname')).toBe('Jane');
+    expect(sessionStorage.getItem('sara_checkout_draft_checkout-firstname')).toBe('Jane');
   });
 
   it('should retrieve saved draft field from sessionStorage', () => {
-    sessionStorage.setItem('cara_checkout_draft_checkout-lastname', 'Doe');
+    sessionStorage.setItem('sara_checkout_draft_checkout-lastname', 'Doe');
     expect(getDraftField('checkout-lastname')).toBe('Doe');
   });
 

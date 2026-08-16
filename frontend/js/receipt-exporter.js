@@ -17,7 +17,7 @@
   'use strict';
 
   async function fetchDigitalReceipt(orderId, options = {}) {
-    const apiBaseUrl = options.apiBaseUrl || window.CARA_API_BASE_URL || '';
+    const apiBaseUrl = options.apiBaseUrl || window.SARA_API_BASE_URL || '';
     const fetchFunc = typeof window.fetchWithTimeout === 'function' ? window.fetchWithTimeout : fetch;
 
     try {
@@ -127,7 +127,7 @@
   }
 
   async function verifyReceiptSignature(signature, options = {}) {
-    const apiBaseUrl = options.apiBaseUrl || window.CARA_API_BASE_URL || '';
+    const apiBaseUrl = options.apiBaseUrl || window.SARA_API_BASE_URL || '';
     const fetchFunc = typeof window.fetchWithTimeout === 'function' ? window.fetchWithTimeout : fetch;
 
     try {

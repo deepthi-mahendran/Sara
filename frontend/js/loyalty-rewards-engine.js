@@ -4,7 +4,7 @@
  */
 
 class LoyaltyRewardsEngine {
-  constructor(storageKey = 'cara_loyalty_data_v2') {
+  constructor(storageKey = 'sara_loyalty_data_v2') {
     this.storageKey = storageKey;
     this.tiers = [
       { name: 'Bronze', minPoints: 0, multiplier: 1 },

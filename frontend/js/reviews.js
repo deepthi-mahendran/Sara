@@ -3,7 +3,7 @@
  * Interactive star-rating and review submission system for Sara product pages.
  *
  * Architecture:
- *  - Reviews are persisted to localStorage under `cara_reviews_<productId>`.
+ *  - Reviews are persisted to localStorage under `sara_reviews_<productId>`.
  *  - On authenticated sessions the module attempts to POST/GET reviews from
  *    /api/reviews/<productId> and falls back to localStorage gracefully.
  *  - Ratings are aggregated on the client to display average stars and
@@ -18,7 +18,7 @@
 (function () {
   'use strict';
 
-  const STORAGE_PREFIX = 'cara_reviews_';
+  const STORAGE_PREFIX = 'sara_reviews_';
   const MAX_REVIEWS_STORED = 50;
   const reviewEngine = typeof ProductReviewAggregator !== 'undefined' ? new ProductReviewAggregator() : null;
 

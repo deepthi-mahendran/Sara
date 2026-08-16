@@ -1,7 +1,7 @@
 # Promo Discount System Architecture
 
 ## Overview
-The `PromoDiscountCalculator` evaluates cart subtotal against active coupon definitions (`WELCOME10`, `CARA20`, `FLAT15`, `FREESHIP`), minimum spend conditions, and automatic free shipping thresholds ($75+).
+The `PromoDiscountCalculator` evaluates cart subtotal against active coupon definitions (`WELCOME10`, `SARA20`, `FLAT15`, `FREESHIP`), minimum spend conditions, and automatic free shipping thresholds ($75+).
 
 ## Calculated Outputs
 - `subtotal`: Base item cost total.

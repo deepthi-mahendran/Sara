@@ -23,7 +23,7 @@ describe('login.js', () => {
         <button type="submit" id="loginSubmitBtn"><span>Sign In</span></button>
       </form>
     `;
-    window.CARA_API_BASE_URL = '';
+    window.SARA_API_BASE_URL = '';
   });
 
   it('posts credentials to /api/auth/login with cookies', async () => {

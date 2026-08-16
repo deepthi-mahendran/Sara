@@ -86,11 +86,11 @@ These JS files exist in [`frontend/js/`](file:///c:/Users/LENOVO/Downloads/Portf
 
 ## 3. One-Shot Migration Scripts (20 Python files — all dead)
 
-The entire [`scripts/`](file:///c:/Users/LENOVO/Downloads/Portfolio%20pieces/Sara/scripts) directory contains Python files that were used **once** during development (e.g., rebranding "Cara" → "Sara", reorganizing HTML into `pages/`, fixing CSS issues). They have hardcoded absolute paths and are never meant to be run again:
+The entire [`scripts/`](file:///c:/Users/LENOVO/Downloads/Portfolio%20pieces/Sara/scripts) directory contains Python files that were used **once** during development (e.g., rebranding "Sara" → "Sara", reorganizing HTML into `pages/`, fixing CSS issues). They have hardcoded absolute paths and are never meant to be run again:
 
 | Script | Purpose | Status |
 |--------|---------|--------|
-| `rebrand_cara_to_sara.py` | One-time find/replace "Cara" → "Sara" | ✅ Already applied |
+| `rebrand_sara_to_sara.py` | One-time find/replace "Sara" → "Sara" | ✅ Already applied |
 | `move_frontend_to_folder.py` | Moved files into `frontend/` | ✅ Already applied |
 | `reorganize_html_pages.py` | Moved HTML into `pages/` subfolders | ✅ Already applied |
 | `fix_badge_css.py` | Injected badge CSS into stylesheets | ✅ Already applied |

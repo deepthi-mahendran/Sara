@@ -21,7 +21,7 @@ export function getSystemTheme() {
 export function getStoredTheme() {
   if (typeof localStorage !== 'undefined') {
     try {
-      return localStorage.getItem('cara_theme') || THEMES.SYSTEM;
+      return localStorage.getItem('sara_theme') || THEMES.SYSTEM;
     } catch (e) {
       return THEMES.SYSTEM;
     }
@@ -46,7 +46,7 @@ export function applyTheme(themeChoice) {
 
   if (typeof localStorage !== 'undefined') {
     try {
-      localStorage.setItem('cara_theme', themeChoice);
+      localStorage.setItem('sara_theme', themeChoice);
     } catch (e) {
       // Silently fail if localStorage is unavailable (e.g., Safari private mode, quota exceeded)
     }

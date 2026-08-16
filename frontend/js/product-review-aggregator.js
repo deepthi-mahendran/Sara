@@ -4,7 +4,7 @@
  */
 
 class ProductReviewAggregator {
-  constructor(storageKey = 'cara_reviews_v2') {
+  constructor(storageKey = 'sara_reviews_v2') {
     this.storageKey = storageKey;
     this.reviews = this.loadReviews();
   }

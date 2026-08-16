@@ -45,7 +45,7 @@ test('fetchData aborts the previous request for the same request key', async () 
   vm.createContext(context);
   vm.runInContext(script, context);
 
-  const api = context.window.CaraAPI;
+  const api = context.window.SaraAPI;
   const firstRequest = api.fetchData('/api/products/1', {
     requestKey: 'product-details',
   });

@@ -80,7 +80,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY", "fallback_secret_key_for_dev")
 ```
 # .env (658 bytes) is in the repo root AND backend/.env
 SECRET_KEY=change-me-in-production-use-secrets-token-hex
-POSTGRES_PASSWORD=cara
+POSTGRES_PASSWORD=sara
 ```
 
 **Issue**: Even though it's a placeholder value, the `.env` file is tracked in git. The `.gitignore` lists `.env` but the file was committed before `.gitignore` was added.
@@ -130,13 +130,13 @@ The checkout flow creates orders and deducts inventory but **never charges the c
 
 ```python
 # orders.py:244
-COUPONS = {"CARA20": 20, "WELCOME10": 10}
+COUPONS = {"SARA20": 20, "WELCOME10": 10}
 ```
 
 **Issues**:
 - Coupons are static Python constants, not database-backed
 - No usage limits, no per-user limits, no expiry dates
-- Coupon name `CARA20` is from the pre-rebrand era
+- Coupon name `SARA20` is from the pre-rebrand era
 - No coupon creation/management API
 - Discount is applied on subtotal but validated only on the backend — a mismatch could confuse users
 
@@ -266,12 +266,12 @@ There is no script to populate the products table with initial data. The fronten
 
 ```yaml
 # docker-compose.yml:5-7
-POSTGRES_USER: ${POSTGRES_USER:-cara}
-POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-cara}
-POSTGRES_DB: ${POSTGRES_DB:-cara_db}
+POSTGRES_USER: ${POSTGRES_USER:-sara}
+POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-sara}
+POSTGRES_DB: ${POSTGRES_DB:-sara_db}
 ```
 
-Default password is `cara` — discoverable from the public repo.
+Default password is `sara` — discoverable from the public repo.
 
 ---
 

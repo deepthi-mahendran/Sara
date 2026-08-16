@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (!giftCheckbox) return;
 
-  const STORAGE_KEY = 'cara_gift_wrap';
+  const STORAGE_KEY = 'sara_gift_wrap';
 
   // Restore the saved gift wrap choice so it survives page reloads.
   let saved = false;

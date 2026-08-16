@@ -24,7 +24,7 @@ describe('Currency Converter Unit Tests', () => {
     const success = setActiveCurrency('EUR');
     expect(success).toBe(true);
     expect(getActiveCurrency()).toBe('EUR');
-    expect(localStorage.getItem('cara_selected_currency')).toBe('EUR');
+    expect(localStorage.getItem('sara_selected_currency')).toBe('EUR');
   });
 
   it('should reject invalid currency codes', () => {
@@ -58,7 +58,7 @@ describe('Currency Converter Unit Tests', () => {
     expect(rates.EUR).toBe(0.95);
     expect(rates.GBP).toBe(0.82);
 
-    const cached = JSON.parse(localStorage.getItem('cara_exchange_rates_cache'));
+    const cached = JSON.parse(localStorage.getItem('sara_exchange_rates_cache'));
     expect(cached.rates.EUR).toBe(0.95);
     expect(cached.timestamp).toBe(baseNow);
 

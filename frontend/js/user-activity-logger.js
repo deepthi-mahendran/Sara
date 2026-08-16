@@ -3,7 +3,7 @@
  * Logs key navigation and user action events locally for analytics telemetry.
  */
 export class UserActivityLogger {
-  constructor(storageKey = 'cara_activity_logs') {
+  constructor(storageKey = 'sara_activity_logs') {
     this.storageKey = storageKey;
     this.maxEntries = 50;
   }

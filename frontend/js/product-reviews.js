@@ -4,7 +4,7 @@
  */
 
 export class ProductReviewManager {
-  constructor(storageKey = 'cara_product_reviews') {
+  constructor(storageKey = 'sara_product_reviews') {
     this.storageKey = storageKey;
     this.reviews = this.loadFromStorage();
   }

@@ -2,13 +2,13 @@
   db:
     image: postgres:16-alpine
     environment:
-      POSTGRES_USER: ${POSTGRES_USER:-cara}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-cara}
-      POSTGRES_DB: ${POSTGRES_DB:-cara_db}
+      POSTGRES_USER: ${POSTGRES_USER:-sara}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-sara}
+      POSTGRES_DB: ${POSTGRES_DB:-sara_db}
     volumes:
-      - cara_pgdata:/var/lib/postgresql/data
+      - sara_pgdata:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-cara} -d ${POSTGRES_DB:-cara_db}"]
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-sara} -d ${POSTGRES_DB:-sara_db}"]
       interval: 5s
       timeout: 5s
       retries: 10
@@ -20,7 +20,7 @@
       context: ./backend
       dockerfile: Dockerfile
     environment:
-      DATABASE_URL: postgresql://${POSTGRES_USER:-cara}:${POSTGRES_PASSWORD:-cara}@db:5432/${POSTGRES_DB:-cara_db}
+      DATABASE_URL: postgresql://${POSTGRES_USER:-sara}:${POSTGRES_PASSWORD:-sara}@db:5432/${POSTGRES_DB:-sara_db}
       SECRET_KEY: ${SECRET_KEY:-change-me-in-production-use-secrets-token-hex}
       COOKIE_SECURE: ${COOKIE_SECURE:-false}
       CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost:8080,http://127.0.0.1:8080,http://localhost:5500,http://127.0.0.1:5500}
@@ -52,4 +52,4 @@
       retries: 5
 
 volumes:
-  cara_pgdata:
+  sara_pgdata:

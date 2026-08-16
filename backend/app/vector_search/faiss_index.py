@@ -32,7 +32,7 @@ def _load_clip():
     if _clip_loaded:
         return _clip_model, _clip_processor
     _clip_loaded = True
-    if os.environ.get("CARA_DISABLE_CLIP", "").lower() in ("1", "true", "yes"):
+    if os.environ.get("SARA_DISABLE_CLIP", "").lower() in ("1", "true", "yes"):
         _clip_model, _clip_processor = None, None
         return _clip_model, _clip_processor
     try:

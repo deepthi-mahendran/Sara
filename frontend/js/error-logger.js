@@ -1,6 +1,6 @@
 // Client-Side Error Boundary and Logger
 
-// Internal silent logging hook — replace with window.CaraErrorLogger in future
+// Internal silent logging hook — replace with window.SaraErrorLogger in future
 var _logHook = function (msg, error) {
   // Silent by default — no console output in production builds.
   // Wire in a centralized logging service to capture these.
@@ -9,7 +9,7 @@ var _logHook = function (msg, error) {
 window.addEventListener('error', (event) => {
   _logHook('[error-logger] Runtime exception caught: ', event.error);
   try {
-    var errors = JSON.parse(localStorage.getItem('cara_runtime_errors')) || [];
+    var errors = JSON.parse(localStorage.getItem('sara_runtime_errors')) || [];
   } catch (e) {
     var errors = [];
   }
@@ -21,7 +21,7 @@ window.addEventListener('error', (event) => {
   });
   try {
     localStorage.setItem(
-      'cara_runtime_errors',
+      'sara_runtime_errors',
       JSON.stringify(errors.slice(-10)),
     );
   } catch (e) {

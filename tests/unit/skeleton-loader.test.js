@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeEach, vi, afterEach } from 'vitest';
 
-describe('skeleton-loader.js — CaraSkeleton', () => {
+describe('skeleton-loader.js — SaraSkeleton', () => {
   beforeEach(async () => {
     vi.resetModules();
     vi.useFakeTimers();
@@ -17,14 +17,14 @@ describe('skeleton-loader.js — CaraSkeleton', () => {
 
   it('show() renders skeleton cards into the container', () => {
     const container = document.getElementById('test-container');
-    window.CaraSkeleton.show(container, { count: 3 });
+    window.SaraSkeleton.show(container, { count: 3 });
     const cards = container.querySelectorAll('.skeleton-card');
     expect(cards.length).toBe(3);
   });
 
   it('show() renders 4 skeleton blocks per card (image, title, subtitle, meta)', () => {
     const container = document.getElementById('test-container');
-    window.CaraSkeleton.show(container, { count: 2 });
+    window.SaraSkeleton.show(container, { count: 2 });
     const blocks = container.querySelectorAll('.skeleton-block');
     // 2 cards x 4 blocks each = 8 blocks
     expect(blocks.length).toBe(8);
@@ -32,14 +32,14 @@ describe('skeleton-loader.js — CaraSkeleton', () => {
 
   it('show() applies correct CSS class for skeleton blocks', () => {
     const container = document.getElementById('test-container');
-    window.CaraSkeleton.show(container);
+    window.SaraSkeleton.show(container);
     const firstBlock = container.querySelector('.skeleton-block');
     expect(firstBlock).not.toBeNull();
   });
 
   it('show() uses default count of 3 when not specified', () => {
     const container = document.getElementById('test-container');
-    window.CaraSkeleton.show(container);
+    window.SaraSkeleton.show(container);
     const cards = container.querySelectorAll('.skeleton-card');
     expect(cards.length).toBe(3);
   });
@@ -47,29 +47,29 @@ describe('skeleton-loader.js — CaraSkeleton', () => {
   it('show() replaces container content with skeleton cards', () => {
     const container = document.getElementById('test-container');
     container.innerHTML = '<p>Old content</p>';
-    window.CaraSkeleton.show(container);
+    window.SaraSkeleton.show(container);
     expect(container.querySelector('p')).toBeNull();
     expect(container.querySelector('.skeleton-card')).not.toBeNull();
   });
 
   it('hide() removes skeleton content and restores container', () => {
     const container = document.getElementById('test-container');
-    window.CaraSkeleton.show(container);
+    window.SaraSkeleton.show(container);
     expect(container.querySelector('.skeleton-card')).not.toBeNull();
-    window.CaraSkeleton.hide(container);
+    window.SaraSkeleton.hide(container);
     expect(container.querySelector('.skeleton-card')).toBeNull();
     expect(container.innerHTML).toBe('');
   });
 
   it('hide() handles null container gracefully', () => {
     expect(() => {
-      window.CaraSkeleton.hide(null);
+      window.SaraSkeleton.hide(null);
     }).not.toThrow();
   });
 
   it('show() injects skeleton CSS into document head', () => {
     const container = document.getElementById('test-container');
-    window.CaraSkeleton.show(container);
+    window.SaraSkeleton.show(container);
     const style = document.head.querySelector('style');
     expect(style).not.toBeNull();
     expect(style.textContent).toContain('skeleton-shimmer');
@@ -77,29 +77,29 @@ describe('skeleton-loader.js — CaraSkeleton', () => {
 
   it('show() is idempotent — second call does not duplicate CSS', () => {
     const container = document.getElementById('test-container');
-    window.CaraSkeleton.show(container);
+    window.SaraSkeleton.show(container);
     const firstStyleCount = document.head.querySelectorAll('style').length;
-    window.CaraSkeleton.show(container);
+    window.SaraSkeleton.show(container);
     const secondStyleCount = document.head.querySelectorAll('style').length;
     expect(secondStyleCount).toBe(firstStyleCount);
   });
 
   it('show() honors a custom card class name', () => {
     const container = document.getElementById('test-container');
-    window.CaraSkeleton.show(container, { count: 2, cardClass: 'custom-skeleton' });
+    window.SaraSkeleton.show(container, { count: 2, cardClass: 'custom-skeleton' });
     expect(container.querySelectorAll('.custom-skeleton').length).toBe(2);
     expect(container.querySelectorAll('.skeleton-card').length).toBe(0);
   });
 
   it('show() honors a custom count of one', () => {
     const container = document.getElementById('test-container');
-    window.CaraSkeleton.show(container, { count: 1 });
+    window.SaraSkeleton.show(container, { count: 1 });
     expect(container.querySelectorAll('.skeleton-card').length).toBe(1);
   });
 
   it('show() renders custom card blocks with per-card sizing', () => {
     const container = document.getElementById('test-container');
-    window.CaraSkeleton.show(container, { count: 1 });
+    window.SaraSkeleton.show(container, { count: 1 });
     const blocks = container.querySelectorAll('.skeleton-block');
     // image (180px) + title + subtitle + meta = 4 blocks
     expect(blocks.length).toBe(4);

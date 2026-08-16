@@ -4,7 +4,7 @@ import { describe, it, expect, beforeEach } from 'vitest';
 // (secure-storage.js is an IIFE that attaches to window — we test the
 //  underlying sign/verify functions by replicating their logic here)
 
-const KEY_STORAGE_NAME = 'cara_session_signing_key';
+const KEY_STORAGE_NAME = 'sara_session_signing_key';
 
 async function getTestKey(storage) {
   const existing = storage.getItem(KEY_STORAGE_NAME);

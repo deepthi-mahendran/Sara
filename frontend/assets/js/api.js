@@ -24,7 +24,7 @@
     return controller;
   }
 
-  window.CaraAPI = {
+  window.SaraAPI = {
     fetchData: async function (url, options = {}) {
       const requestKey = options.requestKey || url;
       const controller = createAbortSignal(requestKey, options);

@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', function () {
         submitBtn.disabled = true;
       }
 
-      const API_BASE = window.CARA_API_BASE_URL || '';
+      const API_BASE = window.SARA_API_BASE_URL || '';
       // If the user arrived via the emailed reset link, the token is in the URL.
       const urlToken = new URLSearchParams(window.location.search).get('token');
 

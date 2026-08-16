@@ -902,7 +902,7 @@ document.addEventListener('DOMContentLoaded', () => {
         navigator
           .share({
             title: 'My Sara AI Look',
-            text: 'Check out my AI-generated outfit on Sara Fashion! #CaraVirtualTryOn',
+            text: 'Check out my AI-generated outfit on Sara Fashion! #SaraVirtualTryOn',
             files: [file],
           })
           .catch(console.error);

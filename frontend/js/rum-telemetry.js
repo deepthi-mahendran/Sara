@@ -92,7 +92,7 @@
 
       const flush = () => {
         const payload = JSON.stringify(this.metrics);
-        const apiBaseUrl = window.CARA_API_BASE_URL || '';
+        const apiBaseUrl = window.SARA_API_BASE_URL || '';
         const targetUrl = `${apiBaseUrl}${this.endpoint}`;
 
         if (navigator.sendBeacon) {

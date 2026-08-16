@@ -1,6 +1,6 @@
 import { renderReturnStatus, renderReturnDeadlineInline } from './return-status.js';
 
-const ORDER_API_BASE_URL = window.CARA_API_BASE_URL || '';
+const ORDER_API_BASE_URL = window.SARA_API_BASE_URL || '';
 
 
 
@@ -177,7 +177,7 @@ async function fetchOrders() {
 
     if (response.status === 401) {
       localStorage.removeItem('access_token');
-      localStorage.removeItem('cara_user_token');
+      localStorage.removeItem('sara_user_token');
       window.location.href = 'login.html';
       return;
     }

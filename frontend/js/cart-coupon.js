@@ -96,12 +96,12 @@
     if (typeof PromoDiscountCalculator !== 'undefined') {
       const calculator = new PromoDiscountCalculator();
       // Get cart subtotal from the actual cart storage key used by the app
-      // ('productsInCart'), falling back to 'cara_cart' for legacy pages.
+      // ('productsInCart'), falling back to 'sara_cart' for legacy pages.
       let subtotal = 0;
       try {
         const rawCart = JSON.parse(
           localStorage.getItem('productsInCart') ||
-            localStorage.getItem('cara_cart') ||
+            localStorage.getItem('sara_cart') ||
             '[]',
         );
         if (Array.isArray(rawCart)) {
@@ -132,7 +132,7 @@
       }
     } else {
       // Simple fallback: check known codes from coupon-config
-      const knownCodes = window.CARA_COUPONS || {};
+      const knownCodes = window.SARA_COUPONS || {};
       if (Object.prototype.hasOwnProperty.call(knownCodes, code)) {
         window.appliedCoupon = code;
         saveAppliedCoupon(code);
@@ -142,7 +142,7 @@
         couponInput.classList.add('is-valid');
         window.dispatchEvent(new CustomEvent('couponApplied', { detail: { code, discountPct } }));
       } else {
-        showFeedback('Invalid coupon code. Try CARA20 or WELCOME10.', 'error');
+        showFeedback('Invalid coupon code. Try SARA20 or WELCOME10.', 'error');
         couponInput.classList.remove('is-valid');
         couponInput.classList.add('is-invalid');
       }

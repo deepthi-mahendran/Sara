@@ -4,8 +4,8 @@
  * separately from the module-based js/config.js.
  */
 (() => {
-  window.CARA_COUPONS = window.CARA_COUPONS || {
-    CARA20: 20,
+  window.SARA_COUPONS = window.SARA_COUPONS || {
+    SARA20: 20,
     WELCOME10: 10,
   };
 })();

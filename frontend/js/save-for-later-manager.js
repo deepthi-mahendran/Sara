@@ -3,7 +3,7 @@
  * Moves active cart items to a persistent saved-for-later list.
  */
 export class SaveForLaterManager {
-  constructor(storageKey = 'cara_saved_items') {
+  constructor(storageKey = 'sara_saved_items') {
     this.storageKey = storageKey;
   }
 

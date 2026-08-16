@@ -21,7 +21,7 @@ describe('CSRF Protection Unit Tests', () => {
   it('should retrieve existing token or generate and persist new token in sessionStorage', () => {
     const token1 = getOrCreateCSRFToken();
     expect(token1).toBeDefined();
-    expect(sessionStorage.getItem('cara_csrf_token')).toBe(token1);
+    expect(sessionStorage.getItem('sara_csrf_token')).toBe(token1);
 
     const token2 = getOrCreateCSRFToken();
     expect(token2).toBe(token1);

@@ -29,12 +29,12 @@ describe('cart-coupon', () => {
   it('applies a valid coupon via PromoDiscountCalculator and trims the code', async () => {
     window.PromoDiscountCalculator = class {
       validateCoupon(code, subtotal) {
-        return code === 'CARA20'
+        return code === 'SARA20'
           ? { valid: true, code, discountPct: 20 }
           : { valid: false, message: 'Invalid coupon code.' };
       }
     };
-    document.getElementById('coupon-code-input').value = '  cara20  ';
+    document.getElementById('coupon-code-input').value = '  sara20  ';
     const listener = vi.fn();
     window.addEventListener('couponApplied', listener);
 
@@ -42,7 +42,7 @@ describe('cart-coupon', () => {
     apply();
 
     expect(feedback()).toContain('applied successfully');
-    expect(window.appliedCoupon).toBe('CARA20');
+    expect(window.appliedCoupon).toBe('SARA20');
     expect(listener).toHaveBeenCalledTimes(1);
   });
 
@@ -54,8 +54,8 @@ describe('cart-coupon', () => {
   });
 
   it('removes the applied coupon and clears storage', async () => {
-    window.appliedCoupon = 'CARA20';
-    localStorage.setItem('appliedCoupon', 'CARA20');
+    window.appliedCoupon = 'SARA20';
+    localStorage.setItem('appliedCoupon', 'SARA20');
     await import('../../frontend/js/cart-coupon.js');
     window.removeCoupon();
     expect(window.appliedCoupon).toBe('');
@@ -65,7 +65,7 @@ describe('cart-coupon', () => {
   it('reads the cart subtotal from productsInCart for coupon validation', async () => {
     const validateCoupon = vi.fn(() => ({
       valid: true,
-      code: 'CARA20',
+      code: 'SARA20',
       discountPct: 20,
     }));
     window.PromoDiscountCalculator = class {
@@ -80,18 +80,18 @@ describe('cart-coupon', () => {
         { name: 'Jeans', price: '1000', quantity: 1 },
       ]),
     );
-    document.getElementById('coupon-code-input').value = 'CARA20';
+    document.getElementById('coupon-code-input').value = 'SARA20';
 
     await import('../../frontend/js/cart-coupon.js');
     apply();
 
-    expect(validateCoupon).toHaveBeenCalledWith('CARA20', 2000);
+    expect(validateCoupon).toHaveBeenCalledWith('SARA20', 2000);
   });
 
   it('validates against a zero subtotal when the cart is empty', async () => {
     const validateCoupon = vi.fn(() => ({
       valid: true,
-      code: 'CARA20',
+      code: 'SARA20',
       discountPct: 20,
     }));
     window.PromoDiscountCalculator = class {
@@ -100,18 +100,18 @@ describe('cart-coupon', () => {
       }
     };
     // No productsInCart entry at all.
-    document.getElementById('coupon-code-input').value = 'CARA20';
+    document.getElementById('coupon-code-input').value = 'SARA20';
 
     await import('../../frontend/js/cart-coupon.js');
     apply();
 
-    expect(validateCoupon).toHaveBeenCalledWith('CARA20', 0);
+    expect(validateCoupon).toHaveBeenCalledWith('SARA20', 0);
   });
 
   it('applies a coupon code with mixed case', async () => {
     const validateCoupon = vi.fn(() => ({
       valid: true,
-      code: 'CARA20',
+      code: 'SARA20',
       discountPct: 20,
     }));
     window.PromoDiscountCalculator = class {
@@ -119,12 +119,12 @@ describe('cart-coupon', () => {
         return validateCoupon(...args);
       }
     };
-    document.getElementById('coupon-code-input').value = 'CaRa20';
+    document.getElementById('coupon-code-input').value = 'SaRa20';
 
     await import('../../frontend/js/cart-coupon.js');
     apply();
 
-    expect(validateCoupon).toHaveBeenCalledWith('CARA20', 0);
-    expect(window.appliedCoupon).toBe('CARA20');
+    expect(validateCoupon).toHaveBeenCalledWith('SARA20', 0);
+    expect(window.appliedCoupon).toBe('SARA20');
   });
 });

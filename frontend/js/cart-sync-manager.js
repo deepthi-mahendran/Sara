@@ -34,8 +34,8 @@
 
   class CartSyncManager {
     constructor(options = {}) {
-      this.storageKey = options.storageKey || 'cara_shopping_cart';
-      this.channelName = options.channelName || 'cara_cart_channel';
+      this.storageKey = options.storageKey || 'sara_shopping_cart';
+      this.channelName = options.channelName || 'sara_cart_channel';
       this.ttlMs = options.ttlMs || 24 * 60 * 60 * 1000; // 24 hours
       this.maxItemQuantity = options.maxItemQuantity || 99;
       this.tabId = 'tab_' + Math.random().toString(36).substring(2, 9);

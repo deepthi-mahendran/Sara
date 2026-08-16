@@ -238,10 +238,10 @@ def create_order(
 
     # --- Coupon Validation ---
     # Coupons are percentage-off codes defined in a static map that mirrors
-    # the client-side `CARA_COUPONS` config (app.js). There is no Coupon table
+    # the client-side `SARA_COUPONS` config (app.js). There is no Coupon table
     # in the database, so validating here keeps the backend consistent with
     # the frontend and avoids a runtime AttributeError on models.Coupon.
-    COUPONS = {"CARA20": 20, "WELCOME10": 10}
+    COUPONS = {"SARA20": 20, "WELCOME10": 10}
 
     if order_data.coupon:
         coupon_code = order_data.coupon.strip().upper()
