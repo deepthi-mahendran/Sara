@@ -127,6 +127,39 @@
     }
   });
 
+  // Global password visibility toggle handler across all forms
+  document.addEventListener('click', (e) => {
+    const toggleBtn = e.target.closest('.toggle_password, .toggle-eye, #togglePassword, #confirmTogglePassword, #toggleNewPass, #toggleConfirmPass');
+    if (!toggleBtn) return;
+
+    const container = toggleBtn.closest('.password-wrapper, .input-group, .form-group') || toggleBtn.parentElement;
+    if (!container) return;
+
+    const passwordInput = container.querySelector('input[type="password"], input[type="text"]');
+    if (!passwordInput) return;
+
+    e.preventDefault();
+    const icon = toggleBtn.querySelector('i') || (toggleBtn.tagName.toLowerCase() === 'i' ? toggleBtn : null);
+    const isPassword = passwordInput.type === 'password';
+
+    passwordInput.type = isPassword ? 'text' : 'password';
+
+    if (icon) {
+      if (icon.classList.contains('ri-eye-line') || icon.classList.contains('ri-eye-off-line')) {
+        icon.classList.toggle('ri-eye-line', !isPassword);
+        icon.classList.toggle('ri-eye-off-line', isPassword);
+      } else if (icon.classList.contains('fa-eye') || icon.classList.contains('fa-eye-slash')) {
+        icon.classList.toggle('fa-eye', !isPassword);
+        icon.classList.toggle('fa-eye-slash', isPassword);
+      }
+    } else if (toggleBtn.classList.contains('ri-eye-line') || toggleBtn.classList.contains('ri-eye-off-line')) {
+      toggleBtn.classList.toggle('ri-eye-line', !isPassword);
+      toggleBtn.classList.toggle('ri-eye-off-line', isPassword);
+    }
+
+    toggleBtn.setAttribute('aria-label', isPassword ? 'Hide password' : 'Show password');
+  });
+
   const translations = {
     en: {
       home: 'Home',

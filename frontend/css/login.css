@@ -196,11 +196,13 @@
   cursor: pointer;
   color: var(--text-secondary, #888);
   font-size: 18px;
-  padding: 0;
+  padding: 4px;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: color 0.2s ease;
+  z-index: 10;
+  pointer-events: auto;
 }
 
 .toggle_password:hover {

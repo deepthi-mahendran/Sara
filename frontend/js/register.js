@@ -17,6 +17,34 @@ document.addEventListener('DOMContentLoaded', () => {
     if (errorEl) errorEl.textContent = isValid ? '' : message;
   }
 
+  const togglePassBtn = document.getElementById('togglePassword');
+  const regPassInput = document.getElementById('registerPassword');
+  const togglePassIcon = document.getElementById('toggleIcon');
+  if (togglePassBtn && regPassInput) {
+    togglePassBtn.addEventListener('click', () => {
+      const isHidden = regPassInput.type === 'password';
+      regPassInput.type = isHidden ? 'text' : 'password';
+      if (togglePassIcon) {
+        togglePassIcon.className = isHidden ? 'ri-eye-off-line' : 'ri-eye-line';
+      }
+      togglePassBtn.setAttribute('aria-label', isHidden ? 'Hide password' : 'Show password');
+    });
+  }
+
+  const toggleConfirmBtn = document.getElementById('confirmTogglePassword');
+  const regConfirmInput = document.getElementById('confirmPassword');
+  const toggleConfirmIcon = document.getElementById('confirmToggleIcon');
+  if (toggleConfirmBtn && regConfirmInput) {
+    toggleConfirmBtn.addEventListener('click', () => {
+      const isHidden = regConfirmInput.type === 'password';
+      regConfirmInput.type = isHidden ? 'text' : 'password';
+      if (toggleConfirmIcon) {
+        toggleConfirmIcon.className = isHidden ? 'ri-eye-off-line' : 'ri-eye-line';
+      }
+      toggleConfirmBtn.setAttribute('aria-label', isHidden ? 'Hide password' : 'Show password');
+    });
+  }
+
   if (!btn) return;
 
   btn.addEventListener('click', async (e) => {
