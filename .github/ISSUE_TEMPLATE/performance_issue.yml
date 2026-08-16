@@ -1,6 +1,6 @@
 ---
 name: ⚡ Performance Issue
-description: Report a performance degradation, slow page load, or memory leak in Cara
+description: Report a performance degradation, slow page load, or memory leak in Sara
 title: "[Performance]: "
 labels: ["performance", "needs-triage"]
 assignees: []

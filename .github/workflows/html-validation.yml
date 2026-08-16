@@ -41,7 +41,7 @@ jobs:
       - name: Run HTML validation on all pages
         run: |
           echo "=== Validating HTML files ==="
-          # Validate core HTML pages (exclude Cara-main subfolder)
+          # Validate core HTML pages (exclude subfolders)
           find . -maxdepth 1 -name "*.html" | sort | while read file; do
             echo "Validating: $file"
             html-validate "$file" || true
