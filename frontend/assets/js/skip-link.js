@@ -1,34 +1,47 @@
-// Skip link focus helper
-document.addEventListener('DOMContentLoaded', () => {
+/**
+ * Accessibility Skip Link Handler
+ * Injects a skip to main content link for keyboard navigation users.
+ */
+function initSkipLink() {
+  if (document.querySelector('a.skip-to-content-btn')) return;
+
   const skipLink = document.createElement('a');
-  skipLink.href = '#main-content';
   skipLink.className = 'skip-to-content-btn';
+  skipLink.href = '#main-content';
   skipLink.textContent = 'Skip to main content';
-  skipLink.style.cssText =
-    'position:absolute;top:-100px;left:20px;background:#C483E6;color:#fff;padding:10px 20px;z-index:99999;transition:top 0.2s;text-decoration:none;border-radius:4px;font-weight:600;';
+  skipLink.style.position = 'fixed';
+  skipLink.style.top = '-100px';
+  skipLink.style.left = '20px';
+  skipLink.style.zIndex = '9999';
+  skipLink.style.padding = '8px 16px';
+  skipLink.style.backgroundColor = '#000';
+  skipLink.style.color = '#fff';
 
   skipLink.addEventListener('focus', () => {
     skipLink.style.top = '20px';
   });
+
   skipLink.addEventListener('blur', () => {
     skipLink.style.top = '-100px';
   });
-  skipLink.addEventListener('click', (event) => {
-    const target = document.getElementById('main-content');
-    if (!target) return;
-    event.preventDefault();
-    if (!target.hasAttribute('tabindex')) {
-      target.setAttribute('tabindex', '-1');
-    }
-    target.focus({ preventScroll: false });
-    if (typeof target.scrollIntoView === 'function') {
-      try {
-        target.scrollIntoView({ block: 'start' });
-      } catch {
-        /* jsdom and some older browsers may not support scrollIntoView options */
+
+  skipLink.addEventListener('click', (e) => {
+    const mainContent = document.getElementById('main-content');
+    if (mainContent) {
+      if (!mainContent.hasAttribute('tabindex')) {
+        mainContent.setAttribute('tabindex', '-1');
       }
+      mainContent.focus();
     }
   });
 
   document.body.insertBefore(skipLink, document.body.firstChild);
-});
+}
+
+if (typeof document !== 'undefined') {
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initSkipLink);
+  } else {
+    initSkipLink();
+  }
+}

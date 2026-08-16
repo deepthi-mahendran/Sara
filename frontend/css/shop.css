@@ -1,4 +1,5 @@
-@import url('assets/css/skeleton-loader.css');#search-filter {
+@import url('../assets/css/skeleton-loader.css');
+#search-filter {
   display: flex;
   flex-direction: column;
   gap: 20px;

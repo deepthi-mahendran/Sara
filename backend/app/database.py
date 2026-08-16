@@ -6,8 +6,13 @@ from dotenv import load_dotenv
 # Load environment variables from .env file
 load_dotenv()
 
-# Get the database URL from the environment variable, default to SQLite
-SQLALCHEMY_DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./sara.db")
+# Get the database URL from the environment variable, defaulting to /tmp on Vercel or local sqlite
+SQLALCHEMY_DATABASE_URL = os.getenv("DATABASE_URL")
+if not SQLALCHEMY_DATABASE_URL:
+    if os.environ.get("VERCEL"):
+        SQLALCHEMY_DATABASE_URL = "sqlite:////tmp/sara.db"
+    else:
+        SQLALCHEMY_DATABASE_URL = "sqlite:///./sara.db"
 
 # SQLAlchemy requires "postgresql://" but sometimes URLs are provided as "postgres://"
 if SQLALCHEMY_DATABASE_URL.startswith("postgres://"):
