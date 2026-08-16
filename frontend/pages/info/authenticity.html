@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tap-to-View Authenticity | Sara</title>
+  
+  <link rel="icon" type="image/png" sizes="32x32" href="../../images/favicon.png" />
+  <meta name="description" content="Verify the authenticity of your premium Sara garments using NFC technology." />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Outfit:wght@300;500;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../../css/style.css" />
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/header-fix.css" />
+  <link rel="stylesheet" href="../../css/authenticity.css" />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+  <div id="main">
+    <div id="top">
+      <div id="workingArea">
+        <section id="header" role="banner">
+    <a href="../../index.html" aria-label="Sara Home">
+      <img id="siteLogo" class="logo" src="../../images/newlogo.svg" alt="Sara Logo" />
+    </a>
+    <div>
+      <ul id="navbar" role="navigation" aria-label="Main navigation">
+        <li><a  href="../../index.html" title="Home">Home</a></li>
+        <li><a  href="../../pages/shop/shop.html" title="Shop">Shop</a></li>
+        <li><a  href="../../pages/blog/blog.html" title="Blog">Blog</a></li>
+        <li><a  href="../../pages/info/about.html" title="About">About</a></li>
+        <li><a  href="../../pages/shop/try-on.html" title="Try-On">Try-On</a></li>
+        <li><a class="active" aria-current="page" href="../../pages/info/authenticity.html" title="Authenticity">Authenticity</a></li>
+        <li><a  href="../../pages/info/community.html" title="Community">Community</a></li>
+        <li><a  href="../../pages/shop/promotions.html" title="Promotions">Promotions</a></li>
+        <li><a  href="../../pages/user/order-history.html" title="My Orders">My Orders</a></li>
+        <li class="nav-icon"><a  href="../../pages/info/contact.html" title="Contact Us" aria-label="Contact"><i class="ri-customer-service-2-line"></i></a></li>
+        <li class="nav-icon"><a  href="../../pages/user/login.html" title="Sign In" aria-label="Login"><i class="ri-user-3-line"></i></a></li>
+        <li class="nav-icon"><a  href="../../pages/shop/wishlist.html" title="View Wishlist" aria-label="Wishlist"><i class="ri-heart-line"></i><span class="wishlist-count hidden">0</span></a></li>
+        <li class="nav-icon"><a  href="../../pages/shop/cart.html" id="lg-bag" title="View Cart" aria-label="Cart"><i class="ri-shopping-bag-4-line"></i><span class="cart-count hidden" id="desktopCartCount">0</span></a></li>
+        <li class="nav-icon">
+          <button class="theme-toggle" id="themeToggleDesktop" aria-label="Toggle dark mode">
+            <i class="ri-moon-line" id="themeIcon"></i>
+          </button>
+        </li>
+        <li class="nav-close"><a href="javascript:void(0)" id="close" aria-label="Close menu"><i class="fa-solid fa-xmark"></i></a></li>
+      </ul>
+    </div>
+    <div id="mobile">
+      <a href="../../pages/shop/cart.html" aria-label="Cart"><i class="ri-shopping-bag-4-line"></i></a>
+      <i id="bar" class="fas fa-outdent"></i>
+    </div>
+  </section>
+        
+        <!-- Authenticity Scanner Hero -->
+        <section id="authenticity-hero">
+          <div class="auth-container">
+            <div class="auth-glass-panel">
+              <h1 class="auth-title">Tap-to-View</h1>
+              <p class="auth-subtitle">Verify the authenticity of your Sara garment instantly.</p>
+              
+              <div id="nfc-status" class="nfc-status">
+                <div class="radar-container">
+                  <div class="radar"></div>
+                  <i class="ri-rfid-line nfc-icon"></i>
+                </div>
+                <p id="nfc-message">Ready to scan. Please tap "Start Scan" and bring your phone close to the garment's NFC tag.</p>
+              </div>
+              
+              <button id="start-scan-btn" class="auth-btn">
+                <i class="ri-scan-2-line"></i> Start Scan
+              </button>
+              
+              <div id="nfc-unsupported" class="nfc-error hidden">
+                <i class="ri-error-warning-line"></i>
+                <p>Web NFC is not supported on this browser/device. Please use Chrome for Android.</p>
+              </div>
+              
+              <!-- Authenticity Result (Hidden by default) -->
+              <div id="auth-result" class="auth-result hidden">
+                <div class="success-badge">
+                  <i class="ri-shield-check-fill"></i>
+                </div>
+                <h2 class="result-title">Authentic Garment Verified</h2>
+                <div class="result-details">
+                  <div class="detail-row">
+                    <span class="detail-label">Product ID:</span>
+                    <span class="detail-value" id="res-product-id">---</span>
+                  </div>
+                  <div class="detail-row">
+                    <span class="detail-label">Collection:</span>
+                    <span class="detail-value" id="res-collection">Premium AW25</span>
+                  </div>
+                  <div class="detail-row">
+                    <span class="detail-label">Manufactured:</span>
+                    <span class="detail-value" id="res-date">---</span>
+                  </div>
+                </div>
+                <button id="view-story-btn" class="auth-btn secondary-btn">
+                  View Garment Story <i class="ri-arrow-right-line"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+  
+  <script src="../../js/navbar.js"></script>
+  <script src="../../js/error-boundary.js"></script>
+  <script src="../../js/error-logger.js"></script>
+  <script>
+    loadNavbar('authenticity');
+  </script>
+  <script src="../../js/app.js"></script>
+  <script src="../../js/authenticity.js"></script>
+
+<footer class="section-p1" role="contentinfo">
+    <div class="col">
+      <img class="logo" src="../../images/newlogo.svg" alt="Sara Logo">
+      <h4>Contact</h4>
+      <p><strong>Address:</strong> 562 Wellington Road, Street 32, San Francisco</p>
+      <p><strong>Phone:</strong> +01 2222 365 / (+91) 01 2345 6789</p>
+      <p><strong>Hours:</strong> 10:00 - 18:00, Mon - Sat</p>
+      <div class="follow">
+        <h4>Follow us</h4>
+        <div class="icon">
+          <a href="https://x.com/DeepthiMahendran" target="_blank" rel="noopener noreferrer" aria-label="X (formerly Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
+          <a title="GitHub" href="https://github.com/deepthi-mahendran" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/deepthi-mahendran-80a7b2290" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          <a href="https://www.youtube.com/@DeepthiMahendran" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <h4>About</h4>
+      <a href="../../pages/info/about.html">About Us</a>
+      <a href="../../pages/info/delivery.html">Delivery Information</a>
+      <a href="../../pages/info/privacy.html">Privacy Policy</a>
+      <a href="../../pages/info/terms.html">Terms and Conditions</a>
+      <a href="../../pages/info/contact.html">Contact Us</a>
+    </div>
+
+    <div class="col">
+      <h4>My Account</h4>
+      <a href="../../pages/user/login.html">Sign In</a>
+      <a href="../../pages/shop/cart.html">View Cart</a>
+      <a href="../../pages/shop/wishlist.html">My Wishlist</a>
+      <a href="../../pages/user/track-order.html">Track My Order</a>
+      <a href="../../pages/info/contact.html">Help</a>
+    </div>
+
+    <div class="col newsletter-footer">
+      <h4>Newsletter</h4>
+      <p>Get email updates about our latest shop and <span>special offers.</span></p>
+      <form class="newsletter-form" role="form" aria-label="Newsletter subscription">
+        <input type="email" placeholder="Your email address" aria-label="Email address for newsletter" required>
+        <button type="submit" class="normal" aria-label="Sign up for newsletter">Sign Up</button>
+      </form>
+    </div>
+
+    <div class="col install">
+      <h4>Install App</h4>
+      <p>From App Store or Google Play</p>
+      <div class="row">
+        <img src="../../images/pay/app.jpg" alt="Download from App Store">
+        <img src="../../images/pay/play.jpg" alt="Get it on Google Play">
+      </div>
+      <p>Secured Payment Gateways</p>
+      <div class="payment-icons">
+        <a href="https://www.visa.com" target="_blank" rel="noopener noreferrer" aria-label="Visa"><i class="fab fa-cc-visa"></i></a>
+        <a href="https://www.mastercard.com" target="_blank" rel="noopener noreferrer" aria-label="Mastercard"><i class="fab fa-cc-mastercard"></i></a>
+        <a href="https://www.paypal.com" target="_blank" rel="noopener noreferrer" aria-label="PayPal"><i class="fab fa-cc-paypal"></i></a>
+        <a href="https://www.americanexpress.com" target="_blank" rel="noopener noreferrer" aria-label="American Express"><i class="fab fa-cc-amex"></i></a>
+        <a href="https://stripe.com" target="_blank" rel="noopener noreferrer" aria-label="Stripe"><i class="fab fa-cc-stripe"></i></a>
+      </div>
+    </div>
+
+    <div class="copyright">
+      <p>© Sara 2026. All rights reserved. | <a href="../../pages/info/license.html" style="color: #C483E6">MIT License</a></p>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Search Products — Sara Modern E-Commerce</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon.png" />
+    <meta name="description" content="Search all related products across the Sara e-commerce store catalog." />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/shop.css" />
+    <link rel="stylesheet" href="css/global.css" />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+  </head>
+
+  <body>
+    <!-- HEADER -->
+    <section id="header" role="banner">
+      <a href="index.html" aria-label="Sara Home">
+        <img id="siteLogo" class="logo" src="images/newlogo.svg" alt="Sara Logo" />
+      </a>
+      <div>
+        <ul id="navbar" role="navigation">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="pages/shop/shop.html">Shop</a></li>
+          <li><a href="pages/blog/blog.html">Blog</a></li>
+          <li><a href="pages/info/about.html">About</a></li>
+          <li><a class="active" aria-current="page" href="pages/shop/search.html">Search</a></li>
+        <li class="nav-icon"><a href="pages/shop/wishlist.html" aria-label="Wishlist"><i class="ri-heart-line"></i><span class="wishlist-count hidden">0</span></a></li>
+          <li class="nav-icon"><a href="pages/shop/cart.html" id="lg-bag" aria-label="Cart"><i class="ri-shopping-bag-4-line"></i><span class="cart-count hidden" id="desktopCartCount">0</span></a></li>
+          <li class="nav-icon">
+            <button class="theme-toggle" id="themeToggleDesktop" aria-label="Toggle dark mode">
+              <i class="ri-moon-line" id="themeIcon"></i>
+            </button>
+          </li>
+          <li class="nav-close"><a href="javascript:void(0)" id="close"><i class="fa-solid fa-xmark"></i></a></li>
+        </ul>
+      </div>
+      <div id="mobile">
+        <a href="pages/shop/cart.html" aria-label="Cart"><i class="ri-shopping-bag-4-line"></i></a>
+        <i id="bar" class="fas fa-outdent"></i>
+      </div>
+    </section>
+
+    <main id="main-content">
+      <!-- SEARCH HERO -->
+      <section id="shop-hero">
+        <div class="hero-copy">
+          <h1>Product Catalog Search</h1>
+          <p>Find exact matching clothing, footwear, and accessories across our entire store.</p>
+        </div>
+      </section>
+
+      <!-- SEARCH BAR & FILTERS -->
+      <section id="search-filter" class="section-p1">
+        </div>
+
+        <div class="filters-row">
+          <div class="filter-container">
+            <label for="categoryFilter">Category</label>
+            <select id="categoryFilter">
+              <option value="all">All Categories</option>
+              <option value="street">Street</option>
+              <option value="minimal">Minimal</option>
+              <option value="formal">Formal</option>
+            </select>
+          </div>
+
+          <div class="filter-container">
+            <label for="style-filter">Style</label>
+            <select id="style-filter">
+              <option value="all">All Styles</option>
+            </select>
+          </div>
+
+          <div class="filter-container">
+            <label for="brand-filter">Brand</label>
+            <select id="brand-filter">
+              <option value="all">All Brands</option>
+            </select>
+          </div>
+
+          <div class="filter-container">
+            <label for="color-filter">Color</label>
+            <select id="color-filter">
+              <option value="all">All Colors</option>
+            </select>
+          </div>
+
+          <div class="filter-container reset-wrapper">
+            <label for="resetFiltersBtn" style="visibility: hidden">Reset</label>
+            <button id="resetFiltersBtn" class="reset-btn">Reset Filters</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- SEARCH RESULTS SECTION -->
+      <section id="product1" class="section-p1">
+        <div class="sort-container" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+          <h2 id="search-summary-heading" style="font-size: 1.3rem; color: var(--text-primary);">Search Results</h2>
+          <div class="sort-select-wrap">
+            <select id="sort-price" class="sort-dropdown">
+              <option value="default">Default Sorting</option>
+              <option value="low-high">Price: Low to High</option>
+              <option value="high-low">Price: High to Low</option>
+              <option value="rating-high">Rating: High to Low</option>
+              <option value="newest">Newest</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="pro-container" id="shop-container"></div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="section-p1">
+      <div class="copyright">
+        <p>© Sara 2026. All rights reserved. | Product Catalog Search Engine</p>
+      </div>
+    </footer>
+
+    <script type="module" src="js/products.js"></script>
+    <script type="module" src="js/app.js"></script>
+    <script type="module" src="js/navbar.js"></script>
+  </body>
+</html>

@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Character Encoding -->
+    <meta charset="UTF-8" />
+
+    <!-- Viewport for Responsive Design -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Page Title -->
+    <title>Sara — Trendy T-Shirts</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../../images/favicon.png" />
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+
+    <style>
+        .tshirt-hero {
+            min-height: 82vh;
+            background: linear-gradient(120deg, #fff7f1, #f3ecff);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 80px 9%;
+            gap: 40px;
+        }
+
+        .tshirt-content {
+            max-width: 550px;
+        }
+
+        .tshirt-badge {
+            display: inline-block;
+            background: #ffffff;
+            color: #7c3aed;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-weight: 800;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .tshirt-content h1 {
+            font-size: 60px;
+            line-height: 1.1;
+            color: #111827;
+            font-weight: 900;
+            margin-bottom: 20px;
+        }
+
+        .tshirt-content h1 span {
+            color: #7c3aed;
+        }
+
+        .tshirt-content p {
+            font-size: 20px;
+            color: #374151;
+            font-weight: 600;
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+
+        .tshirt-btn {
+            display: inline-block;
+            background: #111827;
+            color: #fff;
+            padding: 16px 36px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 800;
+            transition: 0.3s ease;
+        }
+
+        .tshirt-btn:hover {
+            background: #7c3aed;
+            transform: translateY(-5px);
+        }
+
+        .tshirt-visual img {
+            width: 460px;
+            max-width: 100%;
+            border-radius: 28px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.18);
+        }
+
+        .tshirt-features {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            padding: 50px 8%;
+            background: #fff;
+        }
+
+        .tshirt-feature {
+            width: 240px;
+            padding: 28px;
+            text-align: center;
+            border-radius: 20px;
+            background: #ffffff;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+            transition: 0.3s ease;
+        }
+
+        .tshirt-feature:hover {
+            transform: translateY(-10px);
+        }
+
+        .tshirt-feature i {
+            font-size: 38px;
+            color: #7c3aed;
+        }
+
+        .tshirt-feature h3 {
+            margin: 15px 0 8px;
+            color: #111827;
+        }
+
+        .section-heading {
+            text-align: center;
+            padding: 40px 20px 10px;
+        }
+
+        .section-heading span {
+            color: #7c3aed;
+            font-weight: 900;
+            letter-spacing: 1px;
+        }
+
+        .section-heading h2 {
+            font-size: 38px;
+            color: #111827;
+            margin: 10px 0;
+        }
+
+        .new-tag {
+            position: absolute;
+            top: 18px;
+            left: 18px;
+            background: #a78bfa;
+            color: #fff;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 800;
+        }
+
+        #product1 .pro {
+            position: relative;
+            transition: 0.3s ease;
+        }
+
+        #product1 .pro:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .back-shop {
+            text-align: center;
+            margin: 30px 0 60px;
+        }
+
+        .back-shop a {
+            background: #7c3aed;
+            color: #fff;
+            padding: 14px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 800;
+        }
+
+        @media (max-width: 900px) {
+            .tshirt-hero {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .tshirt-content h1 {
+                font-size: 42px;
+            }
+        }
+    
+        [data-theme="dark"], body.dark, body[data-theme="dark"] {
+            background-color: #0f172a !important;
+            color: #f3f4f6 !important;
+        }
+        [data-theme="dark"] .tshirt-hero, body.dark .tshirt-hero {
+            background: linear-gradient(120deg, #0f172a, #1e1b4b) !important;
+            color: #f3f4f6 !important;
+        }
+        [data-theme="dark"] .tshirt-badge, body.dark .tshirt-badge {
+            background: #1e293b !important;
+            color: #a78bfa !important;
+        }
+        [data-theme="dark"] .tshirt-content h1, body.dark .tshirt-content h1 {
+            color: #f3f4f6 !important;
+        }
+        [data-theme="dark"] .pro, body.dark .pro {
+            background: #1e293b !important;
+            border-color: #334155 !important;
+            color: #f3f4f6 !important;
+        }
+    
+</style>
+  <link rel="manifest" href="/manifest.json">
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js');
+      });
+    }
+  </script>
+  <meta name="description" content="Sara - The best ecommerce store for modern fashion and clothing.">
+    <script type="module" src="../../js/config.js"></script>
+  <link rel="stylesheet" href="../../css/global.css">
+</head>
+
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- HEADER --> 
+    <section id="header" role="banner">
+    <a href="../../index.html" aria-label="Sara Home">
+      <img id="siteLogo" class="logo" src="../../images/newlogo.svg" alt="Sara Logo" />
+    </a>
+    <div>
+      <ul id="navbar" role="navigation" aria-label="Main navigation">
+        <li><a class="active" aria-current="page" href="../../index.html" title="Home">Home</a></li>
+        <li><a  href="../../pages/shop/shop.html" title="Shop">Shop</a></li>
+        <li><a  href="../../pages/blog/blog.html" title="Blog">Blog</a></li>
+        <li><a  href="../../pages/info/about.html" title="About">About</a></li>
+        <li><a  href="../../pages/shop/try-on.html" title="Try-On">Try-On</a></li>
+        <li><a  href="../../pages/info/authenticity.html" title="Authenticity">Authenticity</a></li>
+        <li><a  href="../../pages/info/community.html" title="Community">Community</a></li>
+        <li><a  href="../../pages/shop/promotions.html" title="Promotions">Promotions</a></li>
+        <li><a  href="../../pages/user/order-history.html" title="My Orders">My Orders</a></li>
+        <li class="nav-icon"><a  href="../../pages/info/contact.html" title="Contact Us" aria-label="Contact"><i class="ri-customer-service-2-line"></i></a></li>
+        <li class="nav-icon"><a  href="../../pages/user/login.html" title="Sign In" aria-label="Login"><i class="ri-user-3-line"></i></a></li>
+        <li class="nav-icon"><a  href="../../pages/shop/wishlist.html" title="View Wishlist" aria-label="Wishlist"><i class="ri-heart-line"></i><span class="wishlist-count hidden">0</span></a></li>
+        <li class="nav-icon"><a  href="../../pages/shop/cart.html" id="lg-bag" title="View Cart" aria-label="Cart"><i class="ri-shopping-bag-4-line"></i><span class="cart-count hidden" id="desktopCartCount">0</span></a></li>
+        <li class="nav-icon">
+          <button class="theme-toggle" id="themeToggleDesktop" aria-label="Toggle dark mode">
+            <i class="ri-moon-line" id="themeIcon"></i>
+          </button>
+        </li>
+        <li class="nav-close"><a href="javascript:void(0)" id="close" aria-label="Close menu"><i class="fa-solid fa-xmark"></i></a></li>
+      </ul>
+    </div>
+    <div id="mobile">
+      <a href="../../pages/shop/cart.html" aria-label="Cart"><i class="ri-shopping-bag-4-line"></i></a>
+      <i id="bar" class="fas fa-outdent"></i>
+    </div>
+  </section>
+<main id="main-content">
+
+    <section class="tshirt-hero">
+        <div class="tshirt-content">
+            <span class="tshirt-badge">NEW ARRIVAL</span>
+            <h1>New Theory <span>Prints</span> T-Shirts</h1>
+            <p>Fresh designs, premium comfort, and vibrant printed t-shirts made for those who love to stand out.</p>
+            <a href="#tshirt-products" class="tshirt-btn">Shop Collection →</a>
+        </div>
+
+        <div class="tshirt-visual">
+            <img src="../../images/products/f6.jpg" alt="Trendy T-Shirt Collection">
+        </div>
+    </section>
+
+    <section class="tshirt-features">
+        <div class="tshirt-feature">
+            <i class="ri-t-shirt-line"></i>
+            <h3>Premium Cotton</h3>
+            <p>Soft and comfortable fabric.</p>
+        </div>
+
+        <div class="tshirt-feature">
+            <i class="ri-palette-line"></i>
+            <h3>Vibrant Prints</h3>
+            <p>Modern and unique designs.</p>
+        </div>
+
+        <div class="tshirt-feature">
+            <i class="ri-shield-check-line"></i>
+            <h3>Long Lasting</h3>
+            <p>Quality print and fabric finish.</p>
+        </div>
+
+        <div class="tshirt-feature">
+            <i class="ri-leaf-line"></i>
+            <h3>Lightweight</h3>
+            <p>Perfect for daily wear.</p>
+        </div>
+    </section>
+
+    <section class="section-heading">
+        <span>NEW COLLECTION</span>
+        <h2>Trendy New Theory Prints</h2>
+        <p>Explore our latest printed t-shirts with unique designs and premium fabric.</p>
+    </section>
+
+    <section id="product1" class="section-p1">
+        <div id="tshirt-products" class="pro-container">
+
+            <div class="pro" onclick="window.location.href='singleProduct.html';">
+                <span class="new-tag">NEW</span>
+                <img src="../../images/products/f1.jpg" alt="Beyond Limits Graphic Tee">
+                <div class="des">
+                    <span>Sara</span>
+                    <h3>Beyond Limits Graphic Tee</h3>
+                    <div class="star"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i
+                            class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i></div>
+                    <h4>$29.99</h4>
+                </div>
+                <a href="javascript:void(0)" class="cart" aria-label="Interactive action"><i class="ri-shopping-cart-2-line"></i></a>
+            </div>
+
+            <div class="pro" onclick="window.location.href='singleProduct.html';">
+                <span class="new-tag">NEW</span>
+                <img src="../../images/products/f2.jpg" alt="Inner Peace Printed Tee">
+                <div class="des">
+                    <span>Sara</span>
+                    <h3>Inner Peace Printed Tee</h3>
+                    <div class="star"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i
+                            class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i></div>
+                    <h4>$27.99</h4>
+                </div>
+                <a href="javascript:void(0)" class="cart" aria-label="Interactive action"><i class="ri-shopping-cart-2-line"></i></a>
+            </div>
+
+            <div class="pro" onclick="window.location.href='singleProduct.html';">
+                <span class="new-tag">NEW</span>
+                <img src="../../images/products/f3.jpg" alt="Lost In Nature T-Shirt">
+                <div class="des">
+                    <span>Sara</span>
+                    <h3>Lost In Nature T-Shirt</h3>
+                    <div class="star"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i
+                            class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i></div>
+                    <h4>$29.99</h4>
+                </div>
+                <a href="javascript:void(0)" class="cart" aria-label="Interactive action"><i class="ri-shopping-cart-2-line"></i></a>
+            </div>
+
+            <div class="pro" onclick="window.location.href='singleProduct.html';">
+                <span class="new-tag">NEW</span>
+                <img src="../../images/products/f4.jpg" alt="Stay Kind Casual Tee">
+                <div class="des">
+                    <span>Sara</span>
+                    <h3>Stay Kind Casual Tee</h3>
+                    <div class="star"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i
+                            class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i></div>
+                    <h4>$26.99</h4>
+                </div>
+                <a href="javascript:void(0)" class="cart" aria-label="Interactive action"><i class="ri-shopping-cart-2-line"></i></a>
+            </div>
+
+            <div class="pro" onclick="window.location.href='singleProduct.html';">
+                <span class="new-tag">NEW</span>
+                <img src="../../images/products/f5.jpg" alt="Bright Future Purple Tee">
+                <div class="des">
+                    <span>Sara</span>
+                    <h3>Bright Future Purple Tee</h3>
+                    <div class="star"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i
+                            class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i></div>
+                    <h4>$28.99</h4>
+                </div>
+                <a href="javascript:void(0)" class="cart" aria-label="Interactive action"><i class="ri-shopping-cart-2-line"></i></a>
+            </div>
+
+            <div class="pro" onclick="window.location.href='singleProduct.html';">
+                <span class="new-tag">NEW</span>
+                <img src="../../images/products/f6.jpg" alt="Create Reality T-Shirt">
+                <div class="des">
+                    <span>Sara</span>
+                    <h3>Create Reality T-Shirt</h3>
+                    <div class="star"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i
+                            class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i></div>
+                    <h4>$30.99</h4>
+                </div>
+                <a href="javascript:void(0)" class="cart" aria-label="Interactive action"><i class="ri-shopping-cart-2-line"></i></a>
+            </div>
+
+            <div class="pro" onclick="window.location.href='singleProduct.html';">
+                <span class="new-tag">NEW</span>
+                <img src="../../images/products/f7.jpg" alt="Smiley Drip White Tee">
+                <div class="des">
+                    <span>Sara</span>
+                    <h3>Smiley Drip White Tee</h3>
+                    <div class="star"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i
+                            class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i></div>
+                    <h4>$27.99</h4>
+                </div>
+                <a href="javascript:void(0)" class="cart" aria-label="Interactive action"><i class="ri-shopping-cart-2-line"></i></a>
+            </div>
+
+            <div class="pro" onclick="window.location.href='singleProduct.html';">
+                <span class="new-tag">NEW</span>
+                <img src="../../images/products/f8.jpg" alt="Evolve Everyday Tee">
+                <div class="des">
+                    <span>Sara</span>
+                    <h3>Evolve Everyday Tee</h3>
+                    <div class="star"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i
+                            class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i></div>
+                    <h4>$29.99</h4>
+                </div>
+                <a href="javascript:void(0)" class="cart" aria-label="Interactive action"><i class="ri-shopping-cart-2-line"></i></a>
+            </div>
+
+        </div>
+    </section>
+
+    <div class="back-shop">
+        <a href="shop.html">Back to Shop</a>
+    </div>
+
+    <section id="newsletter" class="section-p1 section-m1">
+        <div class="newstext">
+            <h4>Sign Up For Newsletters</h4>
+            <p>Get E-mail updates about our latest shop and <span>special offers.</span></p>
+        </div>
+        <div class="form">
+            <input type="email" placeholder="Your email address">
+            <button class="normal">Sign Up</button>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="section-p1" role="contentinfo">
+    <div class="col">
+      <img class="logo" src="../../images/newlogo.svg" alt="Sara Logo">
+      <h4>Contact</h4>
+      <p><strong>Address:</strong> 562 Wellington Road, Street 32, San Francisco</p>
+      <p><strong>Phone:</strong> +01 2222 365 / (+91) 01 2345 6789</p>
+      <p><strong>Hours:</strong> 10:00 - 18:00, Mon - Sat</p>
+      <div class="follow">
+        <h4>Follow us</h4>
+        <div class="icon">
+          <a href="https://x.com/DeepthiMahendran" target="_blank" rel="noopener noreferrer" aria-label="X (formerly Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
+          <a title="GitHub" href="https://github.com/deepthi-mahendran" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/deepthi-mahendran-80a7b2290" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          <a href="https://www.youtube.com/@DeepthiMahendran" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <h4>About</h4>
+      <a href="../../pages/info/about.html">About Us</a>
+      <a href="../../pages/info/delivery.html">Delivery Information</a>
+      <a href="../../pages/info/privacy.html">Privacy Policy</a>
+      <a href="../../pages/info/terms.html">Terms and Conditions</a>
+      <a href="../../pages/info/contact.html">Contact Us</a>
+    </div>
+
+    <div class="col">
+      <h4>My Account</h4>
+      <a href="../../pages/user/login.html">Sign In</a>
+      <a href="../../pages/shop/cart.html">View Cart</a>
+      <a href="../../pages/shop/wishlist.html">My Wishlist</a>
+      <a href="../../pages/user/track-order.html">Track My Order</a>
+      <a href="../../pages/info/contact.html">Help</a>
+    </div>
+
+    <div class="col newsletter-footer">
+      <h4>Newsletter</h4>
+      <p>Get email updates about our latest shop and <span>special offers.</span></p>
+      <form class="newsletter-form" role="form" aria-label="Newsletter subscription">
+        <input type="email" placeholder="Your email address" aria-label="Email address for newsletter" required>
+        <button type="submit" class="normal" aria-label="Sign up for newsletter">Sign Up</button>
+      </form>
+    </div>
+
+    <div class="col install">
+      <h4>Install App</h4>
+      <p>From App Store or Google Play</p>
+      <div class="row">
+        <img src="../../images/pay/app.jpg" alt="Download from App Store">
+        <img src="../../images/pay/play.jpg" alt="Get it on Google Play">
+      </div>
+      <p>Secured Payment Gateways</p>
+      <div class="payment-icons">
+        <a href="https://www.visa.com" target="_blank" rel="noopener noreferrer" aria-label="Visa"><i class="fab fa-cc-visa"></i></a>
+        <a href="https://www.mastercard.com" target="_blank" rel="noopener noreferrer" aria-label="Mastercard"><i class="fab fa-cc-mastercard"></i></a>
+        <a href="https://www.paypal.com" target="_blank" rel="noopener noreferrer" aria-label="PayPal"><i class="fab fa-cc-paypal"></i></a>
+        <a href="https://www.americanexpress.com" target="_blank" rel="noopener noreferrer" aria-label="American Express"><i class="fab fa-cc-amex"></i></a>
+        <a href="https://stripe.com" target="_blank" rel="noopener noreferrer" aria-label="Stripe"><i class="fab fa-cc-stripe"></i></a>
+      </div>
+    </div>
+
+    <div class="copyright">
+      <p>© Sara 2026. All rights reserved. | <a href="../../pages/info/license.html" style="color: #C483E6">MIT License</a></p>
+    </div>
+  </footer>
+</main>
+
+    <script src="../../js/app.js"></script>
+
+<script type="module" src="../../js/navbar.js"></script>
+<script>document.addEventListener('DOMContentLoaded', function() { if (typeof loadNavbar === 'function') loadNavbar('home'); });</script>
+</body>
+
+</html>

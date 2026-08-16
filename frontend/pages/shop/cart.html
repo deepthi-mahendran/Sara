@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Character Encoding -->
+  <meta charset="UTF-8" />
+
+  <!-- Viewport for Responsive Design -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Page Title -->
+  <title>Your Cart | Sara</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="../../images/favicon.png" />
+
+  <!-- SEO Meta Tags -->
+  <meta name="description"
+    content="Shop the latest trends on our e-commerce store. Dark theme supported for a better user experience." />
+  <meta name="keywords" content="e-commerce, shopping, online store, dark mode, buy online, latest fashion" />
+  <meta name="author" content=" Sara" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Language -->
+  <meta http-equiv="Content-Language" content="en" />
+
+  <!-- Open Graph (OG) Tags for Social Sharing -->
+  <meta property="og:title" content="E-commerce - Dark Theme Working" />
+  <meta property="og:description" content="Shop the latest trends with our dark mode-enabled e-commerce experience." />
+  <meta property="og:image" content="https://sara-seven-ashen.vercel.app/images/newlogo.svg" />
+  <meta property="og:url" content="https://sara-seven-ashen.vercel.app/" />
+  <meta property="og:type" content="website" />
+
+  <!-- Twitter Card Tags -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="E-commerce - Dark Theme Working" />
+  <meta name="twitter:description" content="Dark theme e-commerce site with modern features." />
+  <meta name="twitter:image" content="https://sara-seven-ashen.vercel.app/images/newlogo.svg" />
+  <meta name="twitter:site" content="@deepthi-mahendran" />
+
+  <!-- Theme Color for Mobile Browser -->
+  <meta name="theme-color" content="#000000" />
+
+  <!-- Stylesheets (deduped: each file linked once) -->
+  <link rel="stylesheet" href="../../css/a11y-utilities.css">
+  <link rel="stylesheet" href="../../css/toast-queue.css">
+  <link rel="stylesheet" href="../../css/style.css" />
+  <link rel="stylesheet" href="../../css/stock-alert.css">
+  <link rel="stylesheet" href="../../css/currency-converter.css">
+  <link rel="stylesheet" href="empty-cart.css" />
+  <link rel="stylesheet" href="../../css/cart.css" />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <link rel="manifest" href="/manifest.json">
+  <script type="module" src="../../js/error-boundary.js"></script>
+<script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js');
+      });
+    }
+  </script>
+    <script type="module" src="../../js/config.js"></script>
+  <script src="../../assets/js/skip-link.js" defer></script>
+  <link rel="stylesheet" href="../../css/global.css">
+</head>
+
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <section id="header" role="banner">
+    <a href="../../index.html" aria-label="Sara Home">
+      <img id="siteLogo" class="logo" src="../../images/newlogo.svg" alt="Sara Logo" />
+    </a>
+    <div>
+      <ul id="navbar" role="navigation" aria-label="Main navigation">
+        <li><a  href="../../index.html" title="Home">Home</a></li>
+        <li><a  href="../../pages/shop/shop.html" title="Shop">Shop</a></li>
+        <li><a  href="../../pages/blog/blog.html" title="Blog">Blog</a></li>
+        <li><a  href="../../pages/info/about.html" title="About">About</a></li>
+        <li><a  href="../../pages/shop/try-on.html" title="Try-On">Try-On</a></li>
+        <li><a  href="../../pages/info/authenticity.html" title="Authenticity">Authenticity</a></li>
+        <li><a  href="../../pages/info/community.html" title="Community">Community</a></li>
+        <li><a  href="../../pages/shop/promotions.html" title="Promotions">Promotions</a></li>
+        <li><a  href="../../pages/user/order-history.html" title="My Orders">My Orders</a></li>
+        <li class="nav-icon"><a  href="../../pages/info/contact.html" title="Contact Us" aria-label="Contact"><i class="ri-customer-service-2-line"></i></a></li>
+        <li class="nav-icon"><a  href="../../pages/user/login.html" title="Sign In" aria-label="Login"><i class="ri-user-3-line"></i></a></li>
+        <li class="nav-icon"><a  href="../../pages/shop/wishlist.html" title="View Wishlist" aria-label="Wishlist"><i class="ri-heart-line"></i><span class="wishlist-count hidden">0</span></a></li>
+        <li class="nav-icon"><a class="active" aria-current="page" href="../../pages/shop/cart.html" id="lg-bag" title="View Cart" aria-label="Cart"><i class="ri-shopping-bag-4-line"></i><span class="cart-count hidden" id="desktopCartCount">0</span></a></li>
+        <li class="nav-icon">
+          <button class="theme-toggle" id="themeToggleDesktop" aria-label="Toggle dark mode">
+            <i class="ri-moon-line" id="themeIcon"></i>
+          </button>
+        </li>
+        <li class="nav-close"><a href="javascript:void(0)" id="close" aria-label="Close menu"><i class="fa-solid fa-xmark"></i></a></li>
+      </ul>
+    </div>
+    <div id="mobile">
+      <a href="../../pages/shop/cart.html" aria-label="Cart"><i class="ri-shopping-bag-4-line"></i></a>
+      <i id="bar" class="fas fa-outdent"></i>
+    </div>
+  </section>
+</main>
+
+
+    <div id="cart-content-wrapper">
+  <div class="cartmain">
+    
+    <main id="main-content">
+  <section id="page-header" class="about-header" style="background-color: #3d485a !important; background-image: 
+      url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%23e9d5ff%22 stroke-width=%221%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22 style=%22opacity: 0.12; filter: drop-shadow(0 0 12px %23e9d5ff);%22><circle cx=%229%22 cy=%2221%22 r=%221%22/><circle cx=%2220%22 cy=%2221%22 r=%221%22/><path d=%22M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6%22/></svg>'),
+      url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%224%22 height=%224%22 viewBox=%220 0 4 4%22><path d=%22M1 1h1v1H1z%22 fill=%22%23ffffff%22 fill-opacity=%220.04%22/></svg>') !important; 
+      background-repeat: no-repeat, repeat !important; 
+      background-position: left 10% center, top left !important; 
+      background-size: 180px, 4px 4px !important; 
+      padding: 60px 20px !important; 
+      text-align: center; 
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif !important; 
+      position: relative;">
+     <h1 class="glow-title" style="color: #f8e8fa !important; font-weight: 700 !important; text-transform: capitalize !important; letter-spacing: 0.5px; margin: 0 0 10px 0; font-size: 32px !important; transition: text-shadow 0.3s ease !important; cursor: default;">Shopping Cart</h1>
+      <p style="color: #f8e8fa !important; font-size: 16px; margin: 0; font-weight: 400 !important;">Review & manage your selected items with premium details</p>
+    </section>
+
+
+    <!-- Rest of your cart page content continues below here -->
+        <section id="cart-container" class="section-p1">
+          <div id="shared-cart-presence-target"></div>
+          <div class="cart-grid-layout">
+
+            <div class="cart-items-column">
+              <div class="cart-column-header">
+                <span>Product</span>
+                <span class="header-price">Price</span>
+                <span class="header-qty">Quantity</span>
+                <span class="header-subtotal">Subtotal</span>
+                <span class="header-action"></span>
+              </div>
+              <div id="cart-items-container"></div>
+              <div class="cart-actions-bottom">
+                <a href="shop.html" class="continue-shopping-btn">
+                  <i class="ri-arrow-left-line"></i> Continue Shopping
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="cart-summary-column">
+            <div class="sticky-summary-card">
+              <h3>Order Summary</h3>
+              <div id="shipping-calculator-target"></div>
+              <div class="coupon-section">
+                <p>Have a promotional coupon?</p>
+                <div class="coupon-input-group">
+                  <label for="coupon-code-input" class="sr-only">Coupon Code</label>
+                  <input type="text" id="coupon-code-input" placeholder="Enter coupon (e.g. CARA20)" />
+                  <button id="apply-coupon-btn" aria-label="Apply coupon">Apply</button>
+                </div>
+                <div id="coupon-feedback"></div>
+              </div>
+
+              <!-- Loyalty Rewards Section inside Summary -->
+              <div id="loyalty-points-container" class="loyalty-points-container">
+                <h4><i class="ri-medal-line"></i> Sara Loyalty Rewards</h4>
+                <p>Balance: <strong id="loyalty-balance">0</strong> pts</p>
+                <p>Earn from order: <strong id="points-to-earn">0</strong> pts</p>
+                <div id="loyalty-apply-section" class="loyalty-apply-section">
+                  <label for="points-to-apply" class="sr-only">Redeem Points</label>
+                  <input type="number" id="points-to-apply" placeholder="Redeem" />
+                  <button id="apply-points-btn" aria-label="Redeem loyalty points">Redeem</button>
+                </div>
+                <p id="loyalty-msg"></p>
+              </div>
+
+              <div class="summary-breakdown">
+                <div class="summary-row">
+                  <span>Subtotal</span>
+                  <span id="summary-subtotal">₹0</span>
+                </div>
+                <div class="summary-row">
+                  <span>Estimated Tax (18% GST)</span>
+                  <span id="summary-tax">₹0</span>
+                </div>
+                <div class="summary-row" id="summary-discount-row" style="display: none;">
+                  <span>Discount</span>
+                  <span id="summary-discount" class="discount-value">-₹0</span>
+                </div>
+                <div class="summary-row">
+                  <span>Shipping</span>
+                  <span id="summary-shipping" class="shipping-free">FREE</span>
+                </div>
+                <hr class="summary-divider" />
+                <div class="summary-row grand-total-row">
+                  <span>Grand Total</span>
+                  <span id="summary-total">₹0</span>
+                </div>
+              </div>
+
+              <button class="checkout-btn" onclick="window.location.href="checkout.html"">
+                PROCEED TO CHECKOUT <i class="ri-arrow-right-line"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div id="empty-cart-container" class="empty-cart-view" style="display: none;">
+        <div class="empty-cart-card">
+          <div class="empty-cart-icon">
+            <i class="ri-shopping-cart-2-line"></i>
+          </div>
+          <h2>Your Cart is Empty!</h2>
+          <p>Looks like you haven't added anything to your cart yet. Let's find some amazing products!</p>
+          <a href="shop.html" class="return-shop-btn">Return to Shop</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  </main>
+
+  <script src="../../js/shipping-calc.js" defer></script>
+  <script src="../../js/coupon-config.js" defer></script>
+  <script src="../../js/cart-coupon.js" defer></script>
+
+  <footer class="section-p1" role="contentinfo">
+    <div class="col">
+      <img class="logo" src="../../images/newlogo.svg" alt="Sara Logo">
+      <h4>Contact</h4>
+      <p><strong>Address:</strong> 562 Wellington Road, Street 32, San Francisco</p>
+      <p><strong>Phone:</strong> +01 2222 365 / (+91) 01 2345 6789</p>
+      <p><strong>Hours:</strong> 10:00 - 18:00, Mon - Sat</p>
+      <div class="follow">
+        <h4>Follow us</h4>
+        <div class="icon">
+          <a href="https://x.com/DeepthiMahendran" target="_blank" rel="noopener noreferrer" aria-label="X (formerly Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
+          <a title="GitHub" href="https://github.com/deepthi-mahendran" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/deepthi-mahendran-80a7b2290" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          <a href="https://www.youtube.com/@DeepthiMahendran" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <h4>About</h4>
+      <a href="../../pages/info/about.html">About Us</a>
+      <a href="../../pages/info/delivery.html">Delivery Information</a>
+      <a href="../../pages/info/privacy.html">Privacy Policy</a>
+      <a href="../../pages/info/terms.html">Terms and Conditions</a>
+      <a href="../../pages/info/contact.html">Contact Us</a>
+    </div>
+
+    <div class="col">
+      <h4>My Account</h4>
+      <a href="../../pages/user/login.html">Sign In</a>
+      <a href="../../pages/shop/cart.html">View Cart</a>
+      <a href="../../pages/shop/wishlist.html">My Wishlist</a>
+      <a href="../../pages/user/track-order.html">Track My Order</a>
+      <a href="../../pages/info/contact.html">Help</a>
+    </div>
+
+    <div class="col newsletter-footer">
+      <h4>Newsletter</h4>
+      <p>Get email updates about our latest shop and <span>special offers.</span></p>
+      <form class="newsletter-form" role="form" aria-label="Newsletter subscription">
+        <input type="email" placeholder="Your email address" aria-label="Email address for newsletter" required>
+        <button type="submit" class="normal" aria-label="Sign up for newsletter">Sign Up</button>
+      </form>
+    </div>
+
+    <div class="col install">
+      <h4>Install App</h4>
+      <p>From App Store or Google Play</p>
+      <div class="row">
+        <img src="../../images/pay/app.jpg" alt="Download from App Store">
+        <img src="../../images/pay/play.jpg" alt="Get it on Google Play">
+      </div>
+      <p>Secured Payment Gateways</p>
+      <div class="payment-icons">
+        <a href="https://www.visa.com" target="_blank" rel="noopener noreferrer" aria-label="Visa"><i class="fab fa-cc-visa"></i></a>
+        <a href="https://www.mastercard.com" target="_blank" rel="noopener noreferrer" aria-label="Mastercard"><i class="fab fa-cc-mastercard"></i></a>
+        <a href="https://www.paypal.com" target="_blank" rel="noopener noreferrer" aria-label="PayPal"><i class="fab fa-cc-paypal"></i></a>
+        <a href="https://www.americanexpress.com" target="_blank" rel="noopener noreferrer" aria-label="American Express"><i class="fab fa-cc-amex"></i></a>
+        <a href="https://stripe.com" target="_blank" rel="noopener noreferrer" aria-label="Stripe"><i class="fab fa-cc-stripe"></i></a>
+      </div>
+    </div>
+
+    <div class="copyright">
+      <p>© Sara 2026. All rights reserved. | <a href="../../pages/info/license.html" style="color: #C483E6">MIT License</a></p>
+    </div>
+  </footer>
+
+  <!-- COLUMN 4: NEWSLETTER AREA -->
+  <div class="col newsletter-footer" style="display: flex !important; flex-direction: column !important; align-items: flex-start !important; width: 100% !important;">
+    <h4 style="color: #ffffff !important; font-size: 14px !important; font-weight: 700 !important; margin: 0 0 10px 0 !important; text-transform: uppercase; letter-spacing: 0.5px;">Newsletter</h4>
+    <p style="color: #f1f5f9 !important; font-size: 13px !important; line-height: 1.4 !important; margin: 4px 0 10px 0 !important;">Get updates about our latest shop and <span style="color: #ffffff !important; font-weight: 600;">special offers.</span></p>
+    <form class="newsletter-form" style="display: flex !important; width: 100% !important;">
+      <input type="email" id="newsletter-email-2" placeholder="Your email address" aria-label="Email address for newsletter" required="" style="height: 34px !important; font-size: 12px !important; padding: 0 10px !important; border-radius: 4px 0 0 4px !important; border: none !important; flex-grow: 1 !important; width: 50% !important; min-width: 0 !important;">
+      <button type="submit" class="normal" aria-label="Sign up for newsletter" style="height: 34px !important; font-size: 12px !important; background-color: #C483E6 !important; color: #ffffff !important; border: none !important; padding: 0 12px !important; border-radius: 0 4px 4px 0 !important; font-weight: 600 !important; cursor: pointer !important; flex-shrink: 0 !important;">Sign Up</button>
+    </form>
+  </div>
+
+  <!-- HORIZONTAL COPYRIGHT STATEMENT -->
+  <div class="copyright" style="grid-column: span 4 !important; text-align: center !important; margin-top: 15px !important; padding-top: 15px !important; margin-bottom: 30px !important; border-top: 1px solid rgba(255, 255, 255, 0.1) !important;">
+    <p style="color: #94a3b8 !important; font-size: 12px !important; margin: 0 !important;">© Sara 2026. All rights reserved. | <a href="../info/license.html" style="color: #ffffff !important; text-decoration: underline !important;"> MIT License </a></p>
+  </div>
+</footer>
+
+  <!-- This is your closing footer tag -->
+
+      <!-- FORCE A BLANK LAYOUT GAP AT THE BOTTOM OF THE ENTIRE PAGE -->
+    <script src="../../js/shared-cart-ws.js"></script>
+    <script type="module" src="app.js?v=1779120917210"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        if (typeof window.SharedCartWS !== 'undefined') {
+          const cartWS = new window.SharedCartWS.SharedCartWS({
+            onPresence: (users) => {
+              cartWS.renderPresenceBar('#shared-cart-presence-target');
+            }
+          });
+          if (document.getElementById('shared-cart-presence-target')) {
+            cartWS.renderPresenceBar('#shared-cart-presence-target');
+          }
+        }
+      });
+    </script>
+  <script type="module" src="../../js/navbar.js"></script>
+<script>document.addEventListener('DOMContentLoaded', function() { if (typeof loadNavbar === 'function') loadNavbar('cart'); });</script>
+</body>
+</html>
+
+
+
+
+<!-- Toast Script --><script type="module" src='../../js/toast-notifications.js'></script>
